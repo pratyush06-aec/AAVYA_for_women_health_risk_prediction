@@ -43,3 +43,46 @@ dataframe = dataframe.drop(columns=drop_columns)
 
 # print(dataframe.describe())
 # print(dataframe.dtypes)
+
+target_column = "pcos_label"
+x = dataframe.drop(columns=[target_column])
+y = dataframe[target_column]
+
+print(x.shape)
+print(y.shape)
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, stratify=y, random_state=2)
+
+print(y.value_counts(normalize=True) * 100)
+
+scaler = StandardScaler()
+
+x_train_scaled = x_train.copy()
+x_test_scaled = x_test.copy()
+
+# for col in x_train.select_dtypes(include="number").columns:
+#     print(
+#         f"{col}: "
+#         f"Unique values = {x_train[col].nunique()}, "
+#         f"Sample values = {x_train[col].dropna().unique()[:10]}"
+#         )
+
+numerical_features = ["age_years", "bmi", "amh", "lh", "fsh", "hemoglobin", "cycle_length_days", "marriage_duration_years", "abortion_count", "tsh", "prolactin", "progesterone", "random_blood_sugar", "weight_gain_flag", "hirsutism_flag", "skin_darkening_flag", "hair_loss_flag", "acne_flag", "follicle_count_left", "follicle_count_right", "avg_follicle_size_left_mm", "avg_follicle_size_right_mm", "endometrium_mm", "fasting_insulin_uiu_ml", "insulin_ogtt_1hr_uiu_ml", "insulin_ogtt_2hr_uiu_ml", "fasting_glucose_mg_dl", "homa_ir", "quicki", "belfiore_index", "raynaud_index", "serum_testosterone_ng_ml", "serum_t4_ug_dl", "fg_score_numeric"]
+
+x_train_scaled[numerical_features] = (scaler.fit_transform(x_train[numerical_features]))
+x_test_scaled[numerical_features] = scaler.transform(x_test[numerical_features])
+
+print(x_train_scaled[numerical_features].describe().round(2))
+print(x_test_scaled[numerical_features].describe().round(2))
+
+plt.figure(figsize=(8, 5))
+
+sns.countplot(x=y_train, hue=y_train, palette="Set2", legend=False)
+
+plt.title("PCOS Class Distribution Before Balancing")
+plt.xlabel("PCOS Label (0 = Negative, 1 = Positive)")
+plt.ylabel("Number of Samples")
+plt.xticks([0, 1], ["PCOS Negative", "PCOS Positive"])
+
+plt.show()
+
