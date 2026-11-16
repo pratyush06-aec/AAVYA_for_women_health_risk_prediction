@@ -109,13 +109,9 @@ y_pred_baseline = baseline_model.predict(x_test_scaled)
 y_prob_baseline = baseline_model.predict_proba(x_test_scaled)[:, 1]
 
 baseline_accuracy = accuracy_score(y_test, y_pred_baseline)
-
 baseline_precision = precision_score(y_test, y_pred_baseline, zero_division=0)
-
 baseline_recall = recall_score(y_test, y_pred_baseline, zero_division=0)
-
 baseline_f1 = f1_score(y_test, y_pred_baseline, zero_division=0)
-
 baseline_roc_auc = roc_auc_score(y_test, y_prob_baseline)
 
 print("BASELINE MODEL PERFORMANCE")
@@ -128,3 +124,54 @@ print("ROC-AUC:", baseline_roc_auc)
 
 print(classification_report(y_test, y_pred_baseline, target_names=["PCOS Negative", "PCOS Positive"], zero_division=0))
 
+cm = confusion_matrix(y_test, y_pred_baseline)
+
+plt.figure(figsize=(7, 5))
+
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=["Negative", "Positive"], yticklabels=["Negative", "Positive"])
+
+plt.title("Baseline Logistic Regression - Confusion Matrix")
+plt.xlabel("Predicted Label")
+plt.ylabel("Actual Label")
+
+plt.show()
+
+# categorical_indices = [x_train_scaled.columns.get_loc("cycle_regularity")]
+# smotenc = SMOTENC(categorical_features=categorical_indices, sampling_strategy="auto", random_state=2, k_neighbors=10)
+# x_train_balanced, y_train_balanced = (smotenc.fit_resample(x_train_scaled, y_train))
+
+# print(y_train_balanced.value_counts(normalize=True) * 100)
+
+# smotenc_model = LogisticRegression(max_iter=100, random_state=2)
+# smotenc_model.fit(x_train_balanced, y_train_balanced)
+
+# y_pred_smotenc = smotenc_model.predict(x_test_scaled)
+# y_prob_smotenc = smotenc_model.predict_proba(x_test_scaled)[:, 1]
+
+# smotenc_accuracy = accuracy_score(y_test, y_pred_smotenc)
+# smotenc_precision = precision_score(y_test, y_pred_smotenc, zero_division=0)
+# smotenc_recall = recall_score(y_test, y_pred_smotenc, zero_division=0)
+# smotenc_f1 = f1_score(y_test, y_pred_smotenc, zero_division=0)
+# smotenc_roc_auc = roc_auc_score(y_test, y_prob_smotenc)
+
+# print("BASELINE MODEL PERFORMANCE")
+
+# print("Accuracy:", smotenc_accuracy)
+# print("Precision:", smotenc_precision)
+# print("Recall:", smotenc_recall)
+# print("F1 Score:", smotenc_f1)
+# print("ROC-AUC:", smotenc_roc_auc)
+
+# print(classification_report(y_test, y_pred_smotenc, target_names=["PCOS Negative", "PCOS Positive"], zero_division= 0))
+
+# cm_smotenc = confusion_matrix(y_test, y_pred_smotenc)
+
+# plt.figure(figsize=(7, 5))
+
+# sns.heatmap(cm_smotenc, annot=True, fmt="d", cmap="Greens", xticklabels=["Negative", "Positive"], yticklabels=["Negative", "Positive"])
+
+# plt.title("SMOTENC Logistic Regression - Confusion Matrix")
+# plt.xlabel("Predicted Label")
+# plt.ylabel("Actual Label")
+
+# plt.show()
