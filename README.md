@@ -1,21 +1,30 @@
 # AAVYA - Hereditary AI for Women's Health Risk Prediction
 
-This repository contains an initial PCOS-related clinical dataset and a small
-Python script for exploratory inspection. It is an early-stage data workspace,
-not a completed prediction application or clinical decision-support system.
+This repository contains a PCOS-related clinical dataset and a Python-based
+baseline workflow for binary risk prediction. It is an early-stage research and
+exploration project, not a validated clinical decision-support system.
 
 ## Current status
 
-- The initial clinical CSV contains 530 rows and 60 columns.
-- `main.py` prints a preview, the dataset dimensions, descriptive statistics,
-  and DataFrame information.
-- The script does **not** train or evaluate a prediction model.
-- Pinned Python dependencies for this dataset workspace are listed in
+- The dataset contains 530 rows and 60 columns.
+- `datasets/dataset_1/dataset_1_initial/main.py` loads the CSV, prepares the
+  feature matrix, trains a logistic regression model, and prints evaluation
+  metrics.
+- The workflow includes:
+  - mapping `cycle_regularity` values to numeric labels (`Regular` -> 0,
+    `Irregular` -> 1)
+  - dropping a curated set of non-model columns
+  - train/test splitting with stratification on `pcos_label`
+  - numeric feature scaling using `StandardScaler`
+  - baseline model evaluation with accuracy, precision, recall, F1, ROC-AUC,
+    and a classification report
+  - a confusion matrix heatmap rendered with Seaborn
+- An experimental SMOTENC-based balancing pipeline is included as commented-out
+  code for future exploration.
+- Pinned dependencies are listed in
   `datasets/dataset_1/dataset_1_initial/requirements.txt`.
-- The `dataset_1_refined`, `dataset_2`, and `dataset_3` directories are empty
-  placeholders and may not be included in a Git checkout.
-- Dataset provenance, collection methods, consent, and license are not
-  documented in this repository.
+- The `dataset_1_refined`, `dataset_2`, and `dataset_3` directories remain
+  empty placeholders in this repository.
 
 ## Repository layout
 
@@ -26,67 +35,91 @@ datasets/
 │   │   ├── main.py
 │   │   ├── model_1_clinical.csv
 │   │   └── requirements.txt
-│   └── dataset_1_refined/       # Empty placeholder
-├── dataset_2/                   # Empty placeholder
-└── dataset_3/                   # Empty placeholder
+│   └── dataset_1_refined/       # Placeholder
+├── dataset_2/                   # Placeholder
+└── dataset_3/                   # Placeholder
 ```
 
 ## Dataset
 
-[`model_1_clinical.csv`](datasets/dataset_1/dataset_1_initial/model_1_clinical.csv)
-contains 530 observations and 60 fields. The `pcos_label` field has 355 records
-labeled `0` and 175 labeled `1`. Other fields include `rotterdam_phenotype`,
-clinical measurements, reproductive history, symptom indicators, and
-calculated or imputation-related values.
+[`datasets/dataset_1/dataset_1_initial/model_1_clinical.csv`](datasets/dataset_1/dataset_1_initial/model_1_clinical.csv)
+contains 530 observations and 60 fields. The target column is `pcos_label`.
+The dataset includes 355 negative cases (`0`) and 175 positive cases (`1`).
+Other features cover demographics, reproductive history, hormonal markers,
+symptom flags, and clinical/ultrasound values.
 
-Examples of field groups include:
+Examples of feature groups include:
 
-- **Demographics and measurements:** age, weight, height, BMI, blood pressure,
-  pulse, and respiratory rate.
-- **Reproductive and hormonal measures:** cycle regularity and length,
-  pregnancy and abortion fields, beta-hCG, FSH, LH, TSH, prolactin,
-  progesterone, AMH, testosterone, and T4.
+- **Demographics and measurements:** age, BMI, blood pressure, pulse, and
+  respiratory rate.
+- **Reproductive and hormonal values:** cycle regularity and length, pregnancy
+  and abortion counts, beta-hCG, FSH, LH, TSH, prolactin, progesterone, AMH,
+  testosterone, and T4.
 - **Symptoms and lifestyle indicators:** hirsutism, skin darkening, hair loss,
   acne, weight gain, fast-food intake, and exercise.
-- **Metabolic and ultrasound fields:** glucose, insulin, derived indices,
-  follicle counts and sizes, and endometrium thickness.
+- **Metabolic and ultrasound fields:** glucose, insulin, derived index values,
+  follicle counts, sizes, and endometrium thickness.
 
-Column names describe the available fields; units and clinical definitions
-should be verified before analysis. The CSV currently has no blank cells, but
-some fields are explicitly named as imputed or are accompanied by imputation
-indicators. Review the data-generation and preprocessing methodology before
-using those fields.
+The current pipeline drops several columns before modeling, including:
+non-predictive or redundant fields, imputation indicators, and some metadata or
+measurement variables not used in the baseline classifier.
 
-## Run the inspection script
+## Run the baseline model
 
-From the repository root, install the pinned dependencies and run the script:
+From the repository root, create a virtual environment, install the pinned
+requirements, and run the script:
 
 ```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r datasets/dataset_1/dataset_1_initial/requirements.txt
 python datasets/dataset_1/dataset_1_initial/main.py
 ```
 
-The script currently contains an absolute Windows path to the CSV on its
-original development machine. If your checkout is in a different location,
+The script currently contains a hard-coded absolute Windows path to the CSV on
+its original development machine. If your checkout is in a different location,
 update the `pd.read_csv(...)` path in `main.py` before running it.
+
+## What the script does
+
+The current `main.py` performs the following actions:
+
+1. Loads the PCOS clinical dataset.
+2. Encodes `cycle_regularity` as a numeric binary field.
+3. Drops a selected set of columns considered unnecessary for the current
+   baseline model.
+4. Splits the data into training and test sets with `test_size=0.20` and
+   stratification on `pcos_label`.
+5. Scales selected numerical features with `StandardScaler`.
+6. Trains a `LogisticRegression` classifier.
+7. Evaluates the model on the held-out test set and prints:
+   - Accuracy
+   - Precision
+   - Recall
+   - F1 score
+   - ROC-AUC
+   - Classification report
+8. Displays a confusion matrix heatmap for model error analysis.
+
+This is a baseline model for experimentation and research. It is not yet a
+production-ready medical prediction pipeline.
 
 ## Responsible use
 
 This repository is not a medical device and does not provide diagnostic or
-treatment recommendations. No model performance, bias, or clinical validity
-has been established here. Do not use this dataset or any future model output
-to make decisions about an individual's care.
+treatment recommendations. No model performance, bias, or clinical validity has
+been formally established here. Do not use this dataset or any future model
+output to make decisions about an individual's care.
 
-The data concerns health and reproductive health. Before sharing it, publishing
-results, or using it for research or development, establish its provenance,
-rights to use, privacy protections, and any applicable consent or ethics
-requirements. Do not infer that the data is synthetic, anonymized, or licensed
-for reuse because those details are not documented here.
+The dataset concerns reproductive and health data. Before sharing data,
+publishing results, or using it for research or development, establish
+provenance, data rights, privacy protections, and any applicable consent or
+ethics requirements.
 
 ## Further development
 
-Before building a reproducible prediction workflow, document the dataset's
-source and schema, define the target and evaluation approach, and add versioned
-preprocessing, training, and validation code. Evaluate any future model for
-data leakage, class imbalance, bias, and limitations before sharing its
-results or considering any clinical context.
+Before building a reproducible predictive workflow, document the dataset source
+and schema, define the classification target and evaluation strategy, and add
+versioned preprocessing, training, validation, and reporting code. Any future
+model should be evaluated for class imbalance, data leakage, bias, and
+limitations before being shared or used in clinical contexts.
