@@ -1,14 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.model_selection import train_test_split, StratifiedKFold, cross_validate
+# import numpy as np
+from sklearn.model_selection import train_test_split 
+# from sklern.model_selection import StratifiedKFold, cross_validate
 from sklearn.metrics import classification_report, f1_score, confusion_matrix, accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve, auc
 from sklearn.linear_model import LogisticRegression
 import seaborn as sns
-from imblearn.pipeline import Pipeline as ImbPipeline
+# from imblearn.pipeline import Pipeline as ImbPipeline
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 from imblearn.over_sampling import SMOTENC
-from sklearn.pipeline import Pipeline
 
 
 dataframe= pd.read_csv("D:\AAVYA-HeredityAI-for_women_health_risk_prediction\datasets\dataset_1\dataset_1_initial\model_1_clinical.csv")
