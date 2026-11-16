@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 from imblearn.over_sampling import SMOTENC
 
 
-dataframe= pd.read_csv("D:\AAVYA-HeredityAI-for_women_health_risk_prediction\datasets\dataset_1\dataset_1_initial\model_1_clinical.csv")
+dataframe= pd.read_csv("D:\AAVYA-HeredityAI-for_women_health_risk_prediction\datasets\dataset_1\logistic_regression\dataset_1_initial\dataset_1.csv")
 # print(dataframe.head())
 # print(dataframe.shape)
 # print(dataframe.describe())
