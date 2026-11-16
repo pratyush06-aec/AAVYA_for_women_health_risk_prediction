@@ -75,14 +75,56 @@ x_test_scaled[numerical_features] = scaler.transform(x_test[numerical_features])
 print(x_train_scaled[numerical_features].describe().round(2))
 print(x_test_scaled[numerical_features].describe().round(2))
 
-plt.figure(figsize=(8, 5))
+# plt.figure(figsize=(8, 5))
 
-sns.countplot(x=y_train, hue=y_train, palette="Set2", legend=False)
+# sns.countplot(x=y_train, hue=y_train, palette="Set2", legend=False)
 
-plt.title("PCOS Class Distribution Before Balancing")
-plt.xlabel("PCOS Label (0 = Negative, 1 = Positive)")
-plt.ylabel("Number of Samples")
-plt.xticks([0, 1], ["PCOS Negative", "PCOS Positive"])
+# plt.title("PCOS Class Distribution Before Balancing")
+# plt.xlabel("PCOS Label (0 = Negative, 1 = Positive)")
+# plt.ylabel("Number of Samples")
+# plt.xticks([0, 1], ["PCOS Negative", "PCOS Positive"])
 
-plt.show()
+# plt.show()
+
+baseline_model = LogisticRegression(max_iter=100, random_state=2)
+
+# iteration_values = [100, 250, 500, 1000, 2000]
+
+# for iteration in iteration_values:
+
+#     model = LogisticRegression(max_iter=iteration, random_state=2)
+
+#     model.fit(x_train_scaled, y_train)
+
+#     print(
+#         f"Max Iterations: {iteration} | "
+#         f"Actual Iterations: {model.n_iter_[0]} | "
+#         f"Test Accuracy: "
+#         f"{accuracy_score(y_test, model.predict(x_test_scaled)):.4f}"
+#     )
+
+baseline_model.fit(x_train_scaled, y_train)
+
+y_pred_baseline = baseline_model.predict(x_test_scaled)
+y_prob_baseline = baseline_model.predict_proba(x_test_scaled)[:, 1]
+
+baseline_accuracy = accuracy_score(y_test, y_pred_baseline)
+
+baseline_precision = precision_score(y_test, y_pred_baseline, zero_division=0)
+
+baseline_recall = recall_score(y_test, y_pred_baseline, zero_division=0)
+
+baseline_f1 = f1_score(y_test, y_pred_baseline, zero_division=0)
+
+baseline_roc_auc = roc_auc_score(y_test, y_prob_baseline)
+
+print("BASELINE MODEL PERFORMANCE")
+
+print("Accuracy:", baseline_accuracy)
+print("Precision:", baseline_precision)
+print("Recall:", baseline_recall)
+print("F1 Score:", baseline_f1)
+print("ROC-AUC:", baseline_roc_auc)
+
+print(classification_report(y_test, y_pred_baseline, target_names=["PCOS Negative", "PCOS Positive"], zero_division=0))
 
