@@ -54,10 +54,14 @@ displays a confusion-matrix heatmap.
 ### Combined dataset experiment
 
 `datasets/dataset_1+2/logistic_regression/main.py` currently loads the combined
-CSV, maps `cycle_regularity` and `yoga_practiced`, drops selected columns, and
-prints the resulting feature and target shapes. The train/test split, model
-training, evaluation, and optional SMOTENC balancing code are commented out;
-this script does not currently train or evaluate a model.
+CSV, maps `cycle_regularity` and `yoga_practiced` to numeric values, and removes
+selected columns, including `diets_tried`. It then makes a stratified 80/20
+train/test split, standardizes the selected numerical features, and displays
+the target distribution and scaled-feature summaries. It trains and evaluates
+a baseline logistic-regression model, comparing several `max_iter` values and
+reporting accuracy, precision, recall, F1, ROC-AUC, and a classification
+report. It also displays a class-distribution plot and a confusion-matrix
+heatmap. SMOTENC balancing code is present but remains commented out.
 
 ## Setup and running
 
@@ -80,14 +84,14 @@ Run the dataset 1 baseline with:
 python datasets/dataset_1/logistic_regression/dataset_1_initial/main.py
 ```
 
-Run the combined-dataset preprocessing experiment with:
+Run the combined-dataset experiment with:
 
 ```powershell
 python "datasets/dataset_1+2/logistic_regression/main.py"
 ```
 
-The baseline displays its confusion-matrix plot, so run it in an environment
-with graphical display support.
+Both workflows display plots, so run them in an environment with graphical
+display support.
 
 ## Responsible use
 
