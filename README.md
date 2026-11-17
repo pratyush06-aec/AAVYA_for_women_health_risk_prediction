@@ -1,125 +1,101 @@
 # AAVYA - Hereditary AI for Women's Health Risk Prediction
 
-This repository contains a PCOS-related clinical dataset and a Python-based
-baseline workflow for binary risk prediction. It is an early-stage research and
-exploration project, not a validated clinical decision-support system.
+This repository contains two PCOS-related datasets and experimental Python
+workflows for exploring logistic-regression-based risk prediction. This is an
+early-stage research project, not a validated clinical decision-support system.
 
-## Current status
-
-- The dataset contains 530 rows and 60 columns.
-- `datasets/dataset_1/dataset_1_initial/main.py` loads the CSV, prepares the
-  feature matrix, trains a logistic regression model, and prints evaluation
-  metrics.
-- The workflow includes:
-  - mapping `cycle_regularity` values to numeric labels (`Regular` -> 0,
-    `Irregular` -> 1)
-  - dropping a curated set of non-model columns
-  - train/test splitting with stratification on `pcos_label`
-  - numeric feature scaling using `StandardScaler`
-  - baseline model evaluation with accuracy, precision, recall, F1, ROC-AUC,
-    and a classification report
-  - a confusion matrix heatmap rendered with Seaborn
-- An experimental SMOTENC-based balancing pipeline is included as commented-out
-  code for future exploration.
-- Pinned dependencies are listed in
-  `datasets/dataset_1/dataset_1_initial/requirements.txt`.
-- The `dataset_1_refined`, `dataset_2`, and `dataset_3` directories remain
-  empty placeholders in this repository.
-
-## Repository layout
+## Repository contents
 
 ```text
 datasets/
 ├── dataset_1/
-│   ├── dataset_1_initial/
-│   │   ├── main.py
-│   │   ├── model_1_clinical.csv
-│   │   └── requirements.txt
-│   └── dataset_1_refined/       # Placeholder
-├── dataset_2/                   # Placeholder
-└── dataset_3/                   # Placeholder
+│   └── logistic_regression/
+│       └── dataset_1_initial/
+│           ├── dataset_1.csv
+│           └── main.py
+└── dataset_1+2/
+    └── logistic_regression/
+        ├── dataset_1 & 2 combined.csv
+        └── main.py
+requirements.txt
 ```
 
-## Dataset
+The root-level `requirements.txt` lists the pinned Python dependencies used by
+the scripts, including pandas, scikit-learn, matplotlib, seaborn, and
+imbalanced-learn.
 
-[`datasets/dataset_1/dataset_1_initial/model_1_clinical.csv`](datasets/dataset_1/dataset_1_initial/model_1_clinical.csv)
-contains 530 observations and 60 fields. The target column is `pcos_label`.
-The dataset includes 355 negative cases (`0`) and 175 positive cases (`1`).
-Other features cover demographics, reproductive history, hormonal markers,
-symptom flags, and clinical/ultrasound values.
+## Datasets
 
-Examples of feature groups include:
+Both CSV files contain 530 rows with `pcos_label` as the target: 355 negative
+cases (`0`) and 175 positive cases (`1`).
 
-- **Demographics and measurements:** age, BMI, blood pressure, pulse, and
-  respiratory rate.
-- **Reproductive and hormonal values:** cycle regularity and length, pregnancy
-  and abortion counts, beta-hCG, FSH, LH, TSH, prolactin, progesterone, AMH,
-  testosterone, and T4.
-- **Symptoms and lifestyle indicators:** hirsutism, skin darkening, hair loss,
-  acne, weight gain, fast-food intake, and exercise.
-- **Metabolic and ultrasound fields:** glucose, insulin, derived index values,
-  follicle counts, sizes, and endometrium thickness.
+- `datasets/dataset_1/logistic_regression/dataset_1_initial/dataset_1.csv`
+  contains 60 fields.
+- `datasets/dataset_1+2/logistic_regression/dataset_1 & 2 combined.csv`
+  contains 85 fields, including additional lifestyle and treatment-related
+  fields.
 
-The current pipeline drops several columns before modeling, including:
-non-predictive or redundant fields, imputation indicators, and some metadata or
-measurement variables not used in the baseline classifier.
+The columns cover demographic, reproductive, hormonal, symptom, metabolic,
+ultrasound, and lifestyle information. This data concerns sensitive health
+information; confirm its provenance, rights, privacy protections, consent, and
+ethics requirements before sharing or using it.
 
-## Run the baseline model
+## Workflows
 
-From the repository root, create a virtual environment, install the pinned
-requirements, and run the script:
+### Dataset 1 baseline
+
+`datasets/dataset_1/logistic_regression/dataset_1_initial/main.py` runs a
+baseline logistic-regression workflow. It maps `cycle_regularity` to numeric
+values, removes selected columns, makes a stratified 80/20 train/test split,
+standardizes selected numerical features, trains the classifier, and reports
+accuracy, precision, recall, F1, ROC-AUC, and a classification report. It also
+displays a confusion-matrix heatmap.
+
+### Combined dataset experiment
+
+`datasets/dataset_1+2/logistic_regression/main.py` currently loads the combined
+CSV, maps `cycle_regularity` and `yoga_practiced`, drops selected columns, and
+prints the resulting feature and target shapes. The train/test split, model
+training, evaluation, and optional SMOTENC balancing code are commented out;
+this script does not currently train or evaluate a model.
+
+## Setup and running
+
+From the repository root, create and activate a virtual environment, then
+install the root dependencies:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install -r datasets/dataset_1/dataset_1_initial/requirements.txt
-python datasets/dataset_1/dataset_1_initial/main.py
+python -m pip install -r requirements.txt
 ```
 
-The script currently contains a hard-coded absolute Windows path to the CSV on
-its original development machine. If your checkout is in a different location,
-update the `pd.read_csv(...)` path in `main.py` before running it.
+Both scripts currently use hard-coded absolute Windows paths to read their CSV
+files. Before running a script from another checkout location or operating
+system, update its `pd.read_csv(...)` path to point to the matching CSV.
 
-## What the script does
+Run the dataset 1 baseline with:
 
-The current `main.py` performs the following actions:
+```powershell
+python datasets/dataset_1/logistic_regression/dataset_1_initial/main.py
+```
 
-1. Loads the PCOS clinical dataset.
-2. Encodes `cycle_regularity` as a numeric binary field.
-3. Drops a selected set of columns considered unnecessary for the current
-   baseline model.
-4. Splits the data into training and test sets with `test_size=0.20` and
-   stratification on `pcos_label`.
-5. Scales selected numerical features with `StandardScaler`.
-6. Trains a `LogisticRegression` classifier.
-7. Evaluates the model on the held-out test set and prints:
-   - Accuracy
-   - Precision
-   - Recall
-   - F1 score
-   - ROC-AUC
-   - Classification report
-8. Displays a confusion matrix heatmap for model error analysis.
+Run the combined-dataset preprocessing experiment with:
 
-This is a baseline model for experimentation and research. It is not yet a
-production-ready medical prediction pipeline.
+```powershell
+python "datasets/dataset_1+2/logistic_regression/main.py"
+```
+
+The baseline displays its confusion-matrix plot, so run it in an environment
+with graphical display support.
 
 ## Responsible use
 
 This repository is not a medical device and does not provide diagnostic or
-treatment recommendations. No model performance, bias, or clinical validity has
-been formally established here. Do not use this dataset or any future model
-output to make decisions about an individual's care.
+treatment recommendations. Model performance, bias, and clinical validity have
+not been formally established. Do not use any model output to make decisions
+about an individual's care.
 
-The dataset concerns reproductive and health data. Before sharing data,
-publishing results, or using it for research or development, establish
-provenance, data rights, privacy protections, and any applicable consent or
-ethics requirements.
-
-## Further development
-
-Before building a reproducible predictive workflow, document the dataset source
-and schema, define the classification target and evaluation strategy, and add
-versioned preprocessing, training, validation, and reporting code. Any future
-model should be evaluated for class imbalance, data leakage, bias, and
-limitations before being shared or used in clinical contexts.
+Any future model should be evaluated for data leakage, class imbalance, bias,
+reproducibility, and clinical limitations before its results are shared or
+considered for use in a clinical context.

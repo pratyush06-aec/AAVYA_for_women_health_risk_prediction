@@ -7,7 +7,8 @@ from sklearn.metrics import classification_report, f1_score, confusion_matrix, a
 from sklearn.linear_model import LogisticRegression
 import seaborn as sns
 # from imblearn.pipeline import Pipeline as ImbPipeline
-from sklearn.preprocessing import StandardScaler, OrdinalEncoder
+from sklearn.preprocessing import StandardScaler
+# from sklearn.preprocessing import OrdinalEncoder
 from imblearn.over_sampling import SMOTENC
 
 
