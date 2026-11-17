@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 # import numpy as np
 from sklearn.model_selection import train_test_split 
 # from sklern.model_selection import StratifiedKFold, cross_validate
-from sklearn.metrics import classification_report, f1_score, confusion_matrix, accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve, auc
+from sklearn.metrics import classification_report, f1_score, confusion_matrix, accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve, auc, average_precision_score, precision_recall_curve
 from sklearn.linear_model import LogisticRegression
 import seaborn as sns
 # from imblearn.pipeline import Pipeline as ImbPipeline
@@ -116,6 +116,7 @@ baseline_precision = precision_score(y_test, y_pred_baseline, zero_division=0)
 baseline_recall = recall_score(y_test, y_pred_baseline, zero_division=0)
 baseline_f1 = f1_score(y_test, y_pred_baseline, zero_division=0)
 baseline_roc_auc = roc_auc_score(y_test, y_prob_baseline)
+baseline_pr_auc = average_precision_score(y_test, y_prob_baseline)
 
 print("BASELINE MODEL PERFORMANCE")
 
@@ -124,6 +125,7 @@ print("Precision:", baseline_precision)
 print("Recall:", baseline_recall)
 print("F1 Score:", baseline_f1)
 print("ROC-AUC:", baseline_roc_auc)
+print("PR-AUC:", baseline_pr_auc)
 
 print(classification_report(y_test, y_pred_baseline, target_names=["PCOS Negative", "PCOS Positive"], zero_division=0))
 
@@ -178,3 +180,34 @@ plt.show()
 # plt.ylabel("Actual Label")
 
 # plt.show()
+
+results_df = pd.DataFrame(
+    {
+        "Baseline": {
+            "Accuracy": baseline_accuracy,
+            "Precision": baseline_precision,
+            "Recall": baseline_recall,
+            "F1 Score": baseline_f1, 
+            "ROC-AUC": baseline_roc_auc,
+            "PR-AUC": baseline_pr_auc
+        }
+    }
+).T
+
+print(results_df.round(4))
+
+metrics_to_plot = ["Accuracy", "Precision", "Recall", "F1 Score", "ROC-AUC", "PR-AUC"]
+
+results_df[metrics_to_plot].plot(kind="bar", figsize=(11, 6), width=0.75)
+
+plt.title("Performance Comparison of Logistic Regression Models")
+plt.xlabel("Model")
+plt.ylabel("Score")
+plt.ylim(0, 1.05)
+
+plt.xticks(rotation=0)
+plt.legend(loc="lower right")
+plt.grid(axis="y", linestyle="--", alpha=0.5)
+
+plt.tight_layout()
+plt.show()

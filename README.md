@@ -59,9 +59,11 @@ selected columns, including `diets_tried`. It then makes a stratified 80/20
 train/test split, standardizes the selected numerical features, and displays
 the target distribution and scaled-feature summaries. It trains and evaluates
 a baseline logistic-regression model, comparing several `max_iter` values and
-reporting accuracy, precision, recall, F1, ROC-AUC, and a classification
-report. It also displays a class-distribution plot and a confusion-matrix
-heatmap. SMOTENC balancing code is present but remains commented out.
+reporting accuracy, precision, recall, F1, ROC-AUC, PR-AUC (average
+precision), and a classification report. It prints a rounded metrics summary
+table and displays a class-distribution plot, a confusion-matrix heatmap, and
+a metric comparison bar chart for the baseline model. SMOTENC balancing code
+is present but remains commented out.
 
 ## Setup and running
 
