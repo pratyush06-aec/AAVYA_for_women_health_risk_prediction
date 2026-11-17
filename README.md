@@ -48,8 +48,9 @@ ethics requirements before sharing or using it.
 baseline logistic-regression workflow. It maps `cycle_regularity` to numeric
 values, removes selected columns, makes a stratified 80/20 train/test split,
 standardizes selected numerical features, trains the classifier, and reports
-accuracy, precision, recall, F1, ROC-AUC, and a classification report. It also
-displays a confusion-matrix heatmap.
+accuracy, precision, recall, F1, ROC-AUC, PR-AUC (average precision), and a
+classification report. It prints a rounded metrics summary table and displays
+a confusion-matrix heatmap and a metric bar chart for the baseline model.
 
 ### Combined dataset experiment
 

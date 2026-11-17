@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 # import numpy as np
 from sklearn.model_selection import train_test_split 
 # from sklern.model_selection import StratifiedKFold, cross_validate
-from sklearn.metrics import classification_report, f1_score, confusion_matrix, accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve, auc, average_precision_score, precision_recall_curve
+from sklearn.metrics import classification_report, f1_score, confusion_matrix, accuracy_score, precision_score, recall_score, roc_auc_score, average_precision_score
+# from sklearn.metrics import precision_recall_curve, roc_curve, auc
 from sklearn.linear_model import LogisticRegression
 import seaborn as sns
 # from imblearn.pipeline import Pipeline as ImbPipeline
