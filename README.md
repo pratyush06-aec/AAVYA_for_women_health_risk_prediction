@@ -1,6 +1,6 @@
 # AAVYA - Hereditary AI for Women's Health Risk Prediction
 
-This repository contains two PCOS-related datasets and experimental Python
+This repository contains three PCOS-related datasets and experimental Python
 workflows for exploring logistic-regression-based risk prediction. This is an
 early-stage research project, not a validated clinical decision-support system.
 
@@ -13,9 +13,13 @@ datasets/
 │       └── dataset_1_initial/
 │           ├── dataset_1.csv
 │           └── main.py
-└── dataset_1+2/
+├── dataset_1+2/
+│   └── logistic_regression/
+│       ├── dataset_1 & 2 combined.csv
+│       └── main.py
+└── dataset_1+2+3/
     └── logistic_regression/
-        ├── dataset_1 & 2 combined.csv
+        ├── dataset_1+2+3 (final).csv
         └── main.py
 requirements.txt
 ```
@@ -26,14 +30,16 @@ imbalanced-learn.
 
 ## Datasets
 
-Both CSV files contain 530 rows with `pcos_label` as the target: 355 negative
-cases (`0`) and 175 positive cases (`1`).
+All three CSV files contain 530 rows with `pcos_label` as the target: 355
+negative cases (`0`) and 175 positive cases (`1`).
 
 - `datasets/dataset_1/logistic_regression/dataset_1_initial/dataset_1.csv`
   contains 60 fields.
 - `datasets/dataset_1+2/logistic_regression/dataset_1 & 2 combined.csv`
   contains 85 fields, including additional lifestyle and treatment-related
   fields.
+- `datasets/dataset_1+2+3/logistic_regression/dataset_1+2+3 (final).csv`
+  contains 281 fields.
 
 The columns cover demographic, reproductive, hormonal, symptom, metabolic,
 ultrasound, and lifestyle information. This data concerns sensitive health
@@ -66,6 +72,17 @@ table and displays a class-distribution plot, a confusion-matrix heatmap, and
 a metric comparison bar chart for the baseline model. SMOTENC balancing code
 is present but remains commented out.
 
+### Combined dataset 1+2+3 experiment
+
+`datasets/dataset_1+2+3/logistic_regression/main.py` loads the 281-field
+combined CSV, maps `cycle_regularity` and `yoga_practiced` to numeric values,
+and removes selected columns. It then makes a stratified 80/20 train/test
+split, standardizes selected numerical features, trains a baseline
+logistic-regression model, and reports accuracy, precision, recall, F1,
+ROC-AUC, PR-AUC (average precision), and a classification report. It prints a
+rounded metrics summary table and displays a confusion-matrix heatmap and a
+metric bar chart. SMOTENC balancing code is present but remains commented out.
+
 ## Setup and running
 
 From the repository root, create and activate a virtual environment, then
@@ -77,7 +94,7 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-Both scripts currently use hard-coded absolute Windows paths to read their CSV
+The scripts currently use hard-coded absolute Windows paths to read their CSV
 files. Before running a script from another checkout location or operating
 system, update its `pd.read_csv(...)` path to point to the matching CSV.
 
@@ -87,14 +104,20 @@ Run the dataset 1 baseline with:
 python datasets/dataset_1/logistic_regression/dataset_1_initial/main.py
 ```
 
-Run the combined-dataset experiment with:
+Run the combined dataset 1+2 experiment with:
 
 ```powershell
 python "datasets/dataset_1+2/logistic_regression/main.py"
 ```
 
-Both workflows display plots, so run them in an environment with graphical
-display support.
+Run the combined dataset 1+2+3 experiment with:
+
+```powershell
+python "datasets/dataset_1+2+3/logistic_regression/main.py"
+```
+
+All three workflows display plots, so run them in an environment with
+graphical display support.
 
 ## Responsible use
 
