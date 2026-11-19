@@ -1,0 +1,844 @@
+{
+  "version": "1.0.0",
+  "total_features": 123,
+  "target": "pcos_label",
+  "features": [
+    {
+      "name": "age_years",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "bmi",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "hemoglobin",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "cycle_regularity",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Regular": 0,
+        "Irregular": 1
+      }
+    },
+    {
+      "name": "cycle_length_days",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "marriage_duration_years",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "abortion_count",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "fsh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "lh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "tsh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "prolactin",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "progesterone",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "random_blood_sugar",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "weight_gain_flag",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "hirsutism_flag",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "skin_darkening_flag",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "hair_loss_flag",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "acne_flag",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "fast_food_flag",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "regular_exercise_flag",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "follicle_count_left",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "follicle_count_right",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "avg_follicle_size_left_mm",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "avg_follicle_size_right_mm",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "endometrium_mm",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "amh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "fasting_insulin_uiu_ml",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "insulin_ogtt_1hr_uiu_ml",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "insulin_ogtt_2hr_uiu_ml",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "fasting_glucose_mg_dl",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "homa_ir",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "quicki",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "belfiore_index",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "raynaud_index",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "serum_testosterone_ng_ml",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "serum_t4_ug_dl",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "fg_score_numeric",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sitting_time_per_day",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "walking_days_per_week",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "walking_duration_per_day",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "moderate_activity_days",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "moderate_activity_duration",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "vigorous_activity_days",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "vigorous_activity_duration",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "strength_exercise_days",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "strength_exercise_duration",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "yoga_practiced",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "family_history_pcos",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "family_history_infertility",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "family_history_endometriosis",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "family_history_early_menopause",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_pcos",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_infertility",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_endometriosis",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_early_menopause",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_metabolic_syndrome",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "father_metabolic_syndrome",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_pcos",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_infertility",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_endometriosis",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_early_menopause",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "brother_metabolic_syndrome",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "maternal_grandmother_pcos",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "maternal_grandmother_infertility",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "paternal_grandmother_pcos",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "paternal_grandmother_infertility",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_bmi",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_bg_fasting",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_fasting_insulin",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_homa_ir",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_quicki",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_belfiore_index",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_tsh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_t4",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_metabolic_syndrome_idf_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_metabolic_syndrome_atp3_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_cycles_per_year",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_hirsutism_duration_years",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_fg_score",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_lh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_fsh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_testosterone",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_prolactin",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "mother_irregular_cycles_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_ovarian_morphology_pcos_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_hirsutism_gt9_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_alopecia_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_moderate_acne_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "mother_severe_acne_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "father_bmi",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "father_homa_ir",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "father_metabolic_syndrome_idf_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "father_metabolic_syndrome_atp3_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_bmi",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_fasting_insulin",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_homa_ir",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_quicki",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_belfiore_index",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_tsh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_t4",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_metabolic_syndrome_idf_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_metabolic_syndrome_atp3_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_cycles_per_year",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_hirsutism_duration_years",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_fg_score",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_lh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_fsh",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_testosterone",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_prolactin",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "sister_irregular_cycles_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_ovarian_morphology_pcos_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_hirsutism_gt9_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_alopecia_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_moderate_acne_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "sister_severe_acne_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "brother_homa_ir",
+      "type": "continuous",
+      "is_scaled": false,
+      "mapped_values": null
+    },
+    {
+      "name": "brother_metabolic_syndrome_idf_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "brother_metabolic_syndrome_atp3_flag",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "family_pcos_count",
+      "type": "binary",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "family_infertility_count",
+      "type": "continuous",
+      "is_scaled": true,
+      "mapped_values": null
+    },
+    {
+      "name": "maternal_pcos_history",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "paternal_pcos_history",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    },
+    {
+      "name": "first_degree_metabolic_history",
+      "type": "binary",
+      "is_scaled": false,
+      "mapped_values": {
+        "Yes": 0,
+        "No": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --radius: 0.75rem;
+
+  /* Feminine Claymorphism Color Tokens (OKLCH) */
+  --background: oklch(0.976 0.012 84);
+  --foreground: oklch(0.287 0.034 28);
+  --card: oklch(0.993 0.008 84);
+  --card-foreground: oklch(0.287 0.034 28);
+
+  --primary: oklch(0.526 0.128 20);
+  --primary-foreground: oklch(0.993 0.008 84);
+
+  --secondary: oklch(0.934 0.04 142);
+  --secondary-foreground: oklch(0.358 0.061 147);
+
+  --leaf: oklch(0.454 0.071 146);
+  --leaf-foreground: oklch(0.987 0.018 139);
+
+  --coral: oklch(0.894 0.073 32);
+  --coral-foreground: oklch(0.389 0.108 22);
+
+  --gold: oklch(0.904 0.12 86);
+  --gold-foreground: oklch(0.389 0.067 58);
+
+  --muted: oklch(0.948 0.017 82);
+  --muted-foreground: oklch(0.486 0.025 40);
+
+  --accent: oklch(0.95 0.033 40);
+  --accent-foreground: oklch(0.39 0.095 20);
+
+  --border: oklch(0.884 0.028 64);
+
+  /* Claymorphic Dual-Shadow System */
+  --shadow-clay: 7px 8px 19px color-mix(in oklab, var(--foreground) 8%, transparent), -5px -5px 13px color-mix(in oklab, var(--card) 91%, transparent);
+  --shadow-clay-hover: 5px 6px 14px color-mix(in oklab, var(--foreground) 11%, transparent), -4px -4px 12px color-mix(in oklab, var(--card) 94%, transparent);
+  --shadow-clay-pill: 3px 4px 8px color-mix(in oklab, var(--primary) 24%, transparent), inset 0 1px color-mix(in oklab, var(--card) 20%, transparent);
+  --shadow-clay-inset: inset 2px 3px 6px color-mix(in oklab, var(--foreground) 7%, transparent), inset -2px -2px 6px color-mix(in oklab, var(--card) 85%, transparent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+p {
+  text-wrap: pretty;
+  max-width: 68ch;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Claymorphic Sculpted Components */
+.clay-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-clay);
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.clay-card:hover {
+  box-shadow: var(--shadow-clay-hover);
+  transform: translateY(-2px);
+}
+
+.clay-card-flat {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-clay);
+}
+
+.clay-button-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 9999px;
+  box-shadow: var(--shadow-clay-pill);
+  transition: transform 0.16s ease-out, filter 0.16s ease-out, box-shadow 0.16s ease-out;
+}
+
+.clay-button-primary:hover {
+  filter: brightness(1.05);
+}
+
+.clay-button-primary:active {
+  transform: scale(0.97);
+}
+
+.clay-button-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid color-mix(in oklab, var(--leaf) 20%, transparent);
+  border-radius: 9999px;
+  box-shadow: 2px 3px 7px color-mix(in oklab, var(--foreground) 5%, transparent);
+  transition: transform 0.16s ease-out, background-color 0.16s ease-out;
+}
+
+.clay-button-secondary:hover {
+  background-color: color-mix(in oklab, var(--secondary) 85%, var(--leaf));
+}
+
+.clay-button-secondary:active {
+  transform: scale(0.97);
+}
+
+.clay-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  background-color: color-mix(in oklab, var(--secondary) 60%, var(--card));
+  color: var(--secondary-foreground);
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+}
+
+.clay-inset-well {
+  background-color: color-mix(in oklab, var(--background) 70%, var(--muted));
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  box-shadow: var(--shadow-clay-inset);
+}
