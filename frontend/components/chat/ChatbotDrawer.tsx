@@ -15,6 +15,27 @@ interface Message {
   isPrediction?: boolean;
 }
 
+function formatCleanMessage(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={idx} className="font-semibold text-inherit">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return (
+        <em key={idx} className="italic text-inherit opacity-90">
+          {part.slice(1, -1)}
+        </em>
+      );
+    }
+    return part;
+  });
+}
+
 export function ChatbotDrawer() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -24,16 +45,36 @@ export function ChatbotDrawer() {
       id: "initial",
       role: "assistant",
       content:
-        "Hello! I am **AAVYA**, your clinical PCOS risk assistant. You can describe your menstrual patterns and symptoms in your own words (e.g. *'I have missed my periods for 2 months, notice hair on my chin, and have bad acne'*), and I will calculate your **model confidence score** and risk probability using our trained model.",
+        "Hello! I am AAVYA, your clinical PCOS risk assistant. You can describe your menstrual patterns and symptoms in your own words (for example: \"I have missed my periods for 2 months, notice hair on my chin, and have bad acne\"), and I will calculate your model confidence score and risk probability using our validated clinical model.",
     },
   ]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001/api/v1";
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isOpen]);
+
+  // Click outside to dismiss AI assistant
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDownOutside = (event: MouseEvent | TouchEvent) => {
+      if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDownOutside);
+    document.addEventListener("touchstart", handlePointerDownOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDownOutside);
+      document.removeEventListener("touchstart", handlePointerDownOutside);
+    };
+  }, [isOpen]);
 
   const handleSendMessage = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -120,16 +161,19 @@ export function ChatbotDrawer() {
 
       {/* Floating Chat Drawer Window */}
       {isOpen && (
-        <div className="clay-card w-[92vw] sm:w-[420px] h-[580px] max-h-[85vh] flex flex-col shadow-2xl rounded-2xl border border-[var(--border)] overflow-hidden animate-scaleIn bg-[var(--card)]">
+        <div
+          ref={drawerRef}
+          className="clay-card w-[92vw] sm:w-[420px] h-[580px] max-h-[85vh] flex flex-col shadow-2xl rounded-2xl border border-[var(--border)] overflow-hidden animate-scaleIn bg-[var(--card)]"
+        >
           {/* Header */}
           <div className="p-4 bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-between border-b border-rose-900/10">
             <div className="flex items-center gap-2.5">
-              <div className="size-8 rounded-full bg-white/20 flex items-center justify-center font-display font-bold text-sm">
-                A
+              <div className="size-8 rounded-full bg-white/20 flex items-center justify-center">
+                <Sparkles className="size-4 text-white" />
               </div>
               <div>
                 <h3 className="font-display font-bold text-sm leading-tight">
-                  AAVYA AI Assistant
+                  Your AI assistant by AAVYA
                 </h3>
               </div>
             </div>
@@ -162,7 +206,7 @@ export function ChatbotDrawer() {
                         : "bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] rounded-tl-xs"
                     }`}
                   >
-                    {m.content}
+                    {formatCleanMessage(m.content)}
                   </div>
 
                   {/* High-Impact Confidence Score Card if Prediction Triggered */}

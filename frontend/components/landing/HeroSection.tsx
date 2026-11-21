@@ -113,20 +113,6 @@ export function HeroSection() {
                 </span>
               </div>
             </div>
-
-            {/* Seamless bridge to 4-Quadrant Framework */}
-            <div className="mt-6 pt-5 border-t border-[var(--border)] flex items-center justify-between flex-wrap gap-3">
-              <span className="text-xs text-[var(--muted-foreground)]">
-                Integrated with AAVYA&apos;s multi-dimensional risk architecture:
-              </span>
-              <a
-                href="#biomarkers"
-                className="inline-flex items-center gap-1.5 text-xs text-[var(--primary)] font-semibold hover:opacity-80 transition-opacity"
-              >
-                <span>Explore 4-Quadrant Framework</span>
-                <ArrowRight className="size-3.5" />
-              </a>
-            </div>
           </div>
         </div>
       </div>

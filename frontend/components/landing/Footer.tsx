@@ -8,11 +8,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Column */}
           <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="size-8 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-display font-semibold text-base shadow-sm">
-                A
-              </div>
-              <span className="font-display font-bold text-xl tracking-tight text-[var(--foreground)]">
+            <div className="flex items-center">
+              <span className="font-display font-bold text-2xl tracking-tight text-[var(--foreground)]">
                 AAVYA
               </span>
             </div>

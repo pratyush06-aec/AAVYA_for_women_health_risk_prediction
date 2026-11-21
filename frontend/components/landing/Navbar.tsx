@@ -21,14 +21,11 @@ export function Navbar() {
 
   return (
     <header className="sticky top-3 sm:top-4 z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pointer-events-none">
-      <div className="pointer-events-auto rounded-full border border-[var(--border)]/70 bg-[color-mix(in_oklab,var(--card)_50%,transparent)] backdrop-blur-xl shadow-lg shadow-black/[0.03] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
-        {/* Left: Brand Logo */}
+      <div className="pointer-events-auto rounded-full border border-[var(--border)]/40 bg-[color-mix(in_oklab,var(--card)_18%,transparent)] backdrop-blur-md shadow-sm px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
+        {/* Left: Brand Logo (Only AAVYA text) */}
         <div className="flex-1 flex items-center justify-start">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="size-9 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-display font-semibold text-lg shadow-sm transition-transform duration-200 group-hover:scale-105">
-              A
-            </div>
-            <span className="font-display font-bold text-xl text-[var(--foreground)] tracking-tight">
+          <Link href="/" className="flex items-center group">
+            <span className="font-display font-bold text-2xl text-[var(--foreground)] tracking-tight hover:text-[var(--primary)] transition-colors">
               AAVYA
             </span>
           </Link>
