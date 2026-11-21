@@ -76,7 +76,7 @@ export function DoctorNetworkSection() {
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[color-mix(in_oklab,var(--background)_70%,var(--muted))] border border-[var(--border)] text-xs text-[var(--foreground)]">
+                <div className="p-2.5 rounded-xl bg-[var(--surface-secondary)]/80 border border-[var(--border)] text-xs text-[var(--foreground)]">
                   <span className="font-semibold block text-[11px] text-[var(--muted-foreground)] mb-0.5">
                     Clinical Focus
                   </span>

@@ -85,7 +85,7 @@ export function AssessmentPreviewSection() {
   };
 
   return (
-    <section id="assessment-preview" className="py-20 border-t border-[var(--border)] bg-[oklch(0.976_0.012_84/0.7)]">
+    <section id="assessment-preview" className="py-20 border-t border-[var(--border)] bg-[var(--surface-primary)]/25">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">
@@ -197,8 +197,8 @@ export function AssessmentPreviewSection() {
                           onClick={() => handleInputChange(item.key, isYes ? "No" : "Yes")}
                           className={`text-left px-3 py-2 rounded-lg border text-xs transition-colors duration-150 flex items-center justify-between ${
                             isYes
-                              ? "bg-[color-mix(in_oklab,var(--primary)_12%,var(--card))] border-[var(--primary)] text-[var(--foreground)] font-medium"
-                              : "bg-[var(--card)] border-[var(--border)] text-[var(--muted-foreground)] hover:border-neutral-400"
+                              ? "bg-[var(--surface-highlight)] border-[var(--deep-rose)] text-[var(--foreground)] font-semibold shadow-xs"
+                              : "bg-[var(--surface-secondary)]/60 border-[var(--border)] text-[var(--muted-foreground)] hover:border-[var(--deep-rose)]/40"
                           }`}
                         >
                           <span>{item.label}</span>
@@ -281,7 +281,7 @@ export function AssessmentPreviewSection() {
                   </div>
 
                   {/* Context Description */}
-                  <div className="p-3.5 rounded-xl bg-[color-mix(in_oklab,var(--background)_70%,var(--muted))] border border-[var(--border)] text-xs text-[var(--foreground)] leading-relaxed">
+                  <div className="p-3.5 rounded-xl bg-[var(--surface-secondary)] border border-[var(--border)] text-xs text-[var(--foreground)] leading-relaxed">
                     {result.risk_description}
                   </div>
 

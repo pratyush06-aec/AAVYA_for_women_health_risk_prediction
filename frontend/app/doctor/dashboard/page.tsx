@@ -316,16 +316,13 @@ export default function DoctorDashboardPage() {
   const pendingAppointments = appointments.filter((a) => a.status === "PENDING");
 
   return (
-    <div className="min-h-dvh bg-[var(--background)] text-[var(--foreground)] pb-16">
+    <div className="min-h-dvh bg-transparent text-[var(--foreground)] pb-16">
       {/* Top Header */}
-      <header className="sticky top-0 z-30 border-b border-[var(--border)] bg-[oklch(0.976_0.012_84/0.9)] backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-[var(--border)] bg-[color-mix(in_oklab,var(--surface-secondary)_85%,transparent)] backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="size-8 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-display font-bold text-sm">
-              A
-            </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-base text-[var(--foreground)]">
+              <span className="font-display font-bold text-lg text-[var(--foreground)] tracking-tight">
                 AAVYA Clinician Portal
               </span>
               <span className="text-[10px] uppercase tracking-wider text-[var(--primary)] font-semibold -mt-0.5">

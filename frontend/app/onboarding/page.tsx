@@ -93,15 +93,12 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="min-h-dvh bg-[var(--background)] py-12 px-4 sm:px-6">
+    <div className="min-h-dvh bg-transparent py-12 px-4 sm:px-6">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-[var(--border)]">
           <div className="flex items-center gap-2.5">
-            <div className="size-8 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-display font-bold text-sm">
-              A
-            </div>
             <div>
-              <span className="font-display font-bold text-base text-[var(--foreground)]">
+              <span className="font-display font-bold text-lg text-[var(--foreground)] tracking-tight">
                 AAVYA Patient Onboarding
               </span>
               <span className="text-xs text-[var(--muted-foreground)] block">

@@ -11,7 +11,7 @@ import { Footer } from "@/components/landing/Footer";
 
 export default function HomePage() {
   return (
-    <main className="min-h-dvh flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[oklch(0.894_0.073_32)] selection:text-[oklch(0.389_0.108_22)]">
+    <main className="min-h-dvh flex flex-col bg-transparent text-[var(--foreground)] selection:bg-[#E99196] selection:text-[#352326]">
       {/* 1. Sticky Glassmorphic Navbar */}
       <Navbar />
 

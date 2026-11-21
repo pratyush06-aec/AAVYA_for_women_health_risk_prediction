@@ -211,7 +211,7 @@ export function ChatbotDrawer() {
 
                   {/* High-Impact Confidence Score Card if Prediction Triggered */}
                   {m.isPrediction && m.confidenceScore !== undefined && (
-                    <div className="p-3.5 rounded-xl bg-white border-2 border-[var(--primary)] shadow-sm space-y-2 animate-fadeIn text-[var(--foreground)]">
+                    <div className="p-3.5 rounded-xl bg-[var(--surface-highlight)] border-2 border-[var(--primary)] shadow-sm space-y-2 animate-fadeIn text-[var(--foreground)]">
                       <div className="flex items-center justify-between">
                         <span className="font-display font-bold text-xs text-[var(--primary)] flex items-center gap-1">
                           <Activity className="size-3.5" />
@@ -222,17 +222,17 @@ export function ChatbotDrawer() {
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-2 pt-1 border-t border-stone-100">
-                        <div className="p-2 rounded-lg bg-stone-50 border border-stone-200">
-                          <span className="text-[10px] text-stone-500 block uppercase tracking-wider">
+                      <div className="grid grid-cols-2 gap-2 pt-1 border-t border-[var(--border)]">
+                        <div className="p-2 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)]">
+                          <span className="text-[10px] text-[var(--text-muted)] block uppercase tracking-wider">
                             Classifier Certainty
                           </span>
                           <span className="font-display font-bold text-base text-[var(--foreground)] tabular-nums">
                             {m.confidenceScore}%
                           </span>
                         </div>
-                        <div className="p-2 rounded-lg bg-rose-50 border border-rose-200">
-                          <span className="text-[10px] text-rose-600 block uppercase tracking-wider">
+                        <div className="p-2 rounded-lg bg-[var(--surface-highlight)] border border-[rgba(189,115,125,0.25)]">
+                          <span className="text-[10px] text-[var(--deep-rose)] block uppercase tracking-wider">
                             PCOS Risk Index
                           </span>
                           <span className="font-display font-bold text-base text-rose-900 tabular-nums">
@@ -295,7 +295,7 @@ export function ChatbotDrawer() {
                 onClick={() => {
                   setInput(prompt);
                 }}
-                className="px-2.5 py-1 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 whitespace-nowrap transition-colors"
+                className="px-2.5 py-1 rounded-full bg-[var(--surface-secondary)] hover:bg-[var(--surface-highlight)] text-[var(--text-primary)] border border-[rgba(189,115,125,0.18)] whitespace-nowrap transition-colors shadow-xs"
               >
                 {prompt}
               </button>
@@ -312,7 +312,7 @@ export function ChatbotDrawer() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Describe symptoms or ask about PCOS..."
-              className="flex-1 px-3.5 py-2 text-xs rounded-xl border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
+              className="flex-1 px-3.5 py-2 text-xs rounded-xl border border-[var(--border)] bg-[var(--surface-secondary)] text-[var(--foreground)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
             />
             <button
               type="submit"

@@ -38,7 +38,7 @@ export function Navbar() {
             className="text-[var(--primary)] font-semibold hover:opacity-80 transition-opacity flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>PCOS Assessment</span>
-            <span className="text-[10px] bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded-full font-bold">New</span>
+            <span className="text-[10px] bg-[var(--surface-highlight)] text-[var(--deep-rose)] px-1.5 py-0.5 rounded-full font-bold border border-[rgba(189,115,125,0.2)]">New</span>
           </Link>
           <Link
             href="/#about"
@@ -51,7 +51,7 @@ export function Navbar() {
             className="hover:text-[var(--primary)] transition-colors duration-150 flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>Find Doctors</span>
-            <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded-full font-bold">Live</span>
+            <span className="text-[10px] bg-[var(--surface-secondary)] text-[var(--leaf)] px-1.5 py-0.5 rounded-full font-bold border border-[rgba(91,130,102,0.25)]">Live</span>
           </Link>
         </nav>
 
@@ -129,7 +129,7 @@ export function Navbar() {
               className="text-[var(--primary)] font-semibold flex items-center justify-between"
             >
               <span>PCOS Assessment</span>
-              <span className="text-[10px] bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded-full font-bold">New</span>
+              <span className="text-[10px] bg-[var(--surface-highlight)] text-[var(--deep-rose)] px-1.5 py-0.5 rounded-full font-bold border border-[rgba(189,115,125,0.2)]">New</span>
             </Link>
             <Link
               href="/#about"
@@ -144,7 +144,7 @@ export function Navbar() {
               className="text-[var(--foreground)] hover:text-[var(--primary)] flex items-center justify-between"
             >
               <span>Find Doctors</span>
-              <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded-full font-bold">Live</span>
+              <span className="text-[10px] bg-[var(--surface-secondary)] text-[var(--leaf)] px-1.5 py-0.2 rounded-full font-bold border border-[rgba(91,130,102,0.25)]">Live</span>
             </Link>
             <a
               href="/#faq"

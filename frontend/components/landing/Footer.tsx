@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] bg-[oklch(0.965_0.015_82)] text-[var(--foreground)] pt-14 pb-12">
+    <footer className="border-t border-[var(--border)] bg-[var(--surface-primary)]/75 text-[var(--foreground)] pt-14 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Column */}

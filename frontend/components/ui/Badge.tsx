@@ -13,16 +13,16 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variantStyles = {
-    sage: "bg-[color-mix(in_oklab,var(--secondary)_70%,var(--card))] text-[var(--secondary-foreground)] border-emerald-900/10",
-    coral: "bg-[color-mix(in_oklab,var(--coral)_60%,var(--card))] text-[var(--coral-foreground)] border-rose-900/10",
-    gold: "bg-[color-mix(in_oklab,var(--gold)_55%,var(--card))] text-[var(--gold-foreground)] border-amber-900/10",
-    neutral: "bg-[var(--muted)] text-[var(--muted-foreground)] border-[var(--border)]",
+    sage: "bg-[var(--surface-secondary)] text-[var(--deep-rose)] border-[rgba(189,115,125,0.2)] shadow-sm",
+    coral: "bg-[var(--surface-highlight)] text-[var(--deep-rose)] border-[rgba(189,115,125,0.25)] shadow-sm",
+    gold: "bg-[var(--warm-cream)] text-[var(--dark-text)] border-[rgba(189,115,125,0.2)] shadow-sm",
+    neutral: "bg-[var(--surface-secondary)] text-[var(--text-secondary)] border-[var(--border)] shadow-sm",
   };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border tracking-wide",
+        "inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold border tracking-wide",
         variantStyles[variant],
         className
       )}

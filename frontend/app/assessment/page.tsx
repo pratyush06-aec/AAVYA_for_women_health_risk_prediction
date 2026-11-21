@@ -402,7 +402,7 @@ export default function AssessmentWizardPage() {
 
   if (isLoaded && !isSignedIn) {
     return (
-      <div className="min-h-dvh flex flex-col bg-[var(--background)]">
+      <div className="min-h-dvh flex flex-col bg-transparent">
         <Navbar />
         <main className="flex-1 max-w-md w-full mx-auto px-4 py-16 flex items-center justify-center">
           <div className="clay-card p-8 text-center space-y-5 w-full">
@@ -438,7 +438,7 @@ export default function AssessmentWizardPage() {
   }
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[var(--background)]">
+    <div className="min-h-dvh flex flex-col bg-transparent">
       <Navbar />
 
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12">

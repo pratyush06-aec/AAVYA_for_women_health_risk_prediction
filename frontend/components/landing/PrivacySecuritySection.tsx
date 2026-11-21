@@ -27,7 +27,7 @@ export function PrivacySecuritySection() {
   ];
 
   return (
-    <section className="py-20 border-t border-[var(--border)] bg-[oklch(0.976_0.012_84/0.5)]">
+    <section className="py-20 border-t border-[var(--border)] bg-[var(--surface-secondary)]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">

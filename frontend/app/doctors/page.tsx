@@ -368,7 +368,7 @@ export default function DoctorsDirectoryPage() {
 
   if (isLoaded && !isSignedIn) {
     return (
-      <div className="min-h-dvh flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+      <div className="min-h-dvh flex flex-col bg-transparent text-[var(--foreground)]">
         <Navbar />
         <main className="flex-1 max-w-md w-full mx-auto px-4 py-16 flex items-center justify-center">
           <div className="clay-card p-8 text-center space-y-5 w-full">
@@ -404,7 +404,7 @@ export default function DoctorsDirectoryPage() {
   }
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-dvh flex flex-col bg-transparent text-[var(--foreground)]">
       <Navbar />
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-8">

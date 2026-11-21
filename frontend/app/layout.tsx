@@ -21,14 +21,14 @@ export default function RootLayout({
     <ClerkProvider
       appearance={{
         variables: {
-          colorPrimary: "#9D4744",
-          colorBackground: "#FCFAF6",
-          borderRadius: "0.75rem",
+          colorPrimary: "#BD737D",
+          colorBackground: "#F8D8CE",
+          borderRadius: "20px",
         },
       }}
     >
       <html lang="en">
-        <body className="antialiased selection:bg-[oklch(0.894_0.073_32)] selection:text-[oklch(0.389_0.108_22)]">
+        <body className="antialiased selection:bg-[#E99196] selection:text-[#352326]">
           {children}
           <ChatbotDrawer />
         </body>

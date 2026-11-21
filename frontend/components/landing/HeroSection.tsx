@@ -11,7 +11,21 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient Floating Clay Orbs */}
+      <div
+        className="clay-orb absolute -top-10 -left-10 size-48 opacity-45 pointer-events-none hidden md:block"
+        aria-hidden="true"
+      />
+      <div
+        className="clay-blob absolute top-1/3 -right-16 size-64 opacity-35 pointer-events-none hidden lg:block"
+        aria-hidden="true"
+      />
+      <div
+        className="clay-orb absolute bottom-8 left-8 size-32 opacity-30 pointer-events-none hidden md:block"
+        aria-hidden="true"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto space-y-6">
           {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--foreground)] leading-[1.12]">
@@ -51,7 +65,7 @@ export function HeroSection() {
 
         {/* Educational Eye-Catching Showcase: What is PCOS? (About Section) */}
         <div id="about" className="mt-14 max-w-5xl mx-auto scroll-mt-28">
-          <div className="clay-card p-6 sm:p-8 text-left bg-[var(--card)]/90 backdrop-blur-sm border border-[var(--border)] relative overflow-hidden">
+          <div className="clay-card p-6 sm:p-8 text-left relative overflow-hidden">
             {/* Header */}
             <div className="pb-6 border-b border-[var(--border)]">
               <h2 className="text-2xl sm:text-3xl font-bold font-display text-[var(--foreground)] tracking-tight">
@@ -66,8 +80,8 @@ export function HeroSection() {
             {/* 3 Pillar Cards for PCOS Core Manifestations */}
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Pillar 1: Ovulatory & Menstrual Patterns */}
-              <div className="p-4 rounded-xl bg-[var(--background)]/80 border border-[var(--border)] hover:border-[var(--primary)]/30 transition-colors">
-                <div className="size-10 rounded-xl bg-[var(--secondary)] flex items-center justify-center text-[var(--leaf)] mb-3">
+              <div className="clay-card-inset p-4.5 transition-transform hover:-translate-y-1">
+                <div className="size-10 rounded-xl bg-[var(--surface-primary)] flex items-center justify-center text-[var(--leaf)] mb-3 shadow-xs">
                   <Activity className="size-5" />
                 </div>
                 <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
@@ -76,14 +90,14 @@ export function HeroSection() {
                 <p className="text-xs text-[var(--muted-foreground)] mt-1.5 leading-relaxed">
                   Infrequent, irregular, or missed menstrual cycles (&gt;35 days or &lt;8 periods/year). Chronic anovulation impacts natural progesterone balance and reproductive health.
                 </p>
-                <span className="inline-block mt-3 text-[11px] font-medium text-[var(--leaf)]">
+                <span className="inline-block mt-3 text-[11px] font-semibold text-[var(--leaf)]">
                   Marker: Oligo- / Amenorrhea
                 </span>
               </div>
 
               {/* Pillar 2: Androgen Excess */}
-              <div className="p-4 rounded-xl bg-[var(--background)]/80 border border-[var(--border)] hover:border-[var(--primary)]/30 transition-colors">
-                <div className="size-10 rounded-xl bg-[color-mix(in_oklab,var(--coral)_60%,var(--card))] flex items-center justify-center text-[var(--primary)] mb-3">
+              <div className="clay-card-inset p-4.5 transition-transform hover:-translate-y-1">
+                <div className="size-10 rounded-xl bg-[var(--surface-highlight)] flex items-center justify-center text-[var(--deep-rose)] mb-3 shadow-xs">
                   <Sparkles className="size-5" />
                 </div>
                 <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
@@ -92,14 +106,14 @@ export function HeroSection() {
                 <p className="text-xs text-[var(--muted-foreground)] mt-1.5 leading-relaxed">
                   Elevated androgen (testosterone/DHEA-S) levels manifesting physically as hirsutism (excess facial and body hair), persistent cystic acne, and androgenic alopecia.
                 </p>
-                <span className="inline-block mt-3 text-[11px] font-medium text-[var(--primary)]">
+                <span className="inline-block mt-3 text-[11px] font-semibold text-[var(--deep-rose)]">
                   Marker: Clinical or Biochemical
                 </span>
               </div>
 
               {/* Pillar 3: Polycystic Ovarian Morphology & Metabolism */}
-              <div className="p-4 rounded-xl bg-[var(--background)]/80 border border-[var(--border)] hover:border-[var(--primary)]/30 transition-colors sm:col-span-2 lg:col-span-1">
-                <div className="size-10 rounded-xl bg-[color-mix(in_oklab,var(--gold)_55%,var(--card))] flex items-center justify-center text-[var(--gold-foreground)] mb-3">
+              <div className="clay-card-inset p-4.5 transition-transform hover:-translate-y-1 sm:col-span-2 lg:col-span-1">
+                <div className="size-10 rounded-xl bg-[var(--warm-cream)] flex items-center justify-center text-[var(--dark-text)] mb-3 shadow-xs">
                   <Dna className="size-5" />
                 </div>
                 <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
@@ -108,7 +122,7 @@ export function HeroSection() {
                 <p className="text-xs text-[var(--muted-foreground)] mt-1.5 leading-relaxed">
                   Ultrasound appearance of multiple immature follicles (&quot;string-of-pearls&quot;) paired with insulin resistance in over 70% of cases, driving fatigue and weight shifts.
                 </p>
-                <span className="inline-block mt-3 text-[11px] font-medium text-[var(--gold-foreground)]">
+                <span className="inline-block mt-3 text-[11px] font-semibold text-[var(--dark-text)]">
                   Marker: PCOM & Insulin Resistance
                 </span>
               </div>

@@ -16,7 +16,6 @@ export function ClayCard({
   return (
     <div
       className={cn(
-        "bg-[var(--card)] border border-[var(--border)] rounded-[var(--radius)] p-6",
         interactive ? "clay-card cursor-pointer" : "clay-card-flat",
         className
       )}

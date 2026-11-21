@@ -28,7 +28,7 @@ export function HowItWorksSection() {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 border-t border-[var(--border)] bg-[oklch(0.976_0.012_84/0.5)]">
+    <section id="how-it-works" className="py-20 border-t border-[var(--border)] bg-[var(--surface-secondary)]/25">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">
@@ -43,15 +43,15 @@ export function HowItWorksSection() {
           {steps.map((step) => {
             const IconComponent = step.icon;
             return (
-              <ClayCard key={step.number} className="relative flex flex-col justify-between p-7">
+              <ClayCard key={step.number} interactive className="relative flex flex-col justify-between p-7">
                 <div>
-                  <div className="mb-5">
-                    <span className="text-3xl font-display font-bold text-[color-mix(in_oklab,var(--foreground)_25%,transparent)]">
+                  <div className="mb-4">
+                    <span className="text-3xl font-display font-bold text-[var(--text-muted)] opacity-60">
                       {step.number}
                     </span>
                   </div>
 
-                  <div className="size-12 rounded-xl bg-[color-mix(in_oklab,var(--card)_80%,var(--background))] border border-[var(--border)] flex items-center justify-center mb-5 text-[var(--primary)] shadow-sm">
+                  <div className="size-12 rounded-2xl bg-[var(--surface-highlight)] border border-[rgba(255,235,226,0.8)] flex items-center justify-center mb-5 text-[var(--deep-rose)] shadow-sm">
                     <IconComponent className="size-6" />
                   </div>
 
