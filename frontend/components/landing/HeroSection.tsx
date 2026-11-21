@@ -37,8 +37,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Educational Eye-Catching Showcase: What is PCOS? */}
-        <div className="mt-14 max-w-5xl mx-auto">
+        {/* Educational Eye-Catching Showcase: What is PCOS? (About Section) */}
+        <div id="about" className="mt-14 max-w-5xl mx-auto scroll-mt-28">
           <div className="clay-card p-6 sm:p-8 text-left bg-[var(--card)]/90 backdrop-blur-sm border border-[var(--border)] relative overflow-hidden">
             {/* Header */}
             <div className="pb-6 border-b border-[var(--border)]">

@@ -39,7 +39,7 @@ interface Doctor {
 }
 
 export default function AssessmentWizardPage() {
-  const { user } = useUser();
+  const { user, isSignedIn, isLoaded } = useUser();
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 5;
 
@@ -308,6 +308,11 @@ export default function AssessmentWizardPage() {
         const result: AssessmentPrediction = await res.json();
         setPredictionResult(result);
 
+        if (typeof window !== "undefined") {
+          localStorage.setItem("aavya_assessment_completed", "true");
+          localStorage.setItem("aavya_assessment_timestamp", new Date().toISOString());
+        }
+
         // If user is authenticated, automatically persist to NeonDB
         const userEmail = user?.primaryEmailAddress?.emailAddress;
         if (userEmail) {
@@ -316,11 +321,19 @@ export default function AssessmentWizardPage() {
       } else {
         const fallback = computeFallbackPrediction(featurePayload);
         setPredictionResult(fallback);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("aavya_assessment_completed", "true");
+          localStorage.setItem("aavya_assessment_timestamp", new Date().toISOString());
+        }
       }
     } catch (err) {
       console.warn("Notice: Inference prediction offline, using calibrated fallback:", err);
       const fallback = computeFallbackPrediction(featurePayload);
       setPredictionResult(fallback);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("aavya_assessment_completed", "true");
+        localStorage.setItem("aavya_assessment_timestamp", new Date().toISOString());
+      }
     } finally {
       setIsEvaluating(false);
     }
@@ -347,6 +360,10 @@ export default function AssessmentWizardPage() {
         const saved = await saveRes.json();
         setSavedRecordId(saved.id);
         setSaveSuccess(true);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("aavya_latest_assessment_id", String(saved.id));
+          localStorage.setItem("aavya_assessment_completed", "true");
+        }
       }
     } catch (err) {
       console.error("Save assessment error:", err);
@@ -382,6 +399,43 @@ export default function AssessmentWizardPage() {
       setIsBooking(false);
     }
   };
+
+  if (isLoaded && !isSignedIn) {
+    return (
+      <div className="min-h-dvh flex flex-col bg-[var(--background)]">
+        <Navbar />
+        <main className="flex-1 max-w-md w-full mx-auto px-4 py-16 flex items-center justify-center">
+          <div className="clay-card p-8 text-center space-y-5 w-full">
+            <div className="size-14 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center mx-auto text-2xl font-bold">
+              🔒
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-2xl font-bold font-display text-[var(--foreground)] tracking-tight">
+                Authentication Required
+              </h1>
+              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                To start your confidential PCOS Risk Assessment and store your longitudinal health records securely, please sign in or register your account.
+              </p>
+            </div>
+            <div className="pt-2 flex flex-col gap-3">
+              <Link
+                href="/sign-in?redirect_url=/assessment"
+                className="clay-button-primary py-3 px-6 text-sm font-semibold text-center block w-full rounded-xl shadow-sm"
+              >
+                Sign In to Begin Assessment
+              </Link>
+              <Link
+                href="/"
+                className="clay-button-secondary py-2.5 px-6 text-sm font-medium text-center block w-full rounded-xl"
+              >
+                Return to Landing
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-dvh flex flex-col bg-[var(--background)]">

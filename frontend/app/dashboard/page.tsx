@@ -97,7 +97,11 @@ export default function PatientDashboardPage() {
 
   useEffect(() => {
     async function loadAccount() {
-      if (!isLoaded || !user) return;
+      if (!isLoaded) return;
+      if (!user) {
+        router.replace("/sign-in?redirect_url=/dashboard");
+        return;
+      }
       try {
         const primaryEmail = user.primaryEmailAddress?.emailAddress || "";
         const data = await syncUserWithNeonDB({

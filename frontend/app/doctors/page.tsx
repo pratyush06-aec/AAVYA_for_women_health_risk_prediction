@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import {
   Calendar,
@@ -15,6 +16,8 @@ import {
   Building,
   UserCheck,
   ArrowLeft,
+  ArrowRight,
+  Lock,
 } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 
@@ -145,14 +148,18 @@ const generateFallbackSlots = (docId: number, dateStr: string): SlotData => ({
 });
 
 export default function DoctorsDirectoryPage() {
-  const { user } = useUser();
-  const patientEmail = user?.primaryEmailAddress?.emailAddress || "pratyush00710@gmail.com";
+  const router = useRouter();
+  const { user, isSignedIn, isLoaded } = useUser();
+  const patientEmail = user?.primaryEmailAddress?.emailAddress || "";
 
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCity, setSelectedCity] = useState("All");
   const [selectedSpecialty, setSelectedSpecialty] = useState("All");
   const [consultationMode, setConsultationMode] = useState<"ALL" | "IN_CLINIC" | "VIDEO">("ALL");
+
+  // Assessment completion state for booking gating
+  const [hasCompletedAssessment, setHasCompletedAssessment] = useState(false);
 
   // Booking state per doctor
   const [activeDoctorId, setActiveDoctorId] = useState<number | null>(null);
@@ -173,6 +180,39 @@ export default function DoctorsDirectoryPage() {
   } | null>(null);
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001/api/v1";
+
+  // Check assessment completion requirement
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const localDone = localStorage.getItem("aavya_assessment_completed") === "true";
+      if (localDone) {
+        setHasCompletedAssessment(true);
+      }
+    }
+
+    async function checkAssessmentHistory() {
+      if (!isSignedIn || !user) return;
+      const email = user.primaryEmailAddress?.emailAddress;
+      if (!email) return;
+
+      try {
+        const res = await fetch(`${apiUrl}/assessment/history?email=${encodeURIComponent(email)}`);
+        if (res.ok) {
+          const list = await res.json();
+          if (Array.isArray(list) && list.length > 0) {
+            setHasCompletedAssessment(true);
+            if (typeof window !== "undefined") {
+              localStorage.setItem("aavya_assessment_completed", "true");
+            }
+          }
+        }
+      } catch {
+        // Fallback to local check
+      }
+    }
+
+    checkAssessmentHistory();
+  }, [apiUrl, isSignedIn, user]);
 
   // Fetch verified doctors directory
   useEffect(() => {
@@ -262,6 +302,16 @@ export default function DoctorsDirectoryPage() {
 
   // Handle Concurrency-Safe Booking Submission
   const handleBookConsultation = async (doctor: Doctor) => {
+    if (!isSignedIn) {
+      router.push("/sign-in?redirect_url=/doctors");
+      return;
+    }
+
+    if (!hasCompletedAssessment) {
+      router.push("/assessment");
+      return;
+    }
+
     if (!selectedSlot) return;
     setIsSubmittingBooking(true);
     setBookingConflictError(null);
@@ -657,34 +707,72 @@ export default function DoctorsDirectoryPage() {
                         {/* Consultation Notes & Submit CTA */}
                         {selectedSlot && (
                           <div className="space-y-3 pt-2 animate-fadeIn">
-                            <textarea
-                              rows={2}
-                              value={bookingNotes}
-                              onChange={(e) => setBookingNotes(e.target.value)}
-                              placeholder="Clinical notes or symptoms to share prior to visit (e.g. recent lab tests, cycle history)..."
-                              className="w-full p-2.5 rounded-xl border border-[var(--border)] bg-[var(--background)] text-xs text-[var(--foreground)] placeholder:text-stone-400 focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
-                            />
+                            {!isSignedIn ? (
+                              <div className="space-y-2.5 p-3.5 rounded-xl bg-[var(--secondary)]/60 border border-[var(--border)]">
+                                <div className="flex items-center gap-2 text-xs text-[var(--foreground)] font-semibold">
+                                  <Lock className="size-3.5 text-[var(--primary)]" />
+                                  <span>Authentication Required</span>
+                                </div>
+                                <p className="text-[11px] text-[var(--muted-foreground)] leading-relaxed">
+                                  Please sign in or create an account to reserve and lock this consultation slot with Dr. {doctor.full_name || doctor.name}.
+                                </p>
+                                <Link
+                                  href="/sign-in?redirect_url=/doctors"
+                                  className="w-full clay-button-primary py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 active:scale-97"
+                                >
+                                  <UserCheck className="size-3.5" />
+                                  <span>Sign In to Book Consultation →</span>
+                                </Link>
+                              </div>
+                            ) : !hasCompletedAssessment ? (
+                              <div className="p-3.5 rounded-xl bg-amber-50/90 border border-amber-200 text-amber-900 text-xs space-y-2 animate-fadeIn">
+                                <div className="flex items-center gap-1.5 font-semibold">
+                                  <AlertCircle className="size-4 text-amber-600 shrink-0" />
+                                  <span>PCOS Risk Assessment Required</span>
+                                </div>
+                                <p className="text-amber-800 leading-relaxed text-[11px]">
+                                  In accordance with clinical protocol, you must complete your PCOS Risk Assessment before proceeding with specialist checkout. This ensures your doctor has access to your endocrine biomarkers and phenotypic risk profile.
+                                </p>
+                                <Link
+                                  href="/assessment"
+                                  className="clay-button-primary py-2.5 px-4 text-xs font-semibold flex items-center justify-center gap-1.5 w-full mt-1"
+                                >
+                                  <span>Complete PCOS Assessment to Unlock Checkout</span>
+                                  <ArrowRight className="size-3.5" />
+                                </Link>
+                              </div>
+                            ) : (
+                              <>
+                                <textarea
+                                  rows={2}
+                                  value={bookingNotes}
+                                  onChange={(e) => setBookingNotes(e.target.value)}
+                                  placeholder="Clinical notes or symptoms to share prior to visit (e.g. recent lab tests, cycle history)..."
+                                  className="w-full p-2.5 rounded-xl border border-[var(--border)] bg-[var(--background)] text-xs text-[var(--foreground)] placeholder:text-stone-400 focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
+                                />
 
-                            <button
-                              type="button"
-                              onClick={() => handleBookConsultation(doctor)}
-                              disabled={isSubmittingBooking}
-                              className="w-full clay-button-primary py-3 text-xs font-semibold flex items-center justify-center gap-2 active:scale-97"
-                            >
-                              {isSubmittingBooking ? (
-                                <>
-                                  <div className="size-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                  <span>Acquiring Transactional Lock & Booking...</span>
-                                </>
-                              ) : (
-                                <>
-                                  <UserCheck className="size-4" />
-                                  <span>
-                                    Confirm Consultation on {selectedDate} at {selectedSlot} →
-                                  </span>
-                                </>
-                              )}
-                            </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleBookConsultation(doctor)}
+                                  disabled={isSubmittingBooking}
+                                  className="w-full clay-button-primary py-3 text-xs font-semibold flex items-center justify-center gap-2 active:scale-97"
+                                >
+                                  {isSubmittingBooking ? (
+                                    <>
+                                      <div className="size-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                      <span>Acquiring Transactional Lock & Booking...</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <UserCheck className="size-4" />
+                                      <span>
+                                        Confirm Consultation on {selectedDate} at {selectedSlot} →
+                                      </span>
+                                    </>
+                                  )}
+                                </button>
+                              </>
+                            )}
                           </div>
                         )}
                       </div>

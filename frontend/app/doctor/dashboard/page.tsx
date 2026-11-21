@@ -101,7 +101,11 @@ export default function DoctorDashboardPage() {
 
   useEffect(() => {
     async function verifyDoctorAccess() {
-      if (!isLoaded || !user) return;
+      if (!isLoaded) return;
+      if (!user) {
+        router.replace("/sign-in?redirect_url=/doctor/dashboard");
+        return;
+      }
       try {
         const primaryEmail = user.primaryEmailAddress?.emailAddress || "";
         const data = await syncUserWithNeonDB({
