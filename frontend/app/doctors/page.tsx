@@ -8,11 +8,9 @@ import {
   Clock,
   MapPin,
   Award,
-  ShieldCheck,
   CheckCircle,
   AlertCircle,
   ChevronRight,
-  Filter,
   Video,
   Building,
   UserCheck,
@@ -335,27 +333,15 @@ export default function DoctorsDirectoryPage() {
 
         {/* Hero Section */}
         <div className="clay-card p-6 sm:p-10 border-l-4 border-l-[var(--primary)] space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <span className="clay-badge mb-2">Verified Clinical Network</span>
-              <h1 className="text-3xl sm:text-4xl font-display font-medium text-[var(--foreground)] tracking-tight">
-                PCOS & Endocrine Specialists
-              </h1>
-              <p className="text-sm text-[var(--muted-foreground)] mt-2 max-w-2xl leading-relaxed">
-                Connect directly with board-certified reproductive endocrinologists and gynecologists.
-                Review credentials, check real-time 30-minute slot availability, and book concurrency-safe
-                in-clinic or virtual consultations.
-              </p>
-            </div>
-            <div className="p-4 rounded-2xl bg-[var(--card)] border border-[var(--border)] shadow-sm text-center">
-              <span className="text-[10px] uppercase tracking-wider text-[var(--muted-foreground)] block font-semibold">
-                Rotterdam Guideline Compliance
-              </span>
-              <span className="font-display font-bold text-xl text-[var(--primary)] flex items-center justify-center gap-1 mt-0.5">
-                <ShieldCheck className="size-4" />
-                <span>100% Certified</span>
-              </span>
-            </div>
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-display font-medium text-[var(--foreground)] tracking-tight">
+              PCOS & Endocrine Specialists
+            </h1>
+            <p className="text-sm text-[var(--muted-foreground)] mt-2 max-w-2xl leading-relaxed">
+              Connect directly with board-certified reproductive endocrinologists and gynecologists.
+              Review credentials, check real-time 30-minute slot availability, and book concurrency-safe
+              in-clinic or virtual consultations.
+            </p>
           </div>
         </div>
 
@@ -385,30 +371,24 @@ export default function DoctorsDirectoryPage() {
           </div>
 
           {/* Specialty Filter */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-[var(--muted-foreground)] flex items-center gap-1">
-              <Filter className="size-3.5" />
-              <span>Specialty:</span>
-            </span>
-            <div className="flex gap-1.5">
-              {[
-                { label: "All", value: "All" },
-                { label: "Endocrinology", value: "Endocrinologist" },
-                { label: "Gynecology / OBGYN", value: "Gynecologist" },
-              ].map((spec) => (
-                <button
-                  key={spec.value}
-                  onClick={() => setSelectedSpecialty(spec.value)}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all active:scale-95 ${
-                    selectedSpecialty === spec.value
-                      ? "bg-[var(--leaf)] text-[var(--leaf-foreground)] shadow-sm"
-                      : "bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] hover:bg-stone-100"
-                  }`}
-                >
-                  {spec.label}
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center gap-1.5">
+            {[
+              { label: "All", value: "All" },
+              { label: "Endocrinology", value: "Endocrinologist" },
+              { label: "Gynecology / OBGYN", value: "Gynecologist" },
+            ].map((spec) => (
+              <button
+                key={spec.value}
+                onClick={() => setSelectedSpecialty(spec.value)}
+                className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all active:scale-95 ${
+                  selectedSpecialty === spec.value
+                    ? "bg-[var(--leaf)] text-[var(--leaf-foreground)] shadow-sm"
+                    : "bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] hover:bg-stone-100"
+                }`}
+              >
+                {spec.label}
+              </button>
+            ))}
           </div>
 
           {/* Mode Selector */}
@@ -510,15 +490,9 @@ export default function DoctorsDirectoryPage() {
                             .join("")}
                         </div>
                         <div>
-                          <div className="flex items-center gap-2">
-                            <h3 className="font-display font-bold text-lg text-[var(--foreground)]">
-                              {name}
-                            </h3>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
-                              <ShieldCheck className="size-3" />
-                              <span>Verified</span>
-                            </span>
-                          </div>
+                          <h3 className="font-display font-bold text-lg text-[var(--foreground)]">
+                            {name}
+                          </h3>
                           <p className="text-xs font-medium text-[var(--primary)] mt-0.5">
                             {prof.specialization}
                           </p>

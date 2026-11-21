@@ -399,9 +399,6 @@ export default function AssessmentWizardPage() {
             </svg>
             Back to Dashboard
           </Link>
-          <span className="clay-badge">
-            Validated ML Inference • Rotterdam Consensus
-          </span>
         </div>
 
         {/* Wizard Card Container */}
