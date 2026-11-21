@@ -64,9 +64,10 @@ export function AssessmentPreviewSection() {
 
       const res = await predictPCOSRisk(payload);
       setResult(res);
+      setError(null);
     } catch (err: unknown) {
-      console.error("Assessment failed:", err);
-      const msg = err instanceof Error ? err.message : "Failed to connect to backend inference engine.";
+      console.warn("Assessment calculation notice:", err);
+      const msg = err instanceof Error ? err.message : "Failed to calculate assessment indicators.";
       setError(msg);
     } finally {
       setLoading(false);

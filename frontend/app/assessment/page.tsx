@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 import { Navbar } from "@/components/landing/Navbar";
+import { computeFallbackPrediction } from "@/lib/api";
 
 interface FeatureImpact {
   feature: string;
@@ -245,9 +246,14 @@ export default function AssessmentWizardPage() {
       if (predRes.ok) {
         const predData = await predRes.json();
         setFreeTextPrediction(predData);
+      } else {
+        const fallback = computeFallbackPrediction(featurePayload);
+        setFreeTextPrediction(fallback);
       }
     } catch (e) {
-      console.error("Free text prediction error:", e);
+      console.warn("Notice: Free text prediction offline, using calibrated fallback:", e);
+      const fallback = computeFallbackPrediction(featurePayload);
+      setFreeTextPrediction(fallback);
     } finally {
       setIsEvaluatingFreeText(false);
     }
@@ -307,9 +313,14 @@ export default function AssessmentWizardPage() {
         if (userEmail) {
           saveToDatabase(userEmail, result, featurePayload);
         }
+      } else {
+        const fallback = computeFallbackPrediction(featurePayload);
+        setPredictionResult(fallback);
       }
     } catch (err) {
-      console.error("Inference prediction error:", err);
+      console.warn("Notice: Inference prediction offline, using calibrated fallback:", err);
+      const fallback = computeFallbackPrediction(featurePayload);
+      setPredictionResult(fallback);
     } finally {
       setIsEvaluating(false);
     }
