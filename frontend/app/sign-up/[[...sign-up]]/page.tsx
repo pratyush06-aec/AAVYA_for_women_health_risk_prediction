@@ -14,7 +14,7 @@ export default function SignUpPage() {
           A
         </div>
         <h1 className="text-2xl font-bold font-display text-[var(--foreground)]">
-          Join AAVYA – HeredityAI
+          Join AAVYA
         </h1>
         <p className="text-xs text-[var(--muted-foreground)] mt-1 max-w-sm">
           Create an account with email or Continue with Google to save multi-generational assessments and connect with verified specialists.

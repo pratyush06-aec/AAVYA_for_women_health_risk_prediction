@@ -14,7 +14,7 @@ export default function SignInPage() {
           A
         </div>
         <h1 className="text-2xl font-bold font-display text-[var(--foreground)]">
-          Welcome to AAVYA – HeredityAI
+          Welcome to AAVYA
         </h1>
         <p className="text-xs text-[var(--muted-foreground)] mt-1 max-w-sm">
           Sign in to access your confidential assessment history, clinical reports, or physician consultation hub.

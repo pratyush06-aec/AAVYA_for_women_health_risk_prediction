@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldCheck, Heart } from "lucide-react";
+import { Quote } from "lucide-react";
 
 export function Footer() {
   return (
@@ -13,16 +13,12 @@ export function Footer() {
                 A
               </div>
               <span className="font-display font-bold text-xl tracking-tight text-[var(--foreground)]">
-                AAVYA <span className="text-xs font-sans font-medium text-[var(--muted-foreground)] tracking-widest uppercase">HeredityAI</span>
+                AAVYA
               </span>
             </div>
             <p className="text-xs sm:text-sm text-[var(--muted-foreground)] leading-relaxed max-w-md">
               AI-assisted multi-generational PCOS risk estimation, clinical symptom intelligence, and trusted specialist connectivity. Bridging the gap between early suspicion and timely clinical diagnosis.
             </p>
-            <div className="flex items-center gap-2 text-xs text-[var(--muted-foreground)]">
-              <ShieldCheck className="size-4 text-[var(--leaf)]" />
-              <span>Rotterdam Consensus Aligned • Indian DPDP & HIPAA Security Standards</span>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -71,28 +67,29 @@ export function Footer() {
               <li>
                 <span>Women&apos;s Helpline: Dial 181</span>
               </li>
-              <li>
-                <span className="text-[11px] block text-[var(--muted-foreground)] mt-2">
-                  Not a substitute for emergency obstetric/gynecologic care.
-                </span>
-              </li>
             </ul>
           </div>
         </div>
 
-        {/* Mandatory Clinical Disclaimer Box */}
-        <div className="p-4 rounded-xl bg-[color-mix(in_oklab,var(--card)_80%,var(--background))] border border-[var(--border)] text-[11px] text-[var(--muted-foreground)] leading-relaxed mb-8">
-          <strong>Mandatory Medical Positioning:</strong> AAVYA – HeredityAI is an educational and preliminary risk stratification screening tool. It does not provide medical diagnoses, treatment prescriptions, or clinical triage. Risk probabilities are statistical algorithmic estimations derived from observational research cohorts. Only a qualified, licensed healthcare professional (such as a certified gynecologist or reproductive endocrinologist) can provide an authoritative medical evaluation under Rotterdam diagnostic criteria.
-        </div>
+        {/* Mandatory Clinical Disclaimer Quote */}
+        <blockquote className="relative p-5 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] border-l-4 border-l-[var(--primary)] shadow-sm text-xs sm:text-[13px] text-[var(--foreground)] leading-relaxed mb-8">
+          <div className="flex items-start gap-3.5">
+            <Quote className="size-5 text-[var(--primary)] shrink-0 mt-0.5" />
+            <div className="space-y-1.5">
+              <strong className="font-bold text-[var(--primary)] text-xs sm:text-sm tracking-wide block">
+                Mandatory Medical Positioning
+              </strong>
+              <p className="text-[var(--foreground)] text-xs sm:text-[13px] leading-relaxed italic">
+                &ldquo;AAVYA is an educational and preliminary risk stratification screening tool. It does not provide medical diagnoses, treatment prescriptions, or clinical triage. Risk probabilities are statistical algorithmic estimations derived from observational research cohorts. Only a qualified, licensed healthcare professional (such as a certified gynecologist or reproductive endocrinologist) can provide an authoritative medical evaluation under Rotterdam diagnostic criteria.&rdquo;
+              </p>
+            </div>
+          </div>
+        </blockquote>
 
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--muted-foreground)] gap-3">
           <div>
             &copy; {new Date().getFullYear()} AAVYA Health Technologies. All rights reserved.
-          </div>
-          <div className="flex items-center gap-1 text-[11px]">
-            <span>Engineered with care for women&apos;s health</span>
-            <Heart className="size-3 text-[var(--primary)] fill-[var(--primary)] inline ml-0.5" />
           </div>
         </div>
       </div>

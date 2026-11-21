@@ -1,8 +1,7 @@
 import React from "react";
-import { MapPin, Calendar, Star, ShieldCheck } from "lucide-react";
+import { MapPin, Calendar, Star } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
 import { ClayButton } from "@/components/ui/ClayButton";
-import { Badge } from "@/components/ui/Badge";
 
 export function DoctorNetworkSection() {
   const doctors = [
@@ -39,10 +38,6 @@ export function DoctorNetworkSection() {
     <section id="physicians" className="py-20 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <Badge variant="sage" className="mb-3">
-            <ShieldCheck className="size-3 text-[var(--leaf)]" />
-            Verified Medical Practitioners
-          </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">
             Connect Directly with Endocrine Specialists
           </h2>
@@ -55,18 +50,13 @@ export function DoctorNetworkSection() {
           {doctors.map((doc, idx) => (
             <ClayCard key={idx} className="p-6 flex flex-col justify-between">
               <div>
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-base font-bold font-display text-[var(--foreground)]">
-                      {doc.name}
-                    </h3>
-                    <p className="text-xs font-medium text-[var(--primary)] mt-0.5">
-                      {doc.specialty}
-                    </p>
-                  </div>
-                  <Badge variant="sage" className="text-[10px] px-2 py-0.5">
-                    Verified
-                  </Badge>
+                <div className="mb-3">
+                  <h3 className="text-base font-bold font-display text-[var(--foreground)]">
+                    {doc.name}
+                  </h3>
+                  <p className="text-xs font-medium text-[var(--primary)] mt-0.5">
+                    {doc.specialty}
+                  </p>
                 </div>
 
                 <div className="space-y-1.5 text-xs text-[var(--muted-foreground)] my-4">

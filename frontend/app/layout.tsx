@@ -4,7 +4,7 @@ import { ChatbotDrawer } from "@/components/chat/ChatbotDrawer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AAVYA – HeredityAI | Women's Endocrine & Hereditary Health Intelligence",
+  title: "AAVYA | Women's Endocrine & Health Intelligence",
   description:
     "AI-assisted multi-generational PCOS risk estimation, clinical symptom intelligence, and trusted specialist connectivity.",
   icons: {

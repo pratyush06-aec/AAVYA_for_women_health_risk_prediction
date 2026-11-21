@@ -1,7 +1,6 @@
 import React from "react";
 import { Lock, EyeOff, ShieldCheck, FileCheck } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
-import { Badge } from "@/components/ui/Badge";
 
 export function PrivacySecuritySection() {
   const points = [
@@ -31,9 +30,6 @@ export function PrivacySecuritySection() {
     <section className="py-20 border-t border-[var(--border)] bg-[oklch(0.976_0.012_84/0.5)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <Badge variant="sage" className="mb-3">
-            Absolute Confidentiality
-          </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">
             Privacy-First Health Architecture
           </h2>

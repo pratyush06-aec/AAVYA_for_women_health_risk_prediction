@@ -1,7 +1,6 @@
 import React from "react";
 import { HeartPulse, Sparkles, Utensils, GitFork, Check } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
-import { Badge } from "@/components/ui/Badge";
 
 export function BiomarkerQuadrantSection() {
   const quadrants = [
@@ -9,8 +8,6 @@ export function BiomarkerQuadrantSection() {
       title: "Quadrant 1: Clinical & Menstrual",
       icon: HeartPulse,
       accent: "text-[var(--primary)]",
-      badge: "Clinical Core",
-      badgeVariant: "coral" as const,
       description: "Foundational endocrine and gynecological cycle parameters.",
       features: [
         "Cycle regularity & cycle duration (days)",
@@ -24,8 +21,6 @@ export function BiomarkerQuadrantSection() {
       title: "Quadrant 2: Phenotypic & Endocrine",
       icon: Sparkles,
       accent: "text-[var(--leaf)]",
-      badge: "Androgenic Indicators",
-      badgeVariant: "sage" as const,
       description: "Visible physical manifestations of hyperandrogenism.",
       features: [
         "Hirsutism (excessive facial & body hair growth)",
@@ -39,8 +34,6 @@ export function BiomarkerQuadrantSection() {
       title: "Quadrant 3: Lifestyle & Contextual",
       icon: Utensils,
       accent: "text-[var(--gold-foreground)]",
-      badge: "Metabolic Environment",
-      badgeVariant: "gold" as const,
       description: "Environmental and behavioral dynamics unique to Indian lifestyle.",
       features: [
         "Fast food consumption frequency & dietary habits",
@@ -54,8 +47,6 @@ export function BiomarkerQuadrantSection() {
       title: "Quadrant 4: Intergenerational Hereditary",
       icon: GitFork,
       accent: "text-[var(--primary)]",
-      badge: "Genetic Pedigree",
-      badgeVariant: "coral" as const,
       description: "Multi-generational familial endocrine transmission patterns.",
       features: [
         "First-degree maternal PCOS & irregular cycle lineage",
@@ -71,9 +62,6 @@ export function BiomarkerQuadrantSection() {
     <section id="biomarkers" className="py-20 border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <Badge variant="sage" className="mb-3">
-            Holistic Diagnostic Architecture
-          </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">
             The 4-Quadrant Multi-Factor Framework
           </h2>
@@ -97,7 +85,6 @@ export function BiomarkerQuadrantSection() {
                         {quad.title}
                       </h3>
                     </div>
-                    <Badge variant={quad.badgeVariant}>{quad.badge}</Badge>
                   </div>
 
                   <p className="text-xs sm:text-sm text-[var(--muted-foreground)] mb-5">

@@ -100,17 +100,21 @@ export function ChatbotDrawer() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      {/* Floating Action Trigger Button */}
+      {/* Floating Action Trigger Button: Circular by default, expands to pill on hover */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="clay-button-primary px-5 py-3.5 flex items-center gap-2.5 shadow-xl hover:scale-105 active:scale-95 transition-all text-sm font-semibold"
+          className="group clay-button-primary h-14 rounded-full shadow-2xl transition-all duration-300 ease-out flex items-center overflow-hidden p-0 active:scale-95"
           aria-label="Open AAVYA AI Assistant"
         >
-          <div className="size-6 rounded-full bg-white/20 flex items-center justify-center">
-            <Sparkles className="size-3.5 text-white" />
+          <div className="size-14 rounded-full flex items-center justify-center shrink-0">
+            <div className="size-9 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+              <Sparkles className="size-4 text-white" />
+            </div>
           </div>
-          <span>Ask AAVYA AI</span>
+          <div className="max-w-0 opacity-0 group-hover:max-w-xs group-hover:opacity-100 group-hover:pr-5 transition-all duration-300 ease-out whitespace-nowrap overflow-hidden">
+            <span className="text-sm font-semibold tracking-tight text-white">Ask AAVYA AI</span>
+          </div>
         </button>
       )}
 

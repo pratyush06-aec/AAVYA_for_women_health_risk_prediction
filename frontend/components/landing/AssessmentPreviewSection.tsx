@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, Activity, RefreshCw, Info } from "lucide-react";
+import { Activity, RefreshCw, Info } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
 import { ClayButton } from "@/components/ui/ClayButton";
 import { Badge } from "@/components/ui/Badge";
@@ -77,10 +77,6 @@ export function AssessmentPreviewSection() {
     <section id="assessment-preview" className="py-20 border-t border-[var(--border)] bg-[oklch(0.976_0.012_84/0.7)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <Badge variant="coral" className="mb-3">
-            <Sparkles className="size-3 text-[var(--primary)]" />
-            Interactive Clinical Screener
-          </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">
             Experience the Inference Engine
           </h2>
@@ -93,16 +89,13 @@ export function AssessmentPreviewSection() {
           {/* Interactive Form Card */}
           <div className="lg:col-span-7">
             <ClayCard className="p-6 sm:p-8">
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-[var(--border)]">
-                <div>
-                  <h3 className="text-base font-bold font-display text-[var(--foreground)]">
-                    Preliminary Parameter Input
-                  </h3>
-                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                    Select sample clinical and lifestyle attributes
-                  </p>
-                </div>
-                <Badge variant="sage">Live API Connected</Badge>
+              <div className="pb-4 mb-6 border-b border-[var(--border)]">
+                <h3 className="text-base font-bold font-display text-[var(--foreground)]">
+                  Preliminary Parameter Input
+                </h3>
+                <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                  Select sample clinical and lifestyle attributes
+                </p>
               </div>
 
               <form onSubmit={handleRunAssessment} className="space-y-4">

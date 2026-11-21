@@ -18,14 +18,9 @@ export function Navbar() {
           <div className="size-9 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-display font-semibold text-lg shadow-sm transition-transform duration-200 group-hover:scale-105">
             A
           </div>
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xl text-[var(--foreground)] tracking-tight">
-              AAVYA
-            </span>
-            <span className="text-[10px] font-sans font-medium text-[var(--muted-foreground)] tracking-widest uppercase -mt-1">
-              HeredityAI
-            </span>
-          </div>
+          <span className="font-display font-bold text-xl text-[var(--foreground)] tracking-tight">
+            AAVYA
+          </span>
         </Link>
 
         {/* Desktop Navigation Links */}

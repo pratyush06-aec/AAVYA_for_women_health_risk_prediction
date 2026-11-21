@@ -1,22 +1,12 @@
 import React from "react";
-import { ArrowRight, Dna, Activity, Users, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Activity, Sparkles, Dna } from "lucide-react";
 import { ClayButton } from "@/components/ui/ClayButton";
-import { Badge } from "@/components/ui/Badge";
-import { ClayCard } from "@/components/ui/ClayCard";
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-6">
-          {/* Subtle Top Badge */}
-          <div className="inline-flex items-center gap-2">
-            <Badge variant="sage">
-              <Sparkles className="size-3.5 text-[var(--leaf)]" />
-              <span>Multi-Generational Clinical Intelligence</span>
-            </Badge>
-          </div>
-
           {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--foreground)] leading-[1.12]">
             Compassionate,{" "}
@@ -28,7 +18,7 @@ export function HeroSection() {
 
           {/* Subheading */}
           <p className="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed mx-auto">
-            AAVYA unites 280+ clinical biomarkers, Indian lifestyle contexts, and 3-generation hereditary mapping to provide calibrated PCOS risk estimation and direct connectivity to qualified reproductive specialists.
+            AAVYA unites clinical biomarkers, Indian lifestyle contexts, and 3-generation hereditary mapping to provide calibrated PCOS risk estimation and direct connectivity to qualified reproductive specialists.
           </p>
 
           {/* Dual CTAs */}
@@ -45,76 +35,73 @@ export function HeroSection() {
               </ClayButton>
             </a>
           </div>
-
-          {/* Reassurance Micro-Copy */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs text-[var(--muted-foreground)]">
-            <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="size-3.5 text-[var(--leaf)]" />
-              100% Private & Anonymous Screening
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="size-3.5 text-[var(--leaf)]" />
-              Validated Against Clinical Callsets
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <CheckCircle2 className="size-3.5 text-[var(--leaf)]" />
-              No App Download Required
-            </span>
-          </div>
         </div>
 
-        {/* Hero Tactile Stats Row */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
-          <ClayCard className="flex items-start gap-4">
-            <div className="size-11 rounded-full bg-[var(--secondary)] text-[var(--secondary-foreground)] flex items-center justify-center shrink-0">
-              <Activity className="size-5 text-[var(--leaf)]" />
+        {/* Educational Eye-Catching Showcase: What is PCOS? */}
+        <div className="mt-14 max-w-5xl mx-auto">
+          <div className="clay-card p-6 sm:p-8 text-left bg-[var(--card)]/90 backdrop-blur-sm border border-[var(--border)] relative overflow-hidden">
+            {/* Header */}
+            <div className="pb-6 border-b border-[var(--border)]">
+              <h2 className="text-2xl sm:text-3xl font-bold font-display text-[var(--foreground)] tracking-tight">
+                What is Polycystic Ovary Syndrome (PCOS)?
+              </h2>
+              <p className="text-sm text-[var(--muted-foreground)] mt-1.5 max-w-2xl leading-relaxed">
+                PCOS is a complex, whole-body endocrine and metabolic condition affecting an estimated{" "}
+                <span className="font-semibold text-[var(--foreground)]">1 in 5 Indian women</span>. Far beyond just ovaries, it influences insulin regulation, hormone synthesis, cycles, and hereditary risk.
+              </p>
             </div>
-            <div>
-              <div className="text-2xl font-bold font-display text-[var(--foreground)] tabular-nums">
-                280+
-              </div>
-              <div className="text-xs font-semibold text-[var(--foreground)] mt-0.5">
-                Multi-System Features
-              </div>
-              <div className="text-xs text-[var(--muted-foreground)] mt-1">
-                Clinical markers, metabolic parameters, lifestyle patterns & phenotypic signs.
-              </div>
-            </div>
-          </ClayCard>
 
-          <ClayCard className="flex items-start gap-4">
-            <div className="size-11 rounded-full bg-[color-mix(in_oklab,var(--coral)_60%,var(--card))] text-[var(--coral-foreground)] flex items-center justify-center shrink-0">
-              <Dna className="size-5 text-[var(--primary)]" />
-            </div>
-            <div>
-              <div className="text-2xl font-bold font-display text-[var(--foreground)] tabular-nums">
-                3 Generations
+            {/* 3 Pillar Cards for PCOS Core Manifestations */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* Pillar 1: Ovulatory & Menstrual Patterns */}
+              <div className="p-4 rounded-xl bg-[var(--background)]/80 border border-[var(--border)] hover:border-[var(--primary)]/30 transition-colors">
+                <div className="size-10 rounded-xl bg-[var(--secondary)] flex items-center justify-center text-[var(--leaf)] mb-3">
+                  <Activity className="size-5" />
+                </div>
+                <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
+                  1. Ovulatory Dysfunction
+                </h3>
+                <p className="text-xs text-[var(--muted-foreground)] mt-1.5 leading-relaxed">
+                  Infrequent, irregular, or missed menstrual cycles (&gt;35 days or &lt;8 periods/year). Chronic anovulation impacts natural progesterone balance and reproductive health.
+                </p>
+                <span className="inline-block mt-3 text-[11px] font-medium text-[var(--leaf)]">
+                  Marker: Oligo- / Amenorrhea
+                </span>
               </div>
-              <div className="text-xs font-semibold text-[var(--foreground)] mt-0.5">
-                Hereditary Pedigree
-              </div>
-              <div className="text-xs text-[var(--muted-foreground)] mt-1">
-                Family history modeling across maternal, fraternal, and sibling endocrine lineages.
-              </div>
-            </div>
-          </ClayCard>
 
-          <ClayCard className="flex items-start gap-4">
-            <div className="size-11 rounded-full bg-[color-mix(in_oklab,var(--gold)_55%,var(--card))] text-[var(--gold-foreground)] flex items-center justify-center shrink-0">
-              <Users className="size-5 text-[var(--gold-foreground)]" />
+              {/* Pillar 2: Androgen Excess */}
+              <div className="p-4 rounded-xl bg-[var(--background)]/80 border border-[var(--border)] hover:border-[var(--primary)]/30 transition-colors">
+                <div className="size-10 rounded-xl bg-[color-mix(in_oklab,var(--coral)_60%,var(--card))] flex items-center justify-center text-[var(--primary)] mb-3">
+                  <Sparkles className="size-5" />
+                </div>
+                <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
+                  2. Hyperandrogenism
+                </h3>
+                <p className="text-xs text-[var(--muted-foreground)] mt-1.5 leading-relaxed">
+                  Elevated androgen (testosterone/DHEA-S) levels manifesting physically as hirsutism (excess facial and body hair), persistent cystic acne, and androgenic alopecia.
+                </p>
+                <span className="inline-block mt-3 text-[11px] font-medium text-[var(--primary)]">
+                  Marker: Clinical or Biochemical
+                </span>
+              </div>
+
+              {/* Pillar 3: Polycystic Ovarian Morphology & Metabolism */}
+              <div className="p-4 rounded-xl bg-[var(--background)]/80 border border-[var(--border)] hover:border-[var(--primary)]/30 transition-colors sm:col-span-2 lg:col-span-1">
+                <div className="size-10 rounded-xl bg-[color-mix(in_oklab,var(--gold)_55%,var(--card))] flex items-center justify-center text-[var(--gold-foreground)] mb-3">
+                  <Dna className="size-5" />
+                </div>
+                <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
+                  3. Ovarian & Metabolic Triad
+                </h3>
+                <p className="text-xs text-[var(--muted-foreground)] mt-1.5 leading-relaxed">
+                  Ultrasound appearance of multiple immature follicles (&quot;string-of-pearls&quot;) paired with insulin resistance in over 70% of cases, driving fatigue and weight shifts.
+                </p>
+                <span className="inline-block mt-3 text-[11px] font-medium text-[var(--gold-foreground)]">
+                  Marker: PCOM & Insulin Resistance
+                </span>
+              </div>
             </div>
-            <div>
-              <div className="text-2xl font-bold font-display text-[var(--foreground)] tabular-nums">
-                97.1%
-              </div>
-              <div className="text-xs font-semibold text-[var(--foreground)] mt-0.5">
-                Cross-Validated Accuracy
-              </div>
-              <div className="text-xs text-[var(--muted-foreground)] mt-1">
-                Calibrated logistic regression model trained on comprehensive clinical cohorts.
-              </div>
-            </div>
-          </ClayCard>
+          </div>
         </div>
       </div>
     </section>
