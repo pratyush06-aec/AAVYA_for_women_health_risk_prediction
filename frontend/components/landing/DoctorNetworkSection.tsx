@@ -1,9 +1,14 @@
+"use client";
+
 import React from "react";
+import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 import { MapPin, Calendar, Star } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
 import { ClayButton } from "@/components/ui/ClayButton";
 
 export function DoctorNetworkSection() {
+  const { isSignedIn } = useUser();
   const doctors = [
     {
       name: "Dr. Ananya Sen, MD",
@@ -80,10 +85,12 @@ export function DoctorNetworkSection() {
               </div>
 
               <div className="mt-5 pt-4 border-t border-[var(--border)]">
-                <ClayButton variant="secondary" size="sm" className="w-full gap-1.5">
-                  <Calendar className="size-3.5" />
-                  <span>Book Consultation</span>
-                </ClayButton>
+                <Link href={isSignedIn ? "/doctors" : "/sign-in?redirect_url=/doctors"}>
+                  <ClayButton variant="secondary" size="sm" className="w-full gap-1.5">
+                    <Calendar className="size-3.5" />
+                    <span>Book Consultation</span>
+                  </ClayButton>
+                </Link>
               </div>
             </ClayCard>
           ))}

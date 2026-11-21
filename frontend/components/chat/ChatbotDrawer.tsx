@@ -131,10 +131,6 @@ export function ChatbotDrawer() {
                 <h3 className="font-display font-bold text-sm leading-tight">
                   AAVYA AI Assistant
                 </h3>
-                <span className="text-[10px] text-white/80 flex items-center gap-1">
-                  <ShieldCheck className="size-3" />
-                  <span>Trained ML Inference • Rotterdam Standards</span>
-                </span>
               </div>
             </div>
             <button

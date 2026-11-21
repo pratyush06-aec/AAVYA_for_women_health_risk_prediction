@@ -21,43 +21,45 @@ export function Navbar() {
 
   return (
     <header className="sticky top-3 sm:top-4 z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pointer-events-none">
-      <div className="pointer-events-auto rounded-full border border-[var(--border)]/70 bg-[color-mix(in_oklab,var(--card)_50%,transparent)] backdrop-blur-xl shadow-lg shadow-black/[0.03] px-5 sm:px-6 h-16 flex items-center justify-between transition-all duration-200">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="size-9 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-display font-semibold text-lg shadow-sm transition-transform duration-200 group-hover:scale-105">
-            A
-          </div>
-          <span className="font-display font-bold text-xl text-[var(--foreground)] tracking-tight">
-            AAVYA
-          </span>
-        </Link>
+      <div className="pointer-events-auto rounded-full border border-[var(--border)]/70 bg-[color-mix(in_oklab,var(--card)_50%,transparent)] backdrop-blur-xl shadow-lg shadow-black/[0.03] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
+        {/* Left: Brand Logo */}
+        <div className="flex-1 flex items-center justify-start">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="size-9 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-display font-semibold text-lg shadow-sm transition-transform duration-200 group-hover:scale-105">
+              A
+            </div>
+            <span className="font-display font-bold text-xl text-[var(--foreground)] tracking-tight">
+              AAVYA
+            </span>
+          </Link>
+        </div>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[var(--foreground)]">
+        {/* Center: Desktop Navigation Links (Equally Spaced) */}
+        <nav className="hidden md:flex items-center justify-center gap-9 lg:gap-14 text-sm font-medium text-[var(--foreground)]">
           <Link
-            href="/assessment"
-            className="text-[var(--primary)] font-semibold hover:opacity-80 transition-opacity flex items-center gap-1"
+            href={isSignedIn ? "/assessment" : "/sign-in?redirect_url=/assessment"}
+            className="text-[var(--primary)] font-semibold hover:opacity-80 transition-opacity flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>PCOS Assessment</span>
             <span className="text-[10px] bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded-full font-bold">New</span>
           </Link>
           <Link
             href="/#about"
-            className="hover:text-[var(--primary)] transition-colors duration-150"
+            className="hover:text-[var(--primary)] transition-colors duration-150 whitespace-nowrap"
           >
             About
           </Link>
           <Link
-            href="/doctors"
-            className="hover:text-[var(--primary)] transition-colors duration-150 flex items-center gap-1"
+            href={isSignedIn ? "/doctors" : "/sign-in?redirect_url=/doctors"}
+            className="hover:text-[var(--primary)] transition-colors duration-150 flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>Find Doctors</span>
             <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded-full font-bold">Live</span>
           </Link>
         </nav>
 
-        {/* Right CTA / Auth Controls */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Right: CTA / Auth Controls */}
+        <div className="flex-1 hidden sm:flex items-center justify-end gap-3.5">
           {isSignedIn ? (
             <div className="flex items-center">
               {/* Profile icon with custom dropdown menu item routing to doctor/student dashboard */}
@@ -100,7 +102,7 @@ export function Navbar() {
                   <span>Sign In</span>
                 </ClayButton>
               </Link>
-              <Link href="/assessment">
+              <Link href="/sign-in?redirect_url=/assessment">
                 <ClayButton variant="primary" size="sm" className="gap-1.5">
                   <span>Start Assessment</span>
                   <ArrowRight className="size-3.5" />
@@ -125,7 +127,7 @@ export function Navbar() {
         <div className="pointer-events-auto mt-2 rounded-2xl border border-[var(--border)]/80 bg-[color-mix(in_oklab,var(--card)_92%,transparent)] backdrop-blur-xl px-5 py-4 shadow-xl space-y-4 md:hidden">
           <nav className="flex flex-col space-y-3 text-sm font-medium">
             <Link
-              href="/assessment"
+              href={isSignedIn ? "/assessment" : "/sign-in?redirect_url=/assessment"}
               onClick={() => setMobileMenuOpen(false)}
               className="text-[var(--primary)] font-semibold flex items-center justify-between"
             >
@@ -140,7 +142,7 @@ export function Navbar() {
               About
             </Link>
             <Link
-              href="/doctors"
+              href={isSignedIn ? "/doctors" : "/sign-in?redirect_url=/doctors"}
               onClick={() => setMobileMenuOpen(false)}
               className="text-[var(--foreground)] hover:text-[var(--primary)] flex items-center justify-between"
             >
@@ -193,7 +195,7 @@ export function Navbar() {
                     <span>Sign In</span>
                   </ClayButton>
                 </Link>
-                <Link href="/assessment" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/sign-in?redirect_url=/assessment" onClick={() => setMobileMenuOpen(false)}>
                   <ClayButton variant="primary" size="md" className="w-full gap-2 justify-center">
                     <span>Start Assessment</span>
                     <ArrowRight className="size-4" />

@@ -15,14 +15,14 @@ export default function HomePage() {
       {/* 1. Sticky Glassmorphic Navbar */}
       <Navbar />
 
-      {/* 2. Hero Section with PCOS Clinical Intelligence */}
+      {/* 2. Hero Section with PCOS Clinical Intelligence (About Foundation) */}
       <HeroSection />
 
-      {/* 3. How AAVYA Works (3-Step Clay Cards) */}
-      <HowItWorksSection />
-
-      {/* 4. 4-Quadrant Biomarker & Hereditary Architecture */}
+      {/* 3. 4-Quadrant Biomarker & Hereditary Architecture (Added Under About Section) */}
       <BiomarkerQuadrantSection />
+
+      {/* 4. How AAVYA Works (3-Step Clay Cards) */}
+      <HowItWorksSection />
 
       {/* 5. Live API Connected Assessment Screener */}
       <AssessmentPreviewSection />

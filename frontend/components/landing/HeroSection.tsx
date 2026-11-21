@@ -1,8 +1,14 @@
+"use client";
+
 import React from "react";
+import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 import { ArrowRight, Activity, Sparkles, Dna } from "lucide-react";
 import { ClayButton } from "@/components/ui/ClayButton";
 
 export function HeroSection() {
+  const { isSignedIn } = useUser();
+
   return (
     <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,19 +27,25 @@ export function HeroSection() {
             AAVYA unites clinical biomarkers, Indian lifestyle contexts, and 3-generation hereditary mapping to provide calibrated PCOS risk estimation and direct connectivity to qualified reproductive specialists.
           </p>
 
-          {/* Dual CTAs */}
+          {/* Dual CTAs (Auth Protected) */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
-            <a href="#assessment-preview" className="w-full sm:w-auto">
+            <Link
+              href={isSignedIn ? "/assessment" : "/sign-in?redirect_url=/assessment"}
+              className="w-full sm:w-auto"
+            >
               <ClayButton variant="primary" size="lg" className="w-full sm:w-auto gap-2.5">
                 <span>Begin Confidential Assessment</span>
                 <ArrowRight className="size-4" />
               </ClayButton>
-            </a>
-            <a href="#physicians" className="w-full sm:w-auto">
+            </Link>
+            <Link
+              href={isSignedIn ? "/doctors" : "/sign-in?redirect_url=/doctors"}
+              className="w-full sm:w-auto"
+            >
               <ClayButton variant="secondary" size="lg" className="w-full sm:w-auto gap-2">
                 <span>Explore Specialist Network</span>
               </ClayButton>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -100,6 +112,20 @@ export function HeroSection() {
                   Marker: PCOM & Insulin Resistance
                 </span>
               </div>
+            </div>
+
+            {/* Seamless bridge to 4-Quadrant Framework */}
+            <div className="mt-6 pt-5 border-t border-[var(--border)] flex items-center justify-between flex-wrap gap-3">
+              <span className="text-xs text-[var(--muted-foreground)]">
+                Integrated with AAVYA&apos;s multi-dimensional risk architecture:
+              </span>
+              <a
+                href="#biomarkers"
+                className="inline-flex items-center gap-1.5 text-xs text-[var(--primary)] font-semibold hover:opacity-80 transition-opacity"
+              >
+                <span>Explore 4-Quadrant Framework</span>
+                <ArrowRight className="size-3.5" />
+              </a>
             </div>
           </div>
         </div>

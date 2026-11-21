@@ -1,13 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { Activity, RefreshCw, Info } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
+import { Activity, RefreshCw, Info, Lock, ArrowRight } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
 import { ClayButton } from "@/components/ui/ClayButton";
 import { Badge } from "@/components/ui/Badge";
 import { predictPCOSRisk, AssessmentPredictionResponse } from "@/lib/api";
 
 export function AssessmentPreviewSection() {
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+
   const [formData, setFormData] = useState<Record<string, string>>({
     age: "24",
     weight_kg: "68",
@@ -34,6 +40,10 @@ export function AssessmentPreviewSection() {
 
   const handleRunAssessment = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isSignedIn) {
+      router.push("/sign-in?redirect_url=/assessment");
+      return;
+    }
     setLoading(true);
     setError(null);
 
@@ -204,25 +214,35 @@ export function AssessmentPreviewSection() {
                 </div>
 
                 <div className="pt-3">
-                  <ClayButton
-                    type="submit"
-                    variant="primary"
-                    size="md"
-                    className="w-full gap-2"
-                    disabled={loading}
-                  >
-                    {loading ? (
-                      <>
-                        <RefreshCw className="size-4 animate-spin" />
-                        <span>Running Calibrated Model...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Activity className="size-4" />
-                        <span>Compute Statistical Risk</span>
-                      </>
-                    )}
-                  </ClayButton>
+                  {!isSignedIn ? (
+                    <Link
+                      href="/sign-in?redirect_url=/assessment"
+                      className="w-full clay-button-primary py-3 text-xs font-semibold flex items-center justify-center gap-2 active:scale-97"
+                    >
+                      <Lock className="size-3.5" />
+                      <span>Sign In to Run Predictive Engine →</span>
+                    </Link>
+                  ) : (
+                    <ClayButton
+                      type="submit"
+                      variant="primary"
+                      size="md"
+                      className="w-full gap-2"
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <>
+                          <RefreshCw className="size-4 animate-spin" />
+                          <span>Running Calibrated Model...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Activity className="size-4" />
+                          <span>Compute Statistical Risk</span>
+                        </>
+                      )}
+                    </ClayButton>
+                  )}
                 </div>
               </form>
             </ClayCard>
@@ -283,8 +303,8 @@ export function AssessmentPreviewSection() {
                             <span
                               className={`font-semibold tabular-nums ${
                                 f.direction === "increases_risk"
-                                  ? "text-[var(--primary)]"
-                                  : "text-[var(--leaf)]"
+                                    ? "text-[var(--primary)]"
+                                    : "text-[var(--leaf)]"
                               }`}
                             >
                               {f.direction === "increases_risk" ? "+" : ""}
@@ -303,6 +323,27 @@ export function AssessmentPreviewSection() {
                       {result.disclaimer}
                     </span>
                   </div>
+                </div>
+              ) : !isSignedIn ? (
+                <div className="flex flex-col items-center justify-center text-center my-auto py-8 space-y-4">
+                  <div className="size-14 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center">
+                    <Lock className="size-6 text-[var(--primary)]" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <h4 className="text-base font-bold font-display text-[var(--foreground)]">
+                      Authentication Required
+                    </h4>
+                    <p className="text-xs text-[var(--muted-foreground)] max-w-xs leading-relaxed">
+                      To calculate statistical risk probabilities and run our validated machine learning pipeline, please complete the sign-in process.
+                    </p>
+                  </div>
+                  <Link
+                    href="/sign-in?redirect_url=/assessment"
+                    className="clay-button-primary py-2.5 px-5 text-xs font-semibold flex items-center gap-2"
+                  >
+                    <span>Sign In to Unlock Model</span>
+                    <ArrowRight className="size-3.5" />
+                  </Link>
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center text-center my-auto py-8">

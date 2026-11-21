@@ -366,6 +366,43 @@ export default function DoctorsDirectoryPage() {
     }
   };
 
+  if (isLoaded && !isSignedIn) {
+    return (
+      <div className="min-h-dvh flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+        <Navbar />
+        <main className="flex-1 max-w-md w-full mx-auto px-4 py-16 flex items-center justify-center">
+          <div className="clay-card p-8 text-center space-y-5 w-full">
+            <div className="size-14 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center mx-auto text-2xl font-bold">
+              🔒
+            </div>
+            <div className="space-y-2">
+              <h1 className="text-2xl font-bold font-display text-[var(--foreground)] tracking-tight">
+                Authentication Required
+              </h1>
+              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                To access our verified reproductive specialist network, view doctor profiles, and reserve consultation slots, please complete sign-in.
+              </p>
+            </div>
+            <div className="pt-2 flex flex-col gap-3">
+              <Link
+                href="/sign-in?redirect_url=/doctors"
+                className="clay-button-primary py-3 px-6 text-sm font-semibold text-center block w-full rounded-xl shadow-sm"
+              >
+                Sign In to View Specialists
+              </Link>
+              <Link
+                href="/"
+                className="clay-button-secondary py-2.5 px-6 text-sm font-medium text-center block w-full rounded-xl"
+              >
+                Return to Landing
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-dvh flex flex-col bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
