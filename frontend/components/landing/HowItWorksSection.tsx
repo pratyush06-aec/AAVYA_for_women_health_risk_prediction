@@ -51,7 +51,7 @@ export function HowItWorksSection() {
                     </span>
                   </div>
 
-                  <div className="size-12 rounded-2xl bg-[var(--surface-highlight)] border border-[rgba(255,235,226,0.8)] flex items-center justify-center mb-5 text-[var(--deep-rose)] shadow-sm">
+                  <div className="clay-icon-tile size-13 mb-5 text-[var(--deep-rose)] shadow-md">
                     <IconComponent className="size-6" />
                   </div>
 

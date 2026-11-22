@@ -195,19 +195,23 @@ p {
 
 .clay-button,
 .clay-button-secondary {
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: var(--radius-pill);
   padding: 14px 28px;
-  color: var(--text-primary);
+  color: #2E1B1E;
   font-weight: 600;
   background: linear-gradient(
     145deg,
-    #F9D6CC,
-    #E8A6A9
+    #FFF8F4 0%,
+    #FDEAE2 50%,
+    #F8D2C6 100%
   );
   box-shadow:
-    8px 10px 22px rgba(178, 105, 112, 0.22),
-    -6px -6px 18px rgba(255, 235, 226, 0.85);
+    0 8px 20px rgba(178, 95, 105, 0.24),
+    0 3px 8px rgba(178, 95, 105, 0.14),
+    -5px -5px 14px rgba(255, 255, 255, 0.95),
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -2px 4px rgba(180, 100, 110, 0.12);
   cursor: pointer;
   transition: var(--transition-smooth);
 }
@@ -216,48 +220,55 @@ p {
 .clay-button-secondary:hover {
   transform: translateY(-2px);
   box-shadow:
-    10px 14px 28px rgba(178, 105, 112, 0.26),
-    -8px -8px 22px rgba(255, 235, 226, 0.95);
+    0 12px 28px rgba(178, 95, 105, 0.30),
+    0 5px 12px rgba(178, 95, 105, 0.18),
+    -6px -6px 18px rgba(255, 255, 255, 1),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
 .clay-button:active,
 .clay-button-secondary:active {
   transform: scale(0.97);
   box-shadow:
-    inset 4px 4px 10px rgba(180, 105, 112, 0.20),
-    inset -4px -4px 10px rgba(255, 238, 228, 0.85);
+    inset 4px 4px 10px rgba(180, 105, 112, 0.22),
+    inset -4px -4px 10px rgba(255, 245, 240, 0.90);
 }
 
 .clay-button-primary {
   color: #FFF8F4;
-  border: none;
+  border: 1px solid rgba(255, 240, 235, 0.50);
   border-radius: var(--radius-pill);
   font-weight: 600;
   background: linear-gradient(
     145deg,
-    #D98990,
-    #BD737D
+    #DF7882 0%,
+    #B85360 100%
   );
   box-shadow:
-    6px 8px 18px rgba(164, 91, 102, 0.28),
-    -5px -5px 14px rgba(255, 235, 226, 0.70);
+    0 10px 24px rgba(164, 75, 88, 0.38),
+    0 4px 10px rgba(164, 75, 88, 0.22),
+    -4px -4px 14px rgba(255, 245, 240, 0.85),
+    inset 0 1px 2px rgba(255, 255, 255, 0.70),
+    inset 0 -2px 4px rgba(130, 45, 55, 0.25);
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .clay-button-primary:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.04);
+  transform: translateY(-3px) scale(1.01);
+  filter: brightness(1.05);
   box-shadow:
-    8px 12px 24px rgba(164, 91, 102, 0.34),
-    -6px -6px 16px rgba(255, 235, 226, 0.85);
+    0 14px 32px rgba(164, 75, 88, 0.45),
+    0 6px 14px rgba(164, 75, 88, 0.28),
+    -5px -5px 16px rgba(255, 245, 240, 0.95),
+    inset 0 1px 2px rgba(255, 255, 255, 0.85);
 }
 
 .clay-button-primary:active {
   transform: scale(0.97);
   box-shadow:
-    inset 4px 4px 10px rgba(138, 70, 79, 0.36),
-    inset -4px -4px 10px rgba(230, 164, 168, 0.30);
+    inset 4px 4px 10px rgba(120, 40, 52, 0.45),
+    inset -3px -3px 8px rgba(240, 160, 170, 0.35);
 }
 
 /* ==========================================
@@ -348,14 +359,56 @@ textarea:focus {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 15px;
+  padding: 8px 16px;
   border-radius: var(--radius-pill);
-  background: var(--surface-secondary);
-  color: var(--deep-rose);
-  box-shadow: var(--shadow-clay);
+  background: linear-gradient(
+    145deg,
+    #FFF8F4 0%,
+    #FCE5DC 100%
+  );
+  color: #A84D58;
+  box-shadow:
+    0 4px 12px rgba(178, 95, 105, 0.20),
+    -3px -3px 10px rgba(255, 255, 255, 0.95),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95);
   font-size: 13px;
   font-weight: 600;
-  border: 1px solid rgba(255, 235, 226, 0.6);
+  border: 1px solid rgba(255, 245, 240, 0.90);
+  transition: var(--transition-smooth);
+}
+
+.clay-chip:hover,
+.clay-badge:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 6px 16px rgba(178, 95, 105, 0.25),
+    -4px -4px 12px rgba(255, 255, 255, 1);
+}
+
+.clay-icon-tile {
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    145deg,
+    #FFF9F5 0%,
+    #FCE8E0 100%
+  );
+  box-shadow:
+    0 6px 16px rgba(178, 95, 105, 0.22),
+    0 2px 6px rgba(178, 95, 105, 0.12),
+    -4px -4px 12px rgba(255, 255, 255, 0.95),
+    inset 0 1px 1.5px rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 245, 240, 0.90);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.clay-icon-tile:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 20px rgba(178, 95, 105, 0.28),
+    -5px -5px 14px rgba(255, 255, 255, 1);
 }
 
 .clay-inset-well {

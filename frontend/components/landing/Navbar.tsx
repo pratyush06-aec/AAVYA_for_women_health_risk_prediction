@@ -20,8 +20,8 @@ export function Navbar() {
   const isDoctor = role === "DOCTOR" || DESIGNATED_DOCTOR_EMAILS.includes(userEmail);
 
   return (
-    <header className="relative z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pt-3 sm:pt-4 pointer-events-none">
-      <div className="pointer-events-auto rounded-full border border-[rgba(255,245,240,0.65)] bg-[rgba(248,212,200,0.60)] backdrop-blur-md shadow-[0_8px_24px_rgba(178,105,112,0.14),-4px_-4px_16px_rgba(255,250,248,0.85),inset_0_1px_1px_rgba(255,255,255,0.7)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
+    <header className="sticky top-3 sm:top-4 z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pointer-events-none transition-all duration-300">
+      <div className="pointer-events-auto rounded-full border border-[rgba(255,245,240,0.55)] bg-[rgba(248,212,200,0.30)] backdrop-blur-xl shadow-[0_12px_32px_rgba(178,105,112,0.18),-4px_-4px_16px_rgba(255,250,248,0.80),inset_0_1px_1.5px_rgba(255,255,255,0.85)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
         {/* Left: Brand Logo (Only AAVYA text) */}
         <div className="flex-1 flex items-center justify-start">
           <Link href="/" className="flex items-center group">
@@ -38,7 +38,7 @@ export function Navbar() {
             className="text-[var(--primary)] font-semibold hover:opacity-80 transition-opacity flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>PCOS Assessment</span>
-            <span className="text-[10px] bg-[var(--surface-highlight)] text-[var(--deep-rose)] px-1.5 py-0.5 rounded-full font-bold border border-[rgba(189,115,125,0.2)]">New</span>
+            <span className="text-[10px] clay-badge px-2 py-0.5 font-bold">New</span>
           </Link>
           <Link
             href="/#about"
@@ -51,7 +51,7 @@ export function Navbar() {
             className="hover:text-[var(--primary)] transition-colors duration-150 flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>Find Doctors</span>
-            <span className="text-[10px] bg-[var(--surface-secondary)] text-[var(--leaf)] px-1.5 py-0.5 rounded-full font-bold border border-[rgba(91,130,102,0.25)]">Live</span>
+            <span className="text-[10px] clay-badge px-2 py-0.5 font-bold text-[var(--leaf)]">Live</span>
           </Link>
         </nav>
 
@@ -63,7 +63,7 @@ export function Navbar() {
               <UserButton
                 appearance={{
                   elements: {
-                    avatarBox: "size-9 ring-2 ring-[var(--primary)]/20 hover:ring-[var(--primary)]/50 transition-all",
+                    avatarBox: "size-9 ring-2 ring-[var(--primary)]/30 hover:ring-[var(--primary)]/60 transition-all shadow-md",
                   },
                 }}
               >
@@ -94,13 +94,13 @@ export function Navbar() {
           ) : (
             <div className="flex items-center gap-3">
               <Link href="/sign-in">
-                <ClayButton variant="ghost" size="sm" className="gap-1.5">
+                <ClayButton variant="secondary" size="sm" className="gap-1.5 py-1.5 px-4 min-h-[38px] text-xs">
                   <User className="size-3.5" />
                   <span>Sign In</span>
                 </ClayButton>
               </Link>
               <Link href="/sign-in?redirect_url=/assessment">
-                <ClayButton variant="primary" size="sm" className="gap-1.5">
+                <ClayButton variant="primary" size="sm" className="gap-1.5 py-1.5 px-4 min-h-[38px] text-xs">
                   <span>Start Assessment</span>
                   <ArrowRight className="size-3.5" />
                 </ClayButton>

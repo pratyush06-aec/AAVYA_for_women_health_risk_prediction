@@ -147,7 +147,7 @@ export function FloatingAssistantLauncher() {
       {/* Floating Action Button (FAB) */}
       <div className="flex items-center gap-3">
         {!isOpen && (
-          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--card)] border border-[var(--border)] text-xs text-[var(--foreground)] shadow-md animate-in fade-in duration-300">
+          <div className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full clay-badge text-xs shadow-md animate-in fade-in duration-300">
             <Sparkles className="size-3 text-[var(--primary)]" />
             <span>Ask AAVYA Assistant</span>
           </div>
@@ -156,7 +156,7 @@ export function FloatingAssistantLauncher() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close AI Health Assistant" : "Open AI Health Assistant"}
-          className="size-14 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center shadow-xl transition-transform duration-150 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2"
+          className="size-14 rounded-full clay-button-primary flex items-center justify-center shadow-2xl transition-transform duration-150 hover:scale-105 active:scale-95 focus:outline-none"
         >
           {isOpen ? (
             <X className="size-6 text-[var(--primary-foreground)]" />

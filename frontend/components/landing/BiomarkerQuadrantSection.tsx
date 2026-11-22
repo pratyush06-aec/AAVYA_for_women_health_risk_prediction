@@ -78,7 +78,7 @@ export function BiomarkerQuadrantSection() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="size-10 rounded-full bg-[var(--surface-highlight)] border border-[rgba(255,235,226,0.8)] flex items-center justify-center shadow-xs">
+                      <div className="clay-icon-tile size-11 shadow-md">
                         <Icon className={`size-5 ${quad.accent}`} />
                       </div>
                       <h3 className="text-lg font-bold font-display text-[var(--foreground)]">

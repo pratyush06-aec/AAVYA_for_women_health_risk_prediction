@@ -10,7 +10,7 @@ export function HeroSection() {
   const { isSignedIn } = useUser();
 
   return (
-    <section className="relative overflow-hidden pt-8 sm:pt-12 md:pt-14 pb-20 md:pb-28">
+    <section className="relative overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-20 md:pb-28">
       {/* Ambient Floating Clay Orbs */}
       <div
         className="clay-orb absolute -top-16 -left-16 size-56 opacity-25 pointer-events-none hidden md:block blur-[1px]"
@@ -81,7 +81,7 @@ export function HeroSection() {
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Pillar 1: Ovulatory & Menstrual Patterns */}
               <div className="clay-card-inset p-4.5 transition-transform hover:-translate-y-1">
-                <div className="size-10 rounded-xl bg-[var(--surface-primary)] flex items-center justify-center text-[var(--leaf)] mb-3 shadow-xs">
+                <div className="clay-icon-tile size-11 mb-3 text-[var(--leaf)]">
                   <Activity className="size-5" />
                 </div>
                 <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
@@ -97,7 +97,7 @@ export function HeroSection() {
 
               {/* Pillar 2: Androgen Excess */}
               <div className="clay-card-inset p-4.5 transition-transform hover:-translate-y-1">
-                <div className="size-10 rounded-xl bg-[var(--surface-highlight)] flex items-center justify-center text-[var(--deep-rose)] mb-3 shadow-xs">
+                <div className="clay-icon-tile size-11 mb-3 text-[var(--deep-rose)]">
                   <Sparkles className="size-5" />
                 </div>
                 <h3 className="font-display font-bold text-sm text-[var(--foreground)]">
@@ -113,7 +113,7 @@ export function HeroSection() {
 
               {/* Pillar 3: Polycystic Ovarian Morphology & Metabolism */}
               <div className="clay-card-inset p-4.5 transition-transform hover:-translate-y-1 sm:col-span-2 lg:col-span-1">
-                <div className="size-10 rounded-xl bg-[var(--warm-cream)] flex items-center justify-center text-[var(--dark-text)] mb-3 shadow-xs">
+                <div className="clay-icon-tile size-11 mb-3 text-[var(--dark-text)]">
                   <Dna className="size-5" />
                 </div>
                 <h3 className="font-display font-bold text-sm text-[var(--foreground)]">

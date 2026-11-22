@@ -43,7 +43,7 @@ export function PrivacySecuritySection() {
             const Icon = pt.icon;
             return (
               <ClayCard key={idx} className="p-6">
-                <div className="size-10 rounded-xl bg-[var(--secondary)] text-[var(--leaf)] flex items-center justify-center mb-4">
+                <div className="clay-icon-tile size-11 text-[var(--leaf)] mb-4 shadow-md">
                   <Icon className="size-5" />
                 </div>
                 <h3 className="text-sm font-bold font-display text-[var(--foreground)] mb-1.5">
