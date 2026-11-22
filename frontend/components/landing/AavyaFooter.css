@@ -198,7 +198,7 @@
 }
 
 /* =========================================
-   AAVYA — SIGNATURE HAND ARTWORK
+   AAVYA — SIGNATURE FEMININE HAND ARTWORK
    ========================================= */
 
 .aavya-hands {
@@ -207,7 +207,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  aspect-ratio: 1024 / 390;
+  aspect-ratio: 1024 / 400;
   overflow: visible;
 
   /* Never distort the hand geometry */
@@ -217,17 +217,57 @@
   user-select: none;
 
   --hand-ink: #BD737D;
+  --hand-outline: #A84D58;
+  --hand-nail: #FFF7F2;
+  --hand-crease: rgba(168, 77, 88, 0.45);
+  --hand-spark: #BD737D;
 }
 
-/* Individual ASCII characters matching reference image */
+/* Monospace ASCII pattern strictly composed of "AAVYA" letters */
 .hand-ascii-char {
   fill: var(--hand-ink);
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 600;
-  text-anchor: start;
-  dominant-baseline: alphabetic;
-  transition: fill 300ms ease;
+  letter-spacing: 1.8px;
+  opacity: 0.88;
+}
+
+/* Delicate feminine outer contour */
+.aavya-hand-outline {
+  fill: none;
+  stroke: var(--hand-outline);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+/* Finger separations, knuckle and wrist creases */
+.aavya-hand-crease {
+  fill: none;
+  stroke: var(--hand-crease);
+  stroke-width: 0.95;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Elegant curved feminine fingernails */
+.aavya-hand-nail {
+  fill: none;
+  stroke: var(--hand-nail);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 2px rgba(255, 244, 245, 0.4));
+}
+
+/* Reaching index fingertip life spark */
+.hand-touch-spark {
+  fill: var(--hand-nail);
+  stroke: var(--hand-spark);
+  stroke-width: 1;
+  filter: drop-shadow(0 0 4px var(--hand-spark));
 }
 
 /* =========================================
@@ -236,6 +276,10 @@
 
 [data-theme="light"] .aavya-hands {
   --hand-ink: #BD737D;
+  --hand-outline: #BD737D;
+  --hand-nail: #FFF7F2;
+  --hand-crease: rgba(189, 115, 125, 0.42);
+  --hand-spark: #BD737D;
 }
 
 /* =========================================
@@ -244,6 +288,10 @@
 
 [data-theme="dark"] .aavya-hands {
   --hand-ink: #C98298;
+  --hand-outline: #E6A9B8;
+  --hand-nail: #FFF4F5;
+  --hand-crease: rgba(201, 130, 152, 0.48);
+  --hand-spark: #E6A9B8;
 }
 
 /* =========================================
@@ -256,7 +304,7 @@
   max-width: 1440px;
   margin: 30px auto 0;
   height: auto;
-  aspect-ratio: 1024 / 390;
+  aspect-ratio: 1024 / 400;
   display: block;
   overflow: hidden;
 }
@@ -266,7 +314,7 @@
   position: absolute;
   z-index: 2;
   left: 50%;
-  top: 48%;
+  top: 44%;
   transform: translate(-50%, -50%);
   width: min(340px, 30%);
   text-align: center;
