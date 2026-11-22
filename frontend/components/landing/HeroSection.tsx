@@ -10,7 +10,7 @@ export function HeroSection() {
   const { isSignedIn } = useUser();
 
   return (
-    <section className="relative overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-20 md:pb-28">
+    <section className="relative overflow-hidden pt-8 sm:pt-12 md:pt-14 pb-20 md:pb-28">
       {/* Ambient Floating Clay Orbs */}
       <div
         className="clay-orb absolute -top-16 -left-16 size-56 opacity-25 pointer-events-none hidden md:block blur-[1px]"

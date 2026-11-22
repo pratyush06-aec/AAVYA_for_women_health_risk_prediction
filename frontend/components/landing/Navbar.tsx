@@ -20,8 +20,8 @@ export function Navbar() {
   const isDoctor = role === "DOCTOR" || DESIGNATED_DOCTOR_EMAILS.includes(userEmail);
 
   return (
-    <header className="sticky top-3 sm:top-4 z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pointer-events-none">
-      <div className="pointer-events-auto rounded-full border border-[rgba(255,245,240,0.85)] bg-[rgba(248,216,206,0.85)] backdrop-blur-xl shadow-[0_10px_28px_rgba(178,105,112,0.16),-4px_-4px_16px_rgba(255,250,248,0.9),inset_0_1px_1px_rgba(255,255,255,0.7)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
+    <header className="relative z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pt-3 sm:pt-4 pointer-events-none">
+      <div className="pointer-events-auto rounded-full border border-[rgba(255,245,240,0.65)] bg-[rgba(248,212,200,0.60)] backdrop-blur-md shadow-[0_8px_24px_rgba(178,105,112,0.14),-4px_-4px_16px_rgba(255,250,248,0.85),inset_0_1px_1px_rgba(255,255,255,0.7)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
         {/* Left: Brand Logo (Only AAVYA text) */}
         <div className="flex-1 flex items-center justify-start">
           <Link href="/" className="flex items-center group">
