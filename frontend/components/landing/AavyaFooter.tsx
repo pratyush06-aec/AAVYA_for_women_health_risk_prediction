@@ -21,7 +21,7 @@ function AavyaHands() {
   return (
     <svg
       className="aavya-hands"
-      viewBox="0 0 1024 390"
+      viewBox="0 0 1024 321"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="Two delicate hands from The Creation of Adam rendered exclusively in characters of AAVYA"
