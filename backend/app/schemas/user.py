@@ -74,3 +74,9 @@ class DoctorProfileUpdateRequest(BaseModel):
     is_available: Optional[bool] = None
     specialization: Optional[str] = None
 
+
+class NewsletterSubscribeRequest(BaseModel):
+    name: Optional[str] = "Subscriber"
+    email: str
+
+

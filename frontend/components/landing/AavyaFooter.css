@@ -1,0 +1,414 @@
+/* ==========================================
+   AAVYA FOOTER — SHARED FOUNDATION
+   ========================================== */
+
+.aavya-footer {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 3.5% 0;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  isolation: isolate;
+  transition: background 300ms ease, color 300ms ease;
+
+  --footer-bg: #F3CBC1;
+  --footer-surface: #F8D8CE;
+  --footer-text: #352326;
+  --footer-muted: #79585A;
+  --footer-accent: #BD737D;
+  --footer-art: #BD737D;
+  --footer-wordmark: rgba(189, 115, 125, 0.15);
+  --footer-border: rgba(189, 115, 125, 0.2);
+}
+
+/* ==========================================
+   LIGHT THEME
+   ========================================== */
+
+[data-theme="light"] .aavya-footer {
+  --footer-bg: #F3CBC1;
+  --footer-surface: #F8D8CE;
+  --footer-text: #352326;
+  --footer-muted: #79585A;
+  --footer-accent: #BD737D;
+  --footer-art: #BD737D;
+  --footer-wordmark: rgba(189, 115, 125, 0.15);
+  --footer-border: rgba(189, 115, 125, 0.2);
+}
+
+/* ==========================================
+   DARK THEME
+   ========================================== */
+
+[data-theme="dark"] .aavya-footer {
+  --footer-bg: #17111C;
+  --footer-surface: #302331;
+  --footer-text: #F4E7EA;
+  --footer-muted: #A994A8;
+  --footer-accent: #E6A9B8;
+  --footer-art: #C98298;
+  --footer-wordmark: rgba(230, 169, 184, 0.09);
+  --footer-border: rgba(230, 169, 184, 0.14);
+}
+
+/* ==========================================
+   TOP GRID
+   ========================================== */
+
+.aavya-footer-top {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 1fr;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+  min-height: 260px;
+}
+
+.aavya-footer-heading {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+
+.aavya-newsletter {
+  max-width: 390px;
+}
+
+/* ==========================================
+   NEWSLETTER FORM
+   ========================================== */
+
+.aavya-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aavya-newsletter-form input {
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--footer-border);
+  border-radius: 10px;
+  outline: none;
+  background: var(--footer-surface);
+  color: var(--footer-text);
+  box-shadow:
+    inset 3px 3px 7px rgba(120, 70, 90, 0.07),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.3);
+  font: inherit;
+}
+
+.aavya-newsletter-form input::placeholder {
+  color: var(--footer-muted);
+}
+
+.aavya-newsletter-form input:focus {
+  border-color: var(--footer-accent);
+  outline: 2px solid var(--footer-border);
+}
+
+.aavya-newsletter-form button {
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  padding: 0 18px;
+  background: linear-gradient(
+    145deg,
+    #D99AAE,
+    #BD737D
+  );
+  color: #FFF7F2;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow:
+    5px 5px 12px rgba(164, 91, 102, 0.18),
+    -4px -4px 10px rgba(255, 235, 226, 0.35);
+  transition: transform 250ms ease;
+}
+
+[data-theme="dark"] .aavya-newsletter-form button {
+  color: #211824;
+}
+
+.aavya-newsletter-form button:hover {
+  transform: translateY(-2px);
+}
+
+.aavya-newsletter-form button span {
+  margin-left: 12px;
+  font-size: 20px;
+}
+
+/* ==========================================
+   FOOTER STATUS
+   ========================================== */
+
+.aavya-footer-muted {
+  color: var(--footer-muted);
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.aavya-footer-status {
+  margin-top: 28px;
+}
+
+.aavya-footer-status p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--footer-muted);
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--footer-accent);
+  border-radius: 2px;
+}
+
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+
+.aavya-footer-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+}
+
+.aavya-footer-navigation a,
+.aavya-footer-contact a {
+  color: var(--footer-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 200ms ease;
+}
+
+.aavya-footer-navigation a:hover,
+.aavya-footer-contact a:hover {
+  color: var(--footer-accent);
+}
+
+/* ==========================================
+   CONTACT
+   ========================================== */
+
+.aavya-footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.aavya-footer-contact a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================
+   HAND ARTWORK
+   ========================================== */
+
+.aavya-footer-artwork {
+  height: 390px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.aavya-hands-art {
+  position: absolute;
+  width: 115%;
+  max-width: none;
+  height: 100%;
+  left: -7.5%;
+  top: 0;
+  color: var(--footer-art);
+  opacity: 0.82;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.aavya-hand-outline {
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.3;
+}
+
+.aavya-nail {
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+.aavya-hand-left {
+  animation: aavya-hand-left 7s ease-in-out infinite alternate;
+}
+
+.aavya-hand-right {
+  animation: aavya-hand-right 7s ease-in-out infinite alternate;
+}
+
+@keyframes aavya-hand-left {
+  from { transform: translateX(-5px); }
+  to { transform: translateX(7px); }
+}
+
+@keyframes aavya-hand-right {
+  from { transform: translateX(5px); }
+  to { transform: translateX(-7px); }
+}
+
+/* ==========================================
+   COPYRIGHT
+   ========================================== */
+
+.aavya-footer-copyright {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--footer-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 14px;
+  background: color-mix(
+    in srgb,
+    var(--footer-bg) 76%,
+    transparent
+  );
+  border-radius: 14px;
+  backdrop-filter: blur(5px);
+}
+
+.aavya-footer-copyright p {
+  margin: 2px 0;
+}
+
+/* ==========================================
+   GIANT BRAND WORDMARK
+   ========================================== */
+
+.aavya-footer-brand {
+  position: relative;
+  z-index: 1;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(120px, 24vw, 440px);
+  font-weight: 800;
+  line-height: 0.78;
+  letter-spacing: -0.09em;
+  white-space: nowrap;
+  text-align: center;
+  color: var(--footer-wordmark);
+  user-select: none;
+  pointer-events: none;
+  margin-top: -15px;
+  margin-left: -0.05em;
+}
+
+/* ==========================================
+   BOTTOM BAR
+   ========================================== */
+
+.aavya-footer-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  border-top: 1px solid var(--footer-border);
+  color: var(--footer-muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 900px) {
+  .aavya-footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .aavya-newsletter {
+    grid-column: 1 / -1;
+  }
+
+  .aavya-footer-navigation {
+    align-items: flex-start;
+  }
+
+  .aavya-footer-contact {
+    align-items: flex-start;
+  }
+
+  .aavya-footer-artwork {
+    height: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .aavya-footer {
+    padding: 40px 20px 0;
+  }
+
+  .aavya-footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px 20px;
+  }
+
+  .aavya-newsletter {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+
+  .aavya-footer-contact {
+    align-items: flex-start;
+  }
+
+  .aavya-footer-artwork {
+    height: 210px;
+    margin-top: 35px;
+  }
+
+  .aavya-hands-art {
+    width: 150%;
+    left: -25%;
+    opacity: 0.7;
+  }
+
+  .aavya-footer-copyright {
+    font-size: 11px;
+  }
+
+  .aavya-footer-brand {
+    font-size: 25vw;
+    letter-spacing: -0.08em;
+  }
+
+  .aavya-footer-bottom {
+    flex-direction: column;
+    font-size: 9px;
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aavya-hand-left,
+  .aavya-hand-right {
+    animation: none;
+  }
+}

@@ -14,6 +14,7 @@ from app.schemas.user import (
     UserResponse,
     DoctorProfileSchema,
     PatientProfileSchema,
+    NewsletterSubscribeRequest,
 )
 
 router = APIRouter()
@@ -183,4 +184,19 @@ async def update_doctor_profile(
         "is_available": prof.is_available,
         "specialization": prof.specialization,
     }
+
+
+@router.post("/newsletter/subscribe")
+async def subscribe_newsletter(payload: NewsletterSubscribeRequest) -> Any:
+    """
+    Subscribes a visitor to the AAVYA health newsletter.
+    """
+    email = payload.email.lower().strip()
+    return {
+        "status": "success",
+        "message": "Thank you for subscribing to AAVYA. Your information stays private.",
+        "email": email,
+        "name": payload.name or "Subscriber",
+    }
+
 

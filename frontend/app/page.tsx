@@ -7,7 +7,7 @@ import { AssessmentPreviewSection } from "@/components/landing/AssessmentPreview
 import { DoctorNetworkSection } from "@/components/landing/DoctorNetworkSection";
 import { PrivacySecuritySection } from "@/components/landing/PrivacySecuritySection";
 import { FaqSection } from "@/components/landing/FaqSection";
-import { Footer } from "@/components/landing/Footer";
+import { AavyaFooter } from "@/components/landing/AavyaFooter";
 
 export default function HomePage() {
   return (
@@ -36,8 +36,8 @@ export default function HomePage() {
       {/* 8. Interactive FAQ Accordion (Opens on Hover) */}
       <FaqSection />
 
-      {/* 9. Comprehensive Footer */}
-      <Footer />
+      {/* 9. AAVYA Signature Footer with Hand Artwork & Newsletter */}
+      <AavyaFooter />
     </main>
   );
 }
