@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { X, Send, Sparkles, Bot, User, ShieldCheck, ChevronRight, Activity } from "lucide-react";
+import { X, Send, Sparkles, Bot, User, ChevronRight, Activity } from "lucide-react";
 
 interface Message {
   id: string;

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import "./AavyaFooter.css";
+import { HAND_CHARS } from "./handsData";
 
 interface NavigationItem {
   label: string;
@@ -20,215 +21,24 @@ function AavyaHands() {
   return (
     <svg
       className="aavya-hands"
-      viewBox="0 0 1781 425"
+      viewBox="0 0 1024 390"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Two delicate hands formed from tiny characters"
+      aria-label="Two delicate hands from The Creation of Adam rendered exclusively in characters of AAVYA"
       preserveAspectRatio="xMidYMid meet"
     >
-      <defs>
-        {/* ASCII character texture */}
-        <pattern
-          id="aavya-ascii"
-          width="42"
-          height="28"
-          patternUnits="userSpaceOnUse"
-        >
-          <g
-            className="hand-ascii"
-            fontFamily="monospace"
-            fontSize="9"
-            fontWeight="400"
-            letterSpacing="2"
+      <g className="hand-ascii-group">
+        {HAND_CHARS.map(([x, y, char, opacity], i) => (
+          <text
+            key={i}
+            x={x}
+            y={y}
+            opacity={opacity}
+            className="hand-ascii-char"
           >
-            <text x="1" y="9">a v . : +</text>
-            <text x="5" y="22">: / o . a</text>
-          </g>
-        </pattern>
-
-        {/* LEFT HAND CLIPPING */}
-        <clipPath id="left-hand-mask">
-          <path
-            d="
-              M 45 273
-              C 105 255 168 235 224 208
-              C 287 179 345 151 384 110
-
-              L 461 44
-              C 471 36 483 36 491 43
-              C 501 51 498 63 490 73
-              L 450 124
-
-              L 515 72
-              C 527 62 542 63 550 73
-              C 558 83 551 95 541 105
-              L 477 170
-
-              L 548 121
-              C 561 111 576 114 583 125
-              C 591 138 578 149 566 159
-              L 502 211
-
-              L 570 180
-              C 585 171 600 176 606 187
-              C 613 201 600 211 587 220
-
-              C 527 259 467 296 410 318
-              C 391 326 373 330 357 329
-
-              C 306 342 254 360 207 376
-              L 84 376
-              L 84 304
-              C 72 294 57 283 45 273
-              Z
-            "
-          />
-        </clipPath>
-
-        {/* RIGHT HAND CLIPPING */}
-        <clipPath id="right-hand-mask">
-          <path
-            d="
-              M 45 273
-              C 105 255 168 235 224 208
-              C 287 179 345 151 384 110
-
-              L 461 44
-              C 471 36 483 36 491 43
-              C 501 51 498 63 490 73
-              L 450 124
-
-              L 515 72
-              C 527 62 542 63 550 73
-              C 558 83 551 95 541 105
-              L 477 170
-
-              L 548 121
-              C 561 111 576 114 583 125
-              C 591 138 578 149 566 159
-              L 502 211
-
-              L 570 180
-              C 585 171 600 176 606 187
-              C 613 201 600 211 587 220
-
-              C 527 259 467 296 410 318
-              C 391 326 373 330 357 329
-
-              C 306 342 254 360 207 376
-              L 84 376
-              L 84 304
-              C 72 294 57 283 45 273
-              Z
-            "
-          />
-        </clipPath>
-      </defs>
-
-      {/* =================================
-          LEFT HAND
-         ================================= */}
-      <g className="aavya-left-hand">
-        <rect
-          x="0"
-          y="0"
-          width="650"
-          height="425"
-          fill="url(#aavya-ascii)"
-          clipPath="url(#left-hand-mask)"
-        />
-
-        <path
-          className="hand-outline"
-          d="
-            M 45 273
-            C 105 255 168 235 224 208
-            C 287 179 345 151 384 110
-            L 461 44
-            C 471 36 483 36 491 43
-            C 501 51 498 63 490 73
-            L 450 124
-            L 515 72
-            C 527 62 542 63 550 73
-            C 558 83 551 95 541 105
-            L 477 170
-            L 548 121
-            C 561 111 576 114 583 125
-            C 591 138 578 149 566 159
-            L 502 211
-            L 570 180
-            C 585 171 600 176 606 187
-            C 613 201 600 211 587 220
-            C 527 259 467 296 410 318
-            C 391 326 373 330 357 329
-            C 306 342 254 360 207 376
-          "
-        />
-
-        {/* Finger separation details */}
-        <g className="hand-details">
-          <path d="M 450 124 Q 468 99 489 73" />
-          <path d="M 477 170 Q 507 143 541 105" />
-          <path d="M 502 211 Q 530 184 566 159" />
-
-          {/* Fingertip and nail details */}
-          <path d="M 477 40 Q 490 34 498 48" />
-          <path d="M 537 65 Q 552 62 557 78" />
-          <path d="M 573 115 Q 588 119 587 134" />
-        </g>
-      </g>
-
-      {/* =================================
-          RIGHT HAND - PERFECT MIRROR
-         ================================= */}
-      <g
-        className="aavya-right-hand"
-        transform="translate(1781 0) scale(-1 1)"
-      >
-        <rect
-          x="0"
-          y="0"
-          width="650"
-          height="425"
-          fill="url(#aavya-ascii)"
-          clipPath="url(#right-hand-mask)"
-        />
-
-        <path
-          className="hand-outline"
-          d="
-            M 45 273
-            C 105 255 168 235 224 208
-            C 287 179 345 151 384 110
-            L 461 44
-            C 471 36 483 36 491 43
-            C 501 51 498 63 490 73
-            L 450 124
-            L 515 72
-            C 527 62 542 63 550 73
-            C 558 83 551 95 541 105
-            L 477 170
-            L 548 121
-            C 561 111 576 114 583 125
-            C 591 138 578 149 566 159
-            L 502 211
-            L 570 180
-            C 585 171 600 176 606 187
-            C 613 201 600 211 587 220
-            C 527 259 467 296 410 318
-            C 391 326 373 330 357 329
-            C 306 342 254 360 207 376
-          "
-        />
-
-        <g className="hand-details">
-          <path d="M 450 124 Q 468 99 489 73" />
-          <path d="M 477 170 Q 507 143 541 105" />
-          <path d="M 502 211 Q 530 184 566 159" />
-          <path d="M 477 40 Q 490 34 498 48" />
-          <path d="M 537 65 Q 552 62 557 78" />
-          <path d="M 573 115 Q 588 119 587 134" />
-        </g>
+            {char}
+          </text>
+        ))}
       </g>
     </svg>
   );

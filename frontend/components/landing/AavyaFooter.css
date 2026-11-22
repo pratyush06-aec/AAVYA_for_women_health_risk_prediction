@@ -203,44 +203,31 @@
 
 .aavya-hands {
   display: block;
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1781 / 425;
+  height: 100%;
+  aspect-ratio: 1024 / 390;
   overflow: visible;
 
   /* Never distort the hand geometry */
   transform: none;
   animation: none;
   pointer-events: none;
+  user-select: none;
 
   --hand-ink: #BD737D;
 }
 
-/* ASCII texture */
-.hand-ascii {
+/* Individual ASCII characters matching reference image */
+.hand-ascii-char {
   fill: var(--hand-ink);
-  opacity: 0.9;
-}
-
-/* Hand perimeter */
-.hand-outline {
-  fill: none;
-  stroke: var(--hand-ink);
-  stroke-width: 1.15;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.52;
-}
-
-/* Finger creases and nail details */
-.hand-details {
-  fill: none;
-  stroke: var(--hand-ink);
-  stroke-width: 1.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.65;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 8px;
+  font-weight: 600;
+  text-anchor: start;
+  dominant-baseline: alphabetic;
+  transition: fill 300ms ease;
 }
 
 /* =========================================
@@ -266,31 +253,28 @@
 .aavya-footer-artwork {
   position: relative;
   width: 100%;
-  max-width: 1781px;
-  margin: 20px auto 0;
+  max-width: 1440px;
+  margin: 30px auto 0;
   height: auto;
-  aspect-ratio: 1781 / 425;
+  aspect-ratio: 1024 / 390;
   display: block;
   overflow: hidden;
 }
 
-.aavya-hands {
-  position: absolute;
-  inset: 0;
-}
-
-/* Copyright positioned between hands */
+/* Copyright positioned precisely in the negative space between hands */
 .aavya-footer-copyright {
   position: absolute;
   z-index: 2;
   left: 50%;
-  top: 38%;
+  top: 48%;
   transform: translate(-50%, -50%);
-  width: min(360px, 32%);
+  width: min(340px, 30%);
   text-align: center;
   background: transparent;
   backdrop-filter: none;
   padding: 0;
+  pointer-events: none;
+  color: var(--footer-text);
 }
 
 /* ==========================================
@@ -310,7 +294,7 @@
   color: var(--footer-wordmark);
   user-select: none;
   pointer-events: none;
-  margin-top: -15px;
+  margin-top: -30px;
   margin-left: -0.05em;
 }
 

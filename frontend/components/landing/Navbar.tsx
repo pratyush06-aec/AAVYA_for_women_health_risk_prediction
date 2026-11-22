@@ -164,13 +164,13 @@ export function Navbar() {
               <span>Find Doctors</span>
               <span className="text-[10px] bg-[var(--surface-secondary)] text-[var(--leaf)] px-1.5 py-0.2 rounded-full font-bold border border-[rgba(91,130,102,0.25)]">Live</span>
             </Link>
-            <a
+            <Link
               href="/#faq"
               onClick={() => setMobileMenuOpen(false)}
               className="text-[var(--foreground)] hover:text-[var(--primary)]"
             >
               FAQ
-            </a>
+            </Link>
           </nav>
           <div className="pt-2 border-t border-[var(--border)] flex flex-col gap-2">
             {isSignedIn ? (
