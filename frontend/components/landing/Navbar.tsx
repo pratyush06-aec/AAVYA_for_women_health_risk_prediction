@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useUser, UserButton } from "@clerk/nextjs";
 import { ArrowRight, Menu, X, User, LayoutDashboard, Stethoscope } from "lucide-react";
 import { ClayButton } from "@/components/ui/ClayButton";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { useThemeInfo } from "@/components/theme/ThemeProvider";
 
 const DESIGNATED_DOCTOR_EMAILS = [
   "pratyush0306@gmail.com",
@@ -15,6 +15,7 @@ const DESIGNATED_DOCTOR_EMAILS = [
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, isSignedIn } = useUser();
+  const { switchLabel, icon: themeIcon, rotateTheme } = useThemeInfo();
 
   const userEmail = user?.primaryEmailAddress?.emailAddress?.toLowerCase() || "";
   const role = (user?.publicMetadata?.role as string)?.toUpperCase();
@@ -63,8 +64,7 @@ export function Navbar() {
         {/* Right: CTA / Auth Controls */}
         <div className="hidden sm:flex items-center justify-end gap-3 shrink-0">
           {isSignedIn ? (
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
+            <div className="flex items-center">
               <UserButton
                 appearance={{
                   elements: {
@@ -73,6 +73,11 @@ export function Navbar() {
                 }}
               >
                 <UserButton.MenuItems>
+                  <UserButton.Action
+                    label={switchLabel}
+                    labelIcon={themeIcon}
+                    onClick={rotateTheme}
+                  />
                   {isDoctor ? (
                     <>
                       <UserButton.Link
@@ -193,10 +198,6 @@ export function Navbar() {
                     </ClayButton>
                   </Link>
                 )}
-                <div className="flex items-center justify-between pt-2 px-1 border-t border-[var(--border)]">
-                  <span className="text-xs text-[var(--muted-foreground)]">Theme Mode</span>
-                  <ThemeToggle showLabel />
-                </div>
                 <div className="flex items-center justify-between pt-2 px-1 border-t border-[var(--border)]">
                   <span className="text-xs text-[var(--muted-foreground)]">Account Settings</span>
                   <UserButton />

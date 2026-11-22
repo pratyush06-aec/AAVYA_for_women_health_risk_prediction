@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
 import { Badge } from "@/components/ui/Badge";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { useThemeInfo } from "@/components/theme/ThemeProvider";
 import { syncUserWithNeonDB, UserAccount } from "@/lib/auth";
 
 interface DoctorAppointment {
@@ -68,6 +68,7 @@ interface PatientAssessmentData {
 export default function DoctorDashboardPage() {
   const router = useRouter();
   const { user, isLoaded } = useUser();
+  const { switchLabel, icon: themeIcon, rotateTheme } = useThemeInfo();
 
   const [account, setAccount] = useState<UserAccount | null>(null);
   const [appointments, setAppointments] = useState<DoctorAppointment[]>([]);
@@ -337,8 +338,21 @@ export default function DoctorDashboardPage() {
               <ShieldCheck className="size-3 text-[var(--leaf)]" />
               <span>Medical License Verified</span>
             </Badge>
-            <ThemeToggle />
-            <UserButton />
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "size-8 ring-2 ring-[var(--primary)]/30 hover:ring-[var(--primary)]/60 transition-all shadow-md",
+                },
+              }}
+            >
+              <UserButton.MenuItems>
+                <UserButton.Action
+                  label={switchLabel}
+                  labelIcon={themeIcon}
+                  onClick={rotateTheme}
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </div>
         </div>
       </header>
@@ -573,7 +587,7 @@ export default function DoctorDashboardPage() {
                     {/* View Patient Risk Report Button (Phase 8) */}
                     <button
                       onClick={() => handleViewPatientAssessment(appt)}
-                      className="px-3 py-1.5 rounded-lg border border-[var(--border)] bg-white text-xs font-semibold text-[var(--foreground)] hover:bg-stone-50 transition-colors flex items-center gap-1.5"
+                      className="px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] text-xs font-semibold text-[var(--foreground)] hover:bg-[var(--surface-highlight)] transition-colors flex items-center gap-1.5"
                     >
                       {appt.consent_share_report === false ? (
                         <>
@@ -780,9 +794,9 @@ export default function DoctorDashboardPage() {
                       {selectedAssessment.top_contributing_factors.map((f, idx) => (
                         <div
                           key={idx}
-                          className="p-2.5 rounded-lg border border-[var(--border)] bg-white flex items-center justify-between text-xs"
+                          className="p-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] flex items-center justify-between text-xs"
                         >
-                          <span className="font-medium text-stone-800">{f.feature}</span>
+                          <span className="font-medium text-[var(--foreground)]">{f.feature}</span>
                           <span className="font-bold tabular-nums text-[var(--primary)]">
                             {f.impact > 0 ? `+${f.impact}` : f.impact}
                           </span>

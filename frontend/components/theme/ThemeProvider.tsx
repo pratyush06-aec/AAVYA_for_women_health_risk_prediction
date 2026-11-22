@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
+import { Sun, Moon, Laptop } from "lucide-react";
 
 export type Theme = "light" | "dark" | "system";
 
@@ -112,4 +113,33 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme() {
   return useContext(ThemeContext);
+}
+
+export function useThemeInfo() {
+  const { theme, rotateTheme, resolvedTheme, isSignedIn } = useTheme();
+
+  const getDetails = () => {
+    switch (theme) {
+      case "dark":
+        return {
+          label: "Dark",
+          switchLabel: "Theme: Dark (Switch to Light)",
+          icon: <Moon className="size-4 text-[#E6A9B8]" />,
+        };
+      case "light":
+        return {
+          label: "Light",
+          switchLabel: "Theme: Light (Switch to System)",
+          icon: <Sun className="size-4 text-[#BD737D]" />,
+        };
+      case "system":
+        return {
+          label: "System",
+          switchLabel: "Theme: System (Switch to Dark)",
+          icon: <Laptop className="size-4 text-[var(--muted-foreground)]" />,
+        };
+    }
+  };
+
+  return { ...getDetails(), rotateTheme, theme, resolvedTheme, isSignedIn };
 }

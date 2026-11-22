@@ -24,7 +24,7 @@ import {
 import { ClayCard } from "@/components/ui/ClayCard";
 import { ClayButton } from "@/components/ui/ClayButton";
 import { Badge } from "@/components/ui/Badge";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { useThemeInfo } from "@/components/theme/ThemeProvider";
 import { syncUserWithNeonDB, UserAccount } from "@/lib/auth";
 
 interface DoctorDirectoryItem {
@@ -76,6 +76,7 @@ interface PatientAppointment {
 export default function PatientDashboardPage() {
   const router = useRouter();
   const { user, isLoaded } = useUser();
+  const { switchLabel, icon: themeIcon, rotateTheme } = useThemeInfo();
 
   const [account, setAccount] = useState<UserAccount | null>(null);
   const [doctors, setDoctors] = useState<DoctorDirectoryItem[]>([]);
@@ -231,19 +232,25 @@ export default function PatientDashboardPage() {
               <span className="font-display font-bold text-lg text-[var(--foreground)] tracking-tight">
                 AAVYA Patient Portal
               </span>
-              <span className="text-[10px] uppercase tracking-wider text-[var(--muted-foreground)] -mt-0.5 font-medium">
-                Role: Patient
-              </span>
             </div>
           </Link>
 
-          <div className="flex items-center gap-4">
-            <Badge variant="sage" className="hidden sm:inline-flex">
-              <ShieldCheck className="size-3 text-[var(--leaf)]" />
-              <span>NeonDB Synced</span>
-            </Badge>
-            <ThemeToggle />
-            <UserButton />
+          <div className="flex items-center">
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "size-8 ring-2 ring-[var(--primary)]/30 hover:ring-[var(--primary)]/60 transition-all shadow-md",
+                },
+              }}
+            >
+              <UserButton.MenuItems>
+                <UserButton.Action
+                  label={switchLabel}
+                  labelIcon={themeIcon}
+                  onClick={rotateTheme}
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </div>
         </div>
       </header>
@@ -424,9 +431,9 @@ export default function PatientDashboardPage() {
                         <button
                           type="button"
                           onClick={() => setExpandedAssessmentId(isExpanded ? null : a.id)}
-                          className="px-3 py-1.5 rounded-lg border border-[var(--border)] bg-white text-xs font-semibold text-[var(--foreground)] hover:bg-stone-50 flex items-center gap-1"
+                          className="px-3.5 py-1.5 rounded-full border border-[var(--border)] bg-[var(--surface-secondary)] text-xs font-semibold text-[var(--foreground)] hover:bg-[var(--surface-highlight)] transition-colors flex items-center gap-1.5 shadow-xs"
                         >
-                          {isExpanded ? <ChevronUp className="size-3.5" /> : <ChevronDown className="size-3.5" />}
+                          {isExpanded ? <ChevronUp className="size-3.5 text-[var(--primary)]" /> : <ChevronDown className="size-3.5 text-[var(--primary)]" />}
                           <span>{isExpanded ? "Hide Biomarkers" : "Inspect Biomarkers"}</span>
                         </button>
                         <Link href="/assessment">
@@ -441,21 +448,21 @@ export default function PatientDashboardPage() {
                     {isExpanded && (
                       <div className="pt-3 border-t border-[var(--border)] space-y-3 animate-fadeIn text-xs">
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                          <div className="p-2.5 rounded-lg bg-white border border-stone-200">
-                            <span className="text-[10px] text-stone-500 uppercase block font-medium">Cycle Status</span>
-                            <span className="font-bold text-stone-900">{String(a.input_features?.["Cycle(R/I)"] || "Regular")}</span>
+                          <div className="p-2.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)]">
+                            <span className="text-[10px] text-[var(--muted-foreground)] uppercase block font-medium">Cycle Status</span>
+                            <span className="font-bold text-[var(--foreground)]">{String(a.input_features?.["Cycle(R/I)"] || "Regular")}</span>
                           </div>
-                          <div className="p-2.5 rounded-lg bg-white border border-stone-200">
-                            <span className="text-[10px] text-stone-500 uppercase block font-medium">BMI</span>
-                            <span className="font-bold text-stone-900">{String(a.input_features?.["BMI"] || "24.5")}</span>
+                          <div className="p-2.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)]">
+                            <span className="text-[10px] text-[var(--muted-foreground)] uppercase block font-medium">BMI</span>
+                            <span className="font-bold text-[var(--foreground)]">{String(a.input_features?.["BMI"] || "24.5")}</span>
                           </div>
-                          <div className="p-2.5 rounded-lg bg-white border border-stone-200">
-                            <span className="text-[10px] text-stone-500 uppercase block font-medium">Hirsutism</span>
-                            <span className="font-bold text-stone-900">{String(a.input_features?.["hair growth(Y/N)"] || "No")}</span>
+                          <div className="p-2.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)]">
+                            <span className="text-[10px] text-[var(--muted-foreground)] uppercase block font-medium">Hirsutism</span>
+                            <span className="font-bold text-[var(--foreground)]">{String(a.input_features?.["hair growth(Y/N)"] || "No")}</span>
                           </div>
-                          <div className="p-2.5 rounded-lg bg-white border border-stone-200">
-                            <span className="text-[10px] text-stone-500 uppercase block font-medium">Acne / Breakouts</span>
-                            <span className="font-bold text-stone-900">{String(a.input_features?.["Pimples(Y/N)"] || "No")}</span>
+                          <div className="p-2.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border)]">
+                            <span className="text-[10px] text-[var(--muted-foreground)] uppercase block font-medium">Acne / Breakouts</span>
+                            <span className="font-bold text-[var(--foreground)]">{String(a.input_features?.["Pimples(Y/N)"] || "No")}</span>
                           </div>
                         </div>
 

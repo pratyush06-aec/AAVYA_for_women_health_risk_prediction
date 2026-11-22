@@ -31,7 +31,7 @@ export function PrivacySecuritySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-[var(--foreground)]">
-            Privacy-First Health Architecture
+            Your privacy is our priority
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] mt-2.5">
             Your reproductive and metabolic health data deserves the highest echelon of security and patient dignity.
