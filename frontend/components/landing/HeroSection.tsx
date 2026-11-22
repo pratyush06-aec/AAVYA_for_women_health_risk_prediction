@@ -10,18 +10,18 @@ export function HeroSection() {
   const { isSignedIn } = useUser();
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
+    <section className="relative overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-20 md:pb-28">
       {/* Ambient Floating Clay Orbs */}
       <div
-        className="clay-orb absolute -top-10 -left-10 size-48 opacity-45 pointer-events-none hidden md:block"
+        className="clay-orb absolute -top-16 -left-16 size-56 opacity-25 pointer-events-none hidden md:block blur-[1px]"
         aria-hidden="true"
       />
       <div
-        className="clay-blob absolute top-1/3 -right-16 size-64 opacity-35 pointer-events-none hidden lg:block"
+        className="clay-blob absolute top-1/4 -right-32 size-80 opacity-20 pointer-events-none hidden lg:block blur-[1px]"
         aria-hidden="true"
       />
       <div
-        className="clay-orb absolute bottom-8 left-8 size-32 opacity-30 pointer-events-none hidden md:block"
+        className="clay-orb absolute bottom-6 left-10 size-28 opacity-20 pointer-events-none hidden md:block blur-[1px]"
         aria-hidden="true"
       />
 
