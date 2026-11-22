@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ChatbotDrawer } from "@/components/chat/ChatbotDrawer";
 import "./globals.css";
 
@@ -27,10 +28,12 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className="antialiased selection:bg-[#E99196] selection:text-[#352326]">
-          {children}
-          <ChatbotDrawer />
+          <ThemeProvider>
+            {children}
+            <ChatbotDrawer />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

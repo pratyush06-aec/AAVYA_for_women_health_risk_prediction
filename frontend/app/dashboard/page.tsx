@@ -24,6 +24,7 @@ import {
 import { ClayCard } from "@/components/ui/ClayCard";
 import { ClayButton } from "@/components/ui/ClayButton";
 import { Badge } from "@/components/ui/Badge";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { syncUserWithNeonDB, UserAccount } from "@/lib/auth";
 
 interface DoctorDirectoryItem {
@@ -241,6 +242,7 @@ export default function PatientDashboardPage() {
               <ShieldCheck className="size-3 text-[var(--leaf)]" />
               <span>NeonDB Synced</span>
             </Badge>
+            <ThemeToggle />
             <UserButton />
           </div>
         </div>

@@ -15,9 +15,9 @@ export function ClayButton({
   ...props
 }: ClayButtonProps) {
   const sizeStyles = {
-    sm: "px-4 py-2 text-xs min-h-[36px]",
-    md: "px-6 py-3 text-sm min-h-[44px]",
-    lg: "px-8 py-3.5 text-base min-h-[48px]",
+    sm: "px-3.5 py-1.5 text-xs min-h-[32px] h-8 whitespace-nowrap",
+    md: "px-6 py-2.5 text-sm min-h-[42px] whitespace-nowrap",
+    lg: "px-8 py-3.5 text-base min-h-[48px] whitespace-nowrap",
   };
 
   const variantStyles = {

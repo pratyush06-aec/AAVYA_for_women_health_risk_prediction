@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { ClayCard } from "@/components/ui/ClayCard";
 import { Badge } from "@/components/ui/Badge";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { syncUserWithNeonDB, UserAccount } from "@/lib/auth";
 
 interface DoctorAppointment {
@@ -336,6 +337,7 @@ export default function DoctorDashboardPage() {
               <ShieldCheck className="size-3 text-[var(--leaf)]" />
               <span>Medical License Verified</span>
             </Badge>
+            <ThemeToggle />
             <UserButton />
           </div>
         </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useUser, UserButton } from "@clerk/nextjs";
 import { ArrowRight, Menu, X, User, LayoutDashboard, Stethoscope } from "lucide-react";
 import { ClayButton } from "@/components/ui/ClayButton";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const DESIGNATED_DOCTOR_EMAILS = [
   "pratyush0306@gmail.com",
@@ -20,10 +21,10 @@ export function Navbar() {
   const isDoctor = role === "DOCTOR" || DESIGNATED_DOCTOR_EMAILS.includes(userEmail);
 
   return (
-    <header className="sticky top-3 sm:top-4 z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pointer-events-none transition-all duration-300">
-      <div className="pointer-events-auto rounded-full border border-[rgba(255,245,240,0.55)] bg-[rgba(248,212,200,0.30)] backdrop-blur-xl shadow-[0_12px_32px_rgba(178,105,112,0.18),-4px_-4px_16px_rgba(255,250,248,0.80),inset_0_1px_1.5px_rgba(255,255,255,0.85)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200">
+    <header className="relative z-50 pt-3 sm:pt-4 px-3 sm:px-6 w-full max-w-6xl mx-auto pointer-events-none transition-all duration-300">
+      <div className="pointer-events-auto rounded-full border border-[rgba(255,245,240,0.55)] bg-[rgba(248,212,200,0.25)] backdrop-blur-xl shadow-[0_12px_32px_rgba(178,105,112,0.18),-4px_-4px_16px_rgba(255,250,248,0.80),inset_0_1px_1.5px_rgba(255,255,255,0.85)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200 gap-4 sm:gap-6">
         {/* Left: Brand Logo (Only AAVYA text) */}
-        <div className="flex-1 flex items-center justify-start">
+        <div className="flex items-center shrink-0">
           <Link href="/" className="flex items-center group">
             <span className="font-display font-bold text-2xl text-[var(--foreground)] tracking-tight hover:text-[var(--primary)] transition-colors">
               AAVYA
@@ -31,14 +32,16 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Desktop Navigation Links (Equally Spaced) */}
-        <nav className="hidden md:flex items-center justify-center gap-9 lg:gap-14 text-sm font-medium text-[var(--foreground)]">
+        {/* Center: Desktop Navigation Links (Equally Spaced & Non-congested) */}
+        <nav className="hidden md:flex items-center justify-center flex-1 gap-8 lg:gap-12 text-sm font-medium text-[var(--foreground)]">
           <Link
             href={isSignedIn ? "/assessment" : "/sign-in?redirect_url=/assessment"}
             className="text-[var(--primary)] font-semibold hover:opacity-80 transition-opacity flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>PCOS Assessment</span>
-            <span className="text-[10px] clay-badge px-2 py-0.5 font-bold">New</span>
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--surface-highlight)] text-[var(--deep-rose)] border border-[rgba(189,115,125,0.25)] leading-none shrink-0 shadow-xs">
+              New
+            </span>
           </Link>
           <Link
             href="/#about"
@@ -51,19 +54,21 @@ export function Navbar() {
             className="hover:text-[var(--primary)] transition-colors duration-150 flex items-center gap-1.5 whitespace-nowrap"
           >
             <span>Find Doctors</span>
-            <span className="text-[10px] clay-badge px-2 py-0.5 font-bold text-[var(--leaf)]">Live</span>
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[var(--surface-secondary)] text-[var(--leaf)] border border-[rgba(91,130,102,0.25)] leading-none shrink-0 shadow-xs">
+              Live
+            </span>
           </Link>
         </nav>
 
         {/* Right: CTA / Auth Controls */}
-        <div className="flex-1 hidden sm:flex items-center justify-end gap-3.5">
+        <div className="hidden sm:flex items-center justify-end gap-3 shrink-0">
           {isSignedIn ? (
-            <div className="flex items-center">
-              {/* Profile icon with custom dropdown menu item routing to doctor/student dashboard */}
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
               <UserButton
                 appearance={{
                   elements: {
-                    avatarBox: "size-9 ring-2 ring-[var(--primary)]/30 hover:ring-[var(--primary)]/60 transition-all shadow-md",
+                    avatarBox: "size-8 ring-2 ring-[var(--primary)]/30 hover:ring-[var(--primary)]/60 transition-all shadow-md",
                   },
                 }}
               >
@@ -92,17 +97,25 @@ export function Navbar() {
               </UserButton>
             </div>
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               <Link href="/sign-in">
-                <ClayButton variant="secondary" size="sm" className="gap-1.5 py-1.5 px-4 min-h-[38px] text-xs">
-                  <User className="size-3.5" />
+                <ClayButton
+                  variant="secondary"
+                  size="sm"
+                  className="h-8 px-3.5 py-1 text-xs font-semibold whitespace-nowrap min-h-[32px] gap-1.5 shadow-sm"
+                >
+                  <User className="size-3.5 shrink-0" />
                   <span>Sign In</span>
                 </ClayButton>
               </Link>
               <Link href="/sign-in?redirect_url=/assessment">
-                <ClayButton variant="primary" size="sm" className="gap-1.5 py-1.5 px-4 min-h-[38px] text-xs">
+                <ClayButton
+                  variant="primary"
+                  size="sm"
+                  className="h-8 px-3.5 py-1 text-xs font-semibold whitespace-nowrap min-h-[32px] gap-1.5 shadow-sm"
+                >
                   <span>Start Assessment</span>
-                  <ArrowRight className="size-3.5" />
+                  <ArrowRight className="size-3.5 shrink-0" />
                 </ClayButton>
               </Link>
             </div>
@@ -180,6 +193,10 @@ export function Navbar() {
                     </ClayButton>
                   </Link>
                 )}
+                <div className="flex items-center justify-between pt-2 px-1 border-t border-[var(--border)]">
+                  <span className="text-xs text-[var(--muted-foreground)]">Theme Mode</span>
+                  <ThemeToggle showLabel />
+                </div>
                 <div className="flex items-center justify-between pt-2 px-1 border-t border-[var(--border)]">
                   <span className="text-xs text-[var(--muted-foreground)]">Account Settings</span>
                   <UserButton />
