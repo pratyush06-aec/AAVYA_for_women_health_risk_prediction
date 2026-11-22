@@ -61,7 +61,7 @@
   gap: 60px;
   position: relative;
   z-index: 2;
-  min-height: 260px;
+  min-height: 240px;
 }
 
 .aavya-footer-heading {
@@ -140,35 +140,10 @@
   font-size: 20px;
 }
 
-/* ==========================================
-   FOOTER STATUS
-   ========================================== */
-
 .aavya-footer-muted {
   color: var(--footer-muted);
   font-size: 12px;
   margin-top: 12px;
-}
-
-.aavya-footer-status {
-  margin-top: 28px;
-}
-
-.aavya-footer-status p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--footer-muted);
-  font-family: monospace;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-}
-
-.status-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--footer-accent);
-  border-radius: 2px;
 }
 
 /* ==========================================
@@ -182,21 +157,19 @@
   gap: 17px;
 }
 
-.aavya-footer-navigation a,
-.aavya-footer-contact a {
+.aavya-footer-navigation a {
   color: var(--footer-muted);
   text-decoration: none;
   font-size: 13px;
   transition: color 200ms ease;
 }
 
-.aavya-footer-navigation a:hover,
-.aavya-footer-contact a:hover {
+.aavya-footer-navigation a:hover {
   color: var(--footer-accent);
 }
 
 /* ==========================================
-   CONTACT
+   CONTACT (STATIC CLICKABLES)
    ========================================== */
 
 .aavya-footer-contact {
@@ -206,93 +179,118 @@
   gap: 14px;
 }
 
+.aavya-footer-contact .static-link,
 .aavya-footer-contact a {
+  color: var(--footer-muted);
   text-decoration: underline;
   text-underline-offset: 4px;
+  font-size: 13px;
+  cursor: default;
+  user-select: text;
 }
 
-/* ==========================================
-   HAND ARTWORK
-   ========================================== */
+.aavya-footer-contact .static-email {
+  color: var(--footer-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 13px;
+  cursor: default;
+}
 
-.aavya-footer-artwork {
-  height: 390px;
+/* =========================================
+   AAVYA — SIGNATURE HAND ARTWORK
+   ========================================= */
+
+.aavya-hands {
+  display: block;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.aavya-hands-art {
-  position: absolute;
-  width: 115%;
-  max-width: none;
-  height: 100%;
-  left: -7.5%;
-  top: 0;
-  color: var(--footer-art);
-  opacity: 0.82;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1781 / 425;
   overflow: visible;
+
+  /* Never distort the hand geometry */
+  transform: none;
+  animation: none;
   pointer-events: none;
+
+  --hand-ink: #BD737D;
 }
 
-.aavya-hand-outline {
-  stroke: currentColor;
-  stroke-width: 1.2;
+/* ASCII texture */
+.hand-ascii {
+  fill: var(--hand-ink);
+  opacity: 0.9;
+}
+
+/* Hand perimeter */
+.hand-outline {
+  fill: none;
+  stroke: var(--hand-ink);
+  stroke-width: 1.15;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.3;
+  opacity: 0.52;
 }
 
-.aavya-nail {
-  stroke: currentColor;
-  stroke-width: 1.4;
+/* Finger creases and nail details */
+.hand-details {
+  fill: none;
+  stroke: var(--hand-ink);
+  stroke-width: 1.1;
   stroke-linecap: round;
-  opacity: 0.7;
+  stroke-linejoin: round;
+  opacity: 0.65;
 }
 
-.aavya-hand-left {
-  animation: aavya-hand-left 7s ease-in-out infinite alternate;
+/* =========================================
+   LIGHT THEME
+   ========================================= */
+
+[data-theme="light"] .aavya-hands {
+  --hand-ink: #BD737D;
 }
 
-.aavya-hand-right {
-  animation: aavya-hand-right 7s ease-in-out infinite alternate;
+/* =========================================
+   DARK THEME
+   ========================================= */
+
+[data-theme="dark"] .aavya-hands {
+  --hand-ink: #C98298;
 }
 
-@keyframes aavya-hand-left {
-  from { transform: translateX(-5px); }
-  to { transform: translateX(7px); }
-}
+/* =========================================
+   FOOTER ARTWORK POSITION
+   ========================================= */
 
-@keyframes aavya-hand-right {
-  from { transform: translateX(5px); }
-  to { transform: translateX(-7px); }
-}
-
-/* ==========================================
-   COPYRIGHT
-   ========================================== */
-
-.aavya-footer-copyright {
+.aavya-footer-artwork {
   position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--footer-muted);
-  font-size: 13px;
-  line-height: 1.6;
-  padding: 14px;
-  background: color-mix(
-    in srgb,
-    var(--footer-bg) 76%,
-    transparent
-  );
-  border-radius: 14px;
-  backdrop-filter: blur(5px);
+  width: 100%;
+  max-width: 1781px;
+  margin: 20px auto 0;
+  height: auto;
+  aspect-ratio: 1781 / 425;
+  display: block;
+  overflow: hidden;
 }
 
-.aavya-footer-copyright p {
-  margin: 2px 0;
+.aavya-hands {
+  position: absolute;
+  inset: 0;
+}
+
+/* Copyright positioned between hands */
+.aavya-footer-copyright {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  width: min(360px, 32%);
+  text-align: center;
+  background: transparent;
+  backdrop-filter: none;
+  padding: 0;
 }
 
 /* ==========================================
@@ -335,7 +333,7 @@
 
 /* ==========================================
    RESPONSIVE DESIGN
-   ========================================== */
+   ========================================= */
 
 @media (max-width: 900px) {
   .aavya-footer-top {
@@ -354,9 +352,17 @@
   .aavya-footer-contact {
     align-items: flex-start;
   }
+}
 
+@media (max-width: 768px) {
   .aavya-footer-artwork {
-    height: 280px;
+    aspect-ratio: 1.5 / 1;
+  }
+
+  .aavya-footer-copyright {
+    top: 42%;
+    width: 35%;
+    font-size: 10px;
   }
 }
 
@@ -379,17 +385,6 @@
     align-items: flex-start;
   }
 
-  .aavya-footer-artwork {
-    height: 210px;
-    margin-top: 35px;
-  }
-
-  .aavya-hands-art {
-    width: 150%;
-    left: -25%;
-    opacity: 0.7;
-  }
-
   .aavya-footer-copyright {
     font-size: 11px;
   }
@@ -406,9 +401,20 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .aavya-hand-left,
-  .aavya-hand-right {
-    animation: none;
+@media (max-width: 480px) {
+  .aavya-footer-artwork {
+    aspect-ratio: 1 / 0.75;
+  }
+
+  .aavya-hands {
+    width: 145%;
+    max-width: none;
+    left: -22.5%;
+  }
+
+  .aavya-footer-copyright {
+    top: 40%;
+    width: 38%;
+    font-size: 9px;
   }
 }

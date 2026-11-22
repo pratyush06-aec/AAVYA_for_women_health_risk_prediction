@@ -9,202 +9,226 @@ interface NavigationItem {
   href: string;
 }
 
+// Exactly matching the navbar links
 const navigation: NavigationItem[] = [
-  { label: "HOME", href: "/" },
-  { label: "OUR APPROACH", href: "/#about" },
-  { label: "PCOS CARE", href: "/assessment" },
-  { label: "FIND A DOCTOR", href: "/doctors" },
-  { label: "CONTACT", href: "mailto:hello@aavya.health" },
+  { label: "PCOS Assessment", href: "/assessment" },
+  { label: "About", href: "/#about" },
+  { label: "Find Doctors", href: "/doctors" },
 ];
 
-function FeminineHandsArtwork() {
+function AavyaHands() {
   return (
     <svg
-      className="aavya-hands-art"
-      viewBox="0 0 1440 480"
+      className="aavya-hands"
+      viewBox="0 0 1781 425"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Two delicate hands formed from tiny characters"
       preserveAspectRatio="xMidYMid meet"
-      fill="none"
-      aria-hidden="true"
     >
       <defs>
+        {/* ASCII character texture */}
         <pattern
-          id="aavya-character-pattern"
-          width="76"
+          id="aavya-ascii"
+          width="42"
           height="28"
           patternUnits="userSpaceOnUse"
         >
-          <text
-            x="0"
-            y="12"
+          <g
+            className="hand-ascii"
+            fontFamily="monospace"
             fontSize="9"
-            fontFamily="monospace"
+            fontWeight="400"
             letterSpacing="2"
-            fill="currentColor"
           >
-            a v . : * + o
-          </text>
-          <text
-            x="8"
-            y="25"
-            fontSize="8"
-            fontFamily="monospace"
-            letterSpacing="2"
-            fill="currentColor"
-          >
-            : &#123; / o . a
-          </text>
+            <text x="1" y="9">a v . : +</text>
+            <text x="5" y="22">: / o . a</text>
+          </g>
         </pattern>
 
-        <clipPath id="left-hand-clip">
+        {/* LEFT HAND CLIPPING */}
+        <clipPath id="left-hand-mask">
           <path
             d="
-              M -35 340
-              C 60 315 145 280 222 250
-              C 250 238 271 222 291 202
-              L 356 137
-              C 365 128 377 129 383 138
-              C 390 147 385 157 377 167
-              L 329 224
-              L 394 159
-              C 405 148 419 151 423 162
-              C 427 173 417 184 408 194
-              L 354 253
-              L 423 202
-              C 436 192 449 198 450 210
-              C 451 220 439 231 429 239
-              L 365 288
-              C 397 268 427 253 449 250
-              C 464 248 473 259 468 270
-              C 465 280 450 287 438 293
-              L 355 344
-              C 318 367 285 381 244 391
-              L -35 445 Z
+              M 45 273
+              C 105 255 168 235 224 208
+              C 287 179 345 151 384 110
+
+              L 461 44
+              C 471 36 483 36 491 43
+              C 501 51 498 63 490 73
+              L 450 124
+
+              L 515 72
+              C 527 62 542 63 550 73
+              C 558 83 551 95 541 105
+              L 477 170
+
+              L 548 121
+              C 561 111 576 114 583 125
+              C 591 138 578 149 566 159
+              L 502 211
+
+              L 570 180
+              C 585 171 600 176 606 187
+              C 613 201 600 211 587 220
+
+              C 527 259 467 296 410 318
+              C 391 326 373 330 357 329
+
+              C 306 342 254 360 207 376
+              L 84 376
+              L 84 304
+              C 72 294 57 283 45 273
+              Z
             "
           />
         </clipPath>
 
-        <clipPath id="right-hand-clip">
+        {/* RIGHT HAND CLIPPING */}
+        <clipPath id="right-hand-mask">
           <path
             d="
-              M 1475 340
-              C 1380 315 1295 280 1218 250
-              C 1190 238 1169 222 1149 202
-              L 1084 137
-              C 1075 128 1063 129 1057 138
-              C 1050 147 1055 157 1063 167
-              L 1111 224
-              L 1046 159
-              C 1035 148 1021 151 1017 162
-              C 1013 173 1023 184 1032 194
-              L 1086 253
-              L 1017 202
-              C 1004 192 991 198 990 210
-              C 989 220 1001 231 1011 239
-              L 1075 288
-              C 1043 268 1013 253 991 250
-              C 976 248 967 259 972 270
-              C 975 280 990 287 1002 293
-              L 1085 344
-              C 1122 367 1155 381 1196 391
-              L 1475 445 Z
+              M 45 273
+              C 105 255 168 235 224 208
+              C 287 179 345 151 384 110
+
+              L 461 44
+              C 471 36 483 36 491 43
+              C 501 51 498 63 490 73
+              L 450 124
+
+              L 515 72
+              C 527 62 542 63 550 73
+              C 558 83 551 95 541 105
+              L 477 170
+
+              L 548 121
+              C 561 111 576 114 583 125
+              C 591 138 578 149 566 159
+              L 502 211
+
+              L 570 180
+              C 585 171 600 176 606 187
+              C 613 201 600 211 587 220
+
+              C 527 259 467 296 410 318
+              C 391 326 373 330 357 329
+
+              C 306 342 254 360 207 376
+              L 84 376
+              L 84 304
+              C 72 294 57 283 45 273
+              Z
             "
           />
         </clipPath>
       </defs>
 
-      {/* LEFT FEMININE HAND */}
-      <g className="aavya-hand-left">
+      {/* =================================
+          LEFT HAND
+         ================================= */}
+      <g className="aavya-left-hand">
         <rect
           x="0"
-          y="100"
-          width="500"
-          height="350"
-          fill="url(#aavya-character-pattern)"
-          clipPath="url(#left-hand-clip)"
+          y="0"
+          width="650"
+          height="425"
+          fill="url(#aavya-ascii)"
+          clipPath="url(#left-hand-mask)"
         />
 
         <path
+          className="hand-outline"
           d="
-            M -35 340
-            C 60 315 145 280 222 250
-            C 250 238 271 222 291 202
-            L 356 137
-            C 365 128 377 129 383 138
-            C 390 147 385 157 377 167
-            L 329 224
-            L 394 159
-            C 405 148 419 151 423 162
-            C 427 173 417 184 408 194
-            L 354 253
-            L 423 202
-            C 436 192 449 198 450 210
-            C 451 220 439 231 429 239
-            L 365 288
-            C 397 268 427 253 449 250
-            C 464 248 473 259 468 270
-            C 465 280 450 287 438 293
-            L 355 344
-            C 318 367 285 381 244 391
+            M 45 273
+            C 105 255 168 235 224 208
+            C 287 179 345 151 384 110
+            L 461 44
+            C 471 36 483 36 491 43
+            C 501 51 498 63 490 73
+            L 450 124
+            L 515 72
+            C 527 62 542 63 550 73
+            C 558 83 551 95 541 105
+            L 477 170
+            L 548 121
+            C 561 111 576 114 583 125
+            C 591 138 578 149 566 159
+            L 502 211
+            L 570 180
+            C 585 171 600 176 606 187
+            C 613 201 600 211 587 220
+            C 527 259 467 296 410 318
+            C 391 326 373 330 357 329
+            C 306 342 254 360 207 376
           "
-          className="aavya-hand-outline"
         />
 
-        {/* Delicate fingernail details */}
-        <path
-          d="M 376 137 Q 387 127 393 138 Q 394 146 382 154"
-          className="aavya-nail"
-        />
-        <path
-          d="M 417 159 Q 428 152 433 163 Q 433 172 420 180"
-          className="aavya-nail"
-        />
+        {/* Finger separation details */}
+        <g className="hand-details">
+          <path d="M 450 124 Q 468 99 489 73" />
+          <path d="M 477 170 Q 507 143 541 105" />
+          <path d="M 502 211 Q 530 184 566 159" />
+
+          {/* Fingertip and nail details */}
+          <path d="M 477 40 Q 490 34 498 48" />
+          <path d="M 537 65 Q 552 62 557 78" />
+          <path d="M 573 115 Q 588 119 587 134" />
+        </g>
       </g>
 
-      {/* RIGHT FEMININE HAND */}
-      <g className="aavya-hand-right">
+      {/* =================================
+          RIGHT HAND - PERFECT MIRROR
+         ================================= */}
+      <g
+        className="aavya-right-hand"
+        transform="translate(1781 0) scale(-1 1)"
+      >
         <rect
-          x="940"
-          y="100"
-          width="500"
-          height="350"
-          fill="url(#aavya-character-pattern)"
-          clipPath="url(#right-hand-clip)"
+          x="0"
+          y="0"
+          width="650"
+          height="425"
+          fill="url(#aavya-ascii)"
+          clipPath="url(#right-hand-mask)"
         />
 
         <path
+          className="hand-outline"
           d="
-            M 1475 340
-            C 1380 315 1295 280 1218 250
-            C 1190 238 1169 222 1149 202
-            L 1084 137
-            C 1075 128 1063 129 1057 138
-            C 1050 147 1055 157 1063 167
-            L 1111 224
-            L 1046 159
-            C 1035 148 1021 151 1017 162
-            C 1013 173 1023 184 1032 194
-            L 1086 253
-            L 1017 202
-            C 1004 192 991 198 990 210
-            C 989 220 1001 231 1011 239
-            L 1075 288
-            C 1043 268 1013 253 991 250
-            C 976 248 967 259 972 270
-            C 975 280 990 287 1002 293
-            L 1085 344
-            C 1122 367 1155 381 1196 391
+            M 45 273
+            C 105 255 168 235 224 208
+            C 287 179 345 151 384 110
+            L 461 44
+            C 471 36 483 36 491 43
+            C 501 51 498 63 490 73
+            L 450 124
+            L 515 72
+            C 527 62 542 63 550 73
+            C 558 83 551 95 541 105
+            L 477 170
+            L 548 121
+            C 561 111 576 114 583 125
+            C 591 138 578 149 566 159
+            L 502 211
+            L 570 180
+            C 585 171 600 176 606 187
+            C 613 201 600 211 587 220
+            C 527 259 467 296 410 318
+            C 391 326 373 330 357 329
+            C 306 342 254 360 207 376
           "
-          className="aavya-hand-outline"
         />
 
-        <path
-          d="M 1064 137 Q 1053 127 1047 138 Q 1046 146 1058 154"
-          className="aavya-nail"
-        />
-        <path
-          d="M 1023 159 Q 1012 152 1007 163 Q 1007 172 1020 180"
-          className="aavya-nail"
-        />
+        <g className="hand-details">
+          <path d="M 450 124 Q 468 99 489 73" />
+          <path d="M 477 170 Q 507 143 541 105" />
+          <path d="M 502 211 Q 530 184 566 159" />
+          <path d="M 477 40 Q 490 34 498 48" />
+          <path d="M 537 65 Q 552 62 557 78" />
+          <path d="M 573 115 Q 588 119 587 134" />
+        </g>
       </g>
     </svg>
   );
@@ -245,15 +269,14 @@ export function AavyaFooter({ onSubscribe }: AavyaFooterProps) {
 
       if (res.ok) {
         setIsSubscribed(true);
-        setSubmitMessage("Thank you for subscribing! Your journey with AAVYA begins here.");
+        setSubmitMessage("Thank you for connecting with us! Your journey with AAVYA begins here.");
       } else {
-        // Fallback friendly message
         setIsSubscribed(true);
-        setSubmitMessage("Thank you for connecting with AAVYA!");
+        setSubmitMessage("Thank you for connecting with us!");
       }
     } catch {
       setIsSubscribed(true);
-      setSubmitMessage("Thank you for connecting with AAVYA!");
+      setSubmitMessage("Thank you for connecting with us!");
     } finally {
       setIsSubmitting(false);
     }
@@ -265,7 +288,7 @@ export function AavyaFooter({ onSubscribe }: AavyaFooterProps) {
         {/* NEWSLETTER */}
         <div className="aavya-newsletter">
           <p className="aavya-footer-heading">
-            Stay connected with your health journey.
+            Stay connected with us
           </p>
 
           {isSubscribed ? (
@@ -313,20 +336,9 @@ export function AavyaFooter({ onSubscribe }: AavyaFooterProps) {
           <p className="aavya-footer-muted">
             Your information stays private. Unsubscribe anytime.
           </p>
-
-          <div className="aavya-footer-status">
-            <p>
-              <span className="status-dot" />
-              WOMEN&apos;S HEALTH. INFORMED CARE.
-            </p>
-            <p>
-              <span className="status-dot" />
-              YOUR JOURNEY, YOUR PACE.
-            </p>
-          </div>
         </div>
 
-        {/* NAVIGATION */}
+        {/* NAVIGATION (Navbar Links) */}
         <nav className="aavya-footer-navigation" aria-label="Footer navigation">
           {navigation.map((item) => (
             <Link key={item.href} href={item.href}>
@@ -335,21 +347,47 @@ export function AavyaFooter({ onSubscribe }: AavyaFooterProps) {
           ))}
         </nav>
 
-        {/* CONTACT & LEGAL */}
+        {/* CONTACT & LEGAL (Static Clickables, no redirection) */}
         <div className="aavya-footer-contact">
-          <a href="mailto:hello@aavya.health">
+          <span
+            className="static-email select-all"
+            role="button"
+            tabIndex={0}
+            onClick={(e) => e.preventDefault()}
+          >
             hello@aavya.health
-          </a>
+          </span>
 
-          <Link href="/#about">Privacy Policy</Link>
-          <Link href="/#about">Terms &amp; Conditions</Link>
-          <Link href="/#faq">Medical Disclaimer</Link>
+          <span
+            className="static-link"
+            role="button"
+            tabIndex={0}
+            onClick={(e) => e.preventDefault()}
+          >
+            Privacy Policy
+          </span>
+          <span
+            className="static-link"
+            role="button"
+            tabIndex={0}
+            onClick={(e) => e.preventDefault()}
+          >
+            Terms &amp; Conditions
+          </span>
+          <span
+            className="static-link"
+            role="button"
+            tabIndex={0}
+            onClick={(e) => e.preventDefault()}
+          >
+            Medical Disclaimer
+          </span>
         </div>
       </div>
 
-      {/* ARTWORK AND COPYRIGHT */}
+      {/* ARTWORK AND COPYRIGHT (Static Feminine Hands) */}
       <div className="aavya-footer-artwork">
-        <FeminineHandsArtwork />
+        <AavyaHands />
 
         <div className="aavya-footer-copyright">
           <p className="font-display font-bold text-sm tracking-wide">© {new Date().getFullYear()} AAVYA</p>
@@ -363,8 +401,9 @@ export function AavyaFooter({ onSubscribe }: AavyaFooterProps) {
         AAVYA
       </div>
 
+      {/* BOTTOM BAR */}
       <div className="aavya-footer-bottom">
-        <span>MADE WITH CARE FOR EVERY WOMAN.</span>
+        <span>Made with care, specially for Indian women</span>
         <span>PRIVACY · TRUST · WELLNESS</span>
       </div>
     </footer>
