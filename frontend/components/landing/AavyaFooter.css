@@ -60,18 +60,22 @@
 }
 
 /* ==========================================
-   TOP GRID (Architectural 3-Column Layout)
+   TOP GRID (Architectural 3-Column Layout Aligned to Hand Geometry)
    ========================================== */
 
 .aavya-footer-top {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  column-gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1fr auto 1.1fr;
+  column-gap: clamp(24px, 3.5vw, 48px);
   row-gap: 36px;
   position: relative;
   z-index: 2;
   min-height: 220px;
   width: 100%;
+  /* Horizontally aligned with the ASCII hands boundaries (viewBox 0 0 1024 321):
+     Left hand starts at x=70.3 (6.86%), Right hand ends at x=1004.8 (98.12%) */
+  padding-left: 6.86%;
+  padding-right: 1.88%;
 }
 
 .aavya-footer-heading {
@@ -81,7 +85,7 @@
 }
 
 .aavya-newsletter {
-  max-width: 360px;
+  max-width: 350px;
   width: 100%;
 }
 
@@ -189,7 +193,7 @@
 }
 
 /* ==========================================
-   NAVIGATION (Centered Block, Clean Left-Aligned Links)
+   NAVIGATION (Centered in Hand Gap, Clean Left-Aligned Links)
    ========================================== */
 
 .aavya-footer-navigation {
@@ -214,14 +218,14 @@
 }
 
 /* ==========================================
-   CONTACT & LEGAL (Right-Zone Block, Clean Left-Aligned Links)
+   CONTACT & LEGAL (Right-Zone Block, Aligned to Right Hand Border)
    ========================================== */
 
 .aavya-footer-contact {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-self: start;
+  justify-self: end;
   gap: 14px;
 }
 
@@ -358,7 +362,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 22px 0;
+  padding: 22px 1.88% 22px 6.86%;
   border-top: 1px solid var(--footer-border);
   color: var(--footer-muted);
   font-size: 10px;
@@ -374,6 +378,8 @@
   .aavya-footer-top {
     grid-template-columns: 1fr 1fr;
     gap: 36px 24px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .aavya-newsletter {
@@ -389,6 +395,11 @@
   .aavya-footer-contact {
     justify-self: start;
     align-items: flex-start;
+  }
+
+  .aavya-footer-bottom {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
