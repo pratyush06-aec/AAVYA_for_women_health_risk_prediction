@@ -21,7 +21,7 @@ export default function SignInPage() {
         </p>
       </div>
 
-      <div className="clay-card p-3 sm:p-5 rounded-2xl border border-[rgba(255,235,226,0.6)]">
+      <div className="clay-card p-3 sm:p-5 rounded-2xl border border-[var(--border)]">
         <SignIn
           routing="path"
           path="/sign-in"

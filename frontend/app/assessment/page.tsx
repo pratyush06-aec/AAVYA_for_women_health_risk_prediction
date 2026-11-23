@@ -940,7 +940,7 @@ export default function AssessmentWizardPage() {
                       {detectedChips.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 pt-1">
                           {detectedChips.map((chip, idx) => (
-                            <span key={idx} className="px-2.5 py-1 bg-white border border-emerald-300 text-emerald-800 rounded-md font-medium">
+                            <span key={idx} className="px-2.5 py-1 bg-[var(--surface-secondary)] border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 rounded-md font-medium">
                               ✓ {chip}
                             </span>
                           ))}
@@ -993,7 +993,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.cycleRegularity === val
                                     ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1025,7 +1025,7 @@ export default function AssessmentWizardPage() {
                                 cycleLengthDays: parseInt(e.target.value) || 30,
                               }))
                             }
-                            className="w-full py-1.5 px-3 text-xs rounded-lg border border-stone-200 bg-white font-medium text-stone-900 tabular-nums focus:ring-1 focus:ring-[var(--primary)] outline-none"
+                            className="w-full py-1.5 px-3 text-xs rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] font-medium text-[var(--foreground)] tabular-nums focus:ring-1 focus:ring-[var(--primary)] outline-none"
                           />
                         </div>
 
@@ -1050,7 +1050,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.hairGrowth === val
                                     ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1080,7 +1080,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.pimples === val
                                     ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1110,7 +1110,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.hairLoss === val
                                     ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1140,7 +1140,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.skinDarkening === val
                                     ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1170,7 +1170,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.weightGain === val
                                     ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1200,7 +1200,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.fastFood === val
                                     ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1230,7 +1230,7 @@ export default function AssessmentWizardPage() {
                                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                                   confirmedSymptoms.regExercise === val
                                     ? "bg-[var(--leaf)] text-white border-[var(--leaf)] shadow-sm"
-                                    : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50"
+                                    : "bg-[var(--surface-secondary)] border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--surface-highlight)]"
                                 }`}
                               >
                                 {val}
@@ -1245,7 +1245,7 @@ export default function AssessmentWizardPage() {
                         <button
                           type="button"
                           onClick={handleApplyConfirmedToForm}
-                          className="w-full sm:w-auto px-5 py-2.5 text-xs font-semibold rounded-xl border border-[var(--border)] bg-white text-[var(--foreground)] hover:bg-stone-100 transition-colors flex items-center justify-center gap-1.5"
+                          className="w-full sm:w-auto clay-button-secondary px-5 py-2.5 text-xs font-semibold rounded-xl flex items-center justify-center gap-1.5"
                         >
                           <svg className="size-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -1274,7 +1274,7 @@ export default function AssessmentWizardPage() {
 
                       {/* Free-Text Trained Model Confidence Score Card */}
                       {freeTextPrediction && (
-                        <div className="p-5 rounded-2xl bg-white border-2 border-[var(--primary)] shadow-lg space-y-4 animate-scaleIn text-[var(--foreground)] mt-4">
+                        <div className="clay-card p-5 rounded-2xl border-2 border-[var(--primary)]/40 shadow-lg space-y-4 animate-scaleIn text-[var(--foreground)] mt-4">
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-100 pb-3">
                             <div>
                               <span className="text-[10px] uppercase font-bold tracking-wider text-[var(--primary)] flex items-center gap-1">

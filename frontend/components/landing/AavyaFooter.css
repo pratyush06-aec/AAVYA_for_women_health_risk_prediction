@@ -127,8 +127,38 @@
   transition: transform 250ms ease;
 }
 
+[data-theme="dark"] .aavya-newsletter-form input {
+  background: #1C1320;
+  border-color: rgba(244, 215, 225, 0.16);
+  color: #F4E7EA;
+  box-shadow:
+    inset 3px 3px 8px rgba(5, 2, 8, 0.65),
+    inset -2px -2px 6px rgba(135, 90, 120, 0.14),
+    0 1px 1px rgba(244, 215, 225, 0.04);
+}
+
+[data-theme="dark"] .aavya-newsletter-form input:focus {
+  border-color: #D58DA4;
+  box-shadow:
+    inset 3px 3px 8px rgba(5, 2, 8, 0.75),
+    inset -2px -2px 6px rgba(135, 90, 120, 0.18),
+    0 0 0 2px rgba(213, 141, 164, 0.22);
+}
+
 [data-theme="dark"] .aavya-newsletter-form button {
-  color: #211824;
+  background: linear-gradient(
+    145deg,
+    #D9889F 0%,
+    #B25772 100%
+  );
+  color: #FFF8F4;
+  border: 1px solid rgba(255, 230, 238, 0.45);
+  box-shadow:
+    0 8px 20px rgba(5, 2, 8, 0.60),
+    0 3px 8px rgba(178, 87, 114, 0.30),
+    -4px -4px 14px rgba(160, 105, 138, 0.20),
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 4px rgba(90, 25, 45, 0.35);
 }
 
 .aavya-newsletter-form button:hover {

@@ -835,7 +835,7 @@ export default function DoctorsDirectoryPage() {
         {/* Confirmed Booking Modal */}
         {confirmedBooking && (
           <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="clay-card max-w-md w-full p-6 sm:p-8 space-y-5 animate-scaleIn bg-white rounded-2xl border border-[var(--border)] shadow-2xl">
+            <div className="clay-card max-w-md w-full p-6 sm:p-8 space-y-5 animate-scaleIn rounded-2xl border border-[var(--border)] shadow-2xl">
               <div className="text-center space-y-2">
                 <div className="size-12 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto border border-emerald-300">
                   <CheckCircle className="size-7" />

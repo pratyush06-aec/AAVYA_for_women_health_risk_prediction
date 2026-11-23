@@ -23,7 +23,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-3 sm:top-4 z-50 px-3 sm:px-6 w-full max-w-6xl mx-auto pointer-events-none transition-all duration-300">
-      <div className="pointer-events-auto rounded-full border border-[rgba(255,245,240,0.55)] bg-[rgba(248,212,200,0.25)] backdrop-blur-xl shadow-[0_12px_32px_rgba(178,105,112,0.18),-4px_-4px_16px_rgba(255,250,248,0.80),inset_0_1px_1.5px_rgba(255,255,255,0.85)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200 gap-4 sm:gap-6">
+      <div className="clay-navbar pointer-events-auto rounded-full border border-[rgba(255,245,240,0.55)] bg-[rgba(248,212,200,0.25)] backdrop-blur-xl shadow-[0_12px_32px_rgba(178,105,112,0.18),-4px_-4px_16px_rgba(255,250,248,0.80),inset_0_1px_1.5px_rgba(255,255,255,0.85)] px-6 sm:px-8 h-16 flex items-center justify-between w-full transition-all duration-200 gap-4 sm:gap-6">
         {/* Left: Brand Logo (Only AAVYA text) */}
         <div className="flex items-center shrink-0">
           <Link href="/" className="flex items-center group">
