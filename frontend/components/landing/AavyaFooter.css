@@ -5,11 +5,12 @@
 .aavya-footer {
   position: relative;
   overflow: hidden;
-  padding: 64px 3.5% 0;
+  padding: 64px clamp(20px, 4vw, 48px) 0;
   background: var(--footer-bg);
   color: var(--footer-text);
   isolation: isolate;
   transition: background 300ms ease, color 300ms ease;
+  width: 100%;
 
   --footer-bg: #F3CBC1;
   --footer-surface: #F8D8CE;
@@ -19,6 +20,13 @@
   --footer-art: #BD737D;
   --footer-wordmark: rgba(189, 115, 125, 0.15);
   --footer-border: rgba(189, 115, 125, 0.2);
+}
+
+.aavya-footer-inner {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
 }
 
 /* ==========================================
@@ -52,16 +60,18 @@
 }
 
 /* ==========================================
-   TOP GRID
+   TOP GRID (Architectural 3-Column Layout)
    ========================================== */
 
 .aavya-footer-top {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  column-gap: clamp(32px, 5vw, 64px);
+  row-gap: 36px;
   position: relative;
   z-index: 2;
-  min-height: 240px;
+  min-height: 220px;
+  width: 100%;
 }
 
 .aavya-footer-heading {
@@ -71,7 +81,8 @@
 }
 
 .aavya-newsletter {
-  max-width: 390px;
+  max-width: 360px;
+  width: 100%;
 }
 
 /* ==========================================
@@ -82,6 +93,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .aavya-newsletter-form input {
@@ -177,21 +189,24 @@
 }
 
 /* ==========================================
-   NAVIGATION
+   NAVIGATION (Centered Block, Clean Left-Aligned Links)
    ========================================== */
 
 .aavya-footer-navigation {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 17px;
+  align-items: flex-start;
+  justify-self: center;
+  gap: 16px;
 }
 
 .aavya-footer-navigation a {
   color: var(--footer-muted);
   text-decoration: none;
   font-size: 13px;
+  font-weight: 500;
   transition: color 200ms ease;
+  white-space: nowrap;
 }
 
 .aavya-footer-navigation a:hover {
@@ -199,13 +214,14 @@
 }
 
 /* ==========================================
-   CONTACT (STATIC CLICKABLES)
+   CONTACT & LEGAL (Right-Zone Block, Clean Left-Aligned Links)
    ========================================== */
 
 .aavya-footer-contact {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
+  justify-self: start;
   gap: 14px;
 }
 
@@ -217,6 +233,7 @@
   font-size: 13px;
   cursor: default;
   user-select: text;
+  white-space: nowrap;
 }
 
 .aavya-footer-contact .static-email {
@@ -225,6 +242,8 @@
   text-underline-offset: 4px;
   font-size: 13px;
   cursor: default;
+  margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 /* =========================================
@@ -283,8 +302,7 @@
 .aavya-footer-artwork {
   position: relative;
   width: 100%;
-  max-width: 1440px;
-  margin: 30px auto 0;
+  margin: 24px auto 0;
   height: auto;
   aspect-ratio: 1024 / 321;
   display: block;
@@ -325,7 +343,8 @@
   user-select: none;
   pointer-events: none;
   margin-top: -30px;
-  margin-left: -0.05em;
+  margin-left: 0;
+  width: 100%;
 }
 
 /* ==========================================
@@ -337,12 +356,14 @@
   z-index: 2;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
   padding: 22px 0;
   border-top: 1px solid var(--footer-border);
   color: var(--footer-muted);
   font-size: 10px;
   letter-spacing: 1px;
+  width: 100%;
 }
 
 /* ==========================================
@@ -352,18 +373,21 @@
 @media (max-width: 900px) {
   .aavya-footer-top {
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 36px 24px;
   }
 
   .aavya-newsletter {
     grid-column: 1 / -1;
+    max-width: 100%;
   }
 
   .aavya-footer-navigation {
+    justify-self: start;
     align-items: flex-start;
   }
 
   .aavya-footer-contact {
+    justify-self: start;
     align-items: flex-start;
   }
 }
@@ -382,17 +406,12 @@
 
 @media (max-width: 600px) {
   .aavya-footer {
-    padding: 40px 20px 0;
+    padding: 40px 16px 0;
   }
 
   .aavya-footer-top {
-    grid-template-columns: 1fr 1fr;
-    gap: 35px 20px;
-  }
-
-  .aavya-newsletter {
-    grid-column: 1 / -1;
-    max-width: 100%;
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .aavya-footer-contact {
@@ -410,6 +429,7 @@
 
   .aavya-footer-bottom {
     flex-direction: column;
+    text-align: center;
     font-size: 9px;
     gap: 8px;
   }

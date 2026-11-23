@@ -94,127 +94,129 @@ export function AavyaFooter({ onSubscribe }: AavyaFooterProps) {
 
   return (
     <footer className="aavya-footer">
-      <div className="aavya-footer-top">
-        {/* NEWSLETTER */}
-        <div className="aavya-newsletter">
-          <p className="aavya-footer-heading">
-            Stay connected with us
-          </p>
+      <div className="aavya-footer-inner">
+        <div className="aavya-footer-top">
+          {/* NEWSLETTER */}
+          <div className="aavya-newsletter">
+            <p className="aavya-footer-heading">
+              Stay connected with us
+            </p>
 
-          {isSubscribed ? (
-            <div className="p-4 rounded-xl bg-[var(--footer-surface)] border border-[var(--footer-border)] text-xs text-[var(--footer-text)] space-y-1.5 shadow-sm animate-fadeIn">
-              <strong className="block text-sm text-[var(--footer-accent)]">Subscription Confirmed</strong>
-              <p>{submitMessage}</p>
-              <button
-                type="button"
-                onClick={() => {
-                  setIsSubscribed(false);
-                  setEmail("");
-                  setName("");
-                }}
-                className="text-[11px] underline text-[var(--footer-muted)] hover:text-[var(--footer-accent)] mt-2 inline-block cursor-pointer"
-              >
-                Subscribe another email
-              </button>
-            </div>
-          ) : (
-            <form className="aavya-newsletter-form" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Your name"
-                aria-label="Your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
+            {isSubscribed ? (
+              <div className="p-4 rounded-xl bg-[var(--footer-surface)] border border-[var(--footer-border)] text-xs text-[var(--footer-text)] space-y-1.5 shadow-sm animate-fadeIn">
+                <strong className="block text-sm text-[var(--footer-accent)]">Subscription Confirmed</strong>
+                <p>{submitMessage}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSubscribed(false);
+                    setEmail("");
+                    setName("");
+                  }}
+                  className="text-[11px] underline text-[var(--footer-muted)] hover:text-[var(--footer-accent)] mt-2 inline-block cursor-pointer"
+                >
+                  Subscribe another email
+                </button>
+              </div>
+            ) : (
+              <form className="aavya-newsletter-form" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  aria-label="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
 
-              <input
-                type="email"
-                placeholder="Your email address"
-                aria-label="Your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  aria-label="Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
 
-              <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "SUBSCRIBING..." : "SUBSCRIBE"} <span>+</span>
-              </button>
-            </form>
-          )}
+                <button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "SUBSCRIBING..." : "SUBSCRIBE"} <span>+</span>
+                </button>
+              </form>
+            )}
 
-          <p className="aavya-footer-muted">
-            Your information stays private. Unsubscribe anytime.
-          </p>
+            <p className="aavya-footer-muted">
+              Your information stays private. Unsubscribe anytime.
+            </p>
+          </div>
+
+          {/* NAVIGATION (Navbar Links) */}
+          <nav className="aavya-footer-navigation" aria-label="Footer navigation">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* CONTACT & LEGAL (Static Clickables, no redirection) */}
+          <div className="aavya-footer-contact">
+            <span
+              className="static-email select-all"
+              role="button"
+              tabIndex={0}
+              onClick={(e) => e.preventDefault()}
+            >
+              hello@aavya.health
+            </span>
+
+            <span
+              className="static-link"
+              role="button"
+              tabIndex={0}
+              onClick={(e) => e.preventDefault()}
+            >
+              Privacy Policy
+            </span>
+            <span
+              className="static-link"
+              role="button"
+              tabIndex={0}
+              onClick={(e) => e.preventDefault()}
+            >
+              Terms &amp; Conditions
+            </span>
+            <span
+              className="static-link"
+              role="button"
+              tabIndex={0}
+              onClick={(e) => e.preventDefault()}
+            >
+              Medical Disclaimer
+            </span>
+          </div>
         </div>
 
-        {/* NAVIGATION (Navbar Links) */}
-        <nav className="aavya-footer-navigation" aria-label="Footer navigation">
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* ARTWORK AND COPYRIGHT (Static Feminine Hands) */}
+        <div className="aavya-footer-artwork">
+          <AavyaHands />
 
-        {/* CONTACT & LEGAL (Static Clickables, no redirection) */}
-        <div className="aavya-footer-contact">
-          <span
-            className="static-email select-all"
-            role="button"
-            tabIndex={0}
-            onClick={(e) => e.preventDefault()}
-          >
-            hello@aavya.health
-          </span>
-
-          <span
-            className="static-link"
-            role="button"
-            tabIndex={0}
-            onClick={(e) => e.preventDefault()}
-          >
-            Privacy Policy
-          </span>
-          <span
-            className="static-link"
-            role="button"
-            tabIndex={0}
-            onClick={(e) => e.preventDefault()}
-          >
-            Terms &amp; Conditions
-          </span>
-          <span
-            className="static-link"
-            role="button"
-            tabIndex={0}
-            onClick={(e) => e.preventDefault()}
-          >
-            Medical Disclaimer
-          </span>
+          <div className="aavya-footer-copyright">
+            <p className="font-display font-bold text-sm tracking-wide">© {new Date().getFullYear()} AAVYA</p>
+            <p className="text-xs font-medium">Women&apos;s Health &amp; Wellness</p>
+            <p className="text-[11px] opacity-80">Empowering informed healthcare decisions.</p>
+          </div>
         </div>
-      </div>
 
-      {/* ARTWORK AND COPYRIGHT (Static Feminine Hands) */}
-      <div className="aavya-footer-artwork">
-        <AavyaHands />
-
-        <div className="aavya-footer-copyright">
-          <p className="font-display font-bold text-sm tracking-wide">© {new Date().getFullYear()} AAVYA</p>
-          <p className="text-xs font-medium">Women&apos;s Health &amp; Wellness</p>
-          <p className="text-[11px] opacity-80">Empowering informed healthcare decisions.</p>
+        {/* BRAND WORDMARK */}
+        <div className="aavya-footer-brand">
+          AAVYA
         </div>
-      </div>
 
-      {/* BRAND WORDMARK */}
-      <div className="aavya-footer-brand">
-        AAVYA
-      </div>
-
-      {/* BOTTOM BAR */}
-      <div className="aavya-footer-bottom">
-        <span>Made with care, specially for Indian women</span>
-        <span>PRIVACY · TRUST · WELLNESS</span>
+        {/* BOTTOM BAR */}
+        <div className="aavya-footer-bottom">
+          <span>Made with care, specially for Indian women</span>
+          <span>PRIVACY · TRUST · WELLNESS</span>
+        </div>
       </div>
     </footer>
   );
