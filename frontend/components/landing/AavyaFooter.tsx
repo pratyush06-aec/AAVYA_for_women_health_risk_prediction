@@ -201,9 +201,9 @@ export function AavyaFooter({ onSubscribe }: AavyaFooterProps) {
           <AavyaHands />
 
           <div className="aavya-footer-copyright">
-            <p className="font-display font-bold text-sm tracking-wide">© {new Date().getFullYear()} AAVYA</p>
-            <p className="text-xs font-medium">Women&apos;s Health &amp; Wellness</p>
-            <p className="text-[11px] opacity-80">Empowering informed healthcare decisions.</p>
+            <p className="font-display font-medium text-xs tracking-wider opacity-90">© {new Date().getFullYear()} AAVYA</p>
+            <p className="text-[11px] font-normal opacity-75 mt-0.5">Women&apos;s Health &amp; Wellness</p>
+            <p className="text-[10px] font-normal opacity-60 mt-0.5">Empowering informed healthcare decisions.</p>
           </div>
         </div>
 

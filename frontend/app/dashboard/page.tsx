@@ -267,9 +267,6 @@ export default function PatientDashboardPage() {
         {/* Welcome Banner */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)] clay-card-flat">
           <div>
-            <div className="inline-flex items-center gap-2 mb-2">
-              <Badge variant="coral">Patient Record Active</Badge>
-            </div>
             <h1 className="text-2xl sm:text-3xl font-bold font-display text-[var(--foreground)]">
               Welcome back, {account?.full_name || user?.fullName}
             </h1>
